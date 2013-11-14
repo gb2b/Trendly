@@ -15,9 +15,9 @@
 
 </head>
 <body style="transition : all 2s linear">
-	<h1><span>trend.</span>ly-LOL</h1>
+	<h1><span>trend.</span>ly</h1>
   	<section>
-		<section id="module" style="width: 500px;margin:-10px auto;">
+		<section id="module" style="width: 600px;margin:-10px auto;">
   		</section>
 
 		<form id="search">
@@ -50,9 +50,9 @@
           test3: [10],
         };
 
-        var width = 500,
-            height = 500,
-            cwidth = 20;
+        var width = 600,
+            height = 600,
+            cwidth = 25;
 
         var p = Math.PI * 2;
 
@@ -94,7 +94,7 @@
             .on("mouseover", function(d,i,j){
                 
                 d3.select(this).style("opacity", 0.6);
-                d3.select(this).style("cursor", "default");
+                d3.select(this).style("cursor", "pointer");
                 var key = function(d,i) {
                     var map = d3.map(dataset);
                     idkey = map.keys();
