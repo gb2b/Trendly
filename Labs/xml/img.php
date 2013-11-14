@@ -21,31 +21,30 @@ if (isset($_POST["url"]) && !empty($_POST["url"])) {
 
 function getImageActu($url, $except = array())
 {
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-	$html = curl_exec($ch);
-	curl_close($ch);
-	$doc = new DOMDocument();
-	@$doc->loadHTML($html);
-	$imageTags = $doc->getElementsByTagName('img');
-	$maxSize = 0;
-	foreach($imageTags as $tag) {
-		if (preg_match("#^\/.*#", $tag->getAttribute('src'))) {
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+    $html = curl_exec($ch);
+    curl_close($ch);
+    $doc = new DOMDocument();
+    @$doc->loadHTML($html);
+    $imageTags = $doc->getElementsByTagName('img');
+    $maxSize = 0;
+    foreach($imageTags as $tag) {
+        if (preg_match("#^\/.*#", $tag->getAttribute('src'))) {
             $img = "http://".getNomDeDomaine($url).$tag->getAttribute('src');
         }else{
             $img = $tag->getAttribute('src');
         }
-        echo $img."</br>";
         if (!in_array($img, $except)) {
-        	$size = getimagesize($img);
-	    	if ($size[1]>$maxSize) {
-				$imgUrl  = $img;
-				$maxSize = $size[1];
-	    	}
+            $size = getimagesize($img);
+            if ($size[1]>$maxSize) {
+                $imgUrl  = $img;
+                $maxSize = $size[1];
+            }
         }
-	}
-	return array("url" => $imgUrl, "size" => $maxSize);
+    }
+    return array("url" => $imgUrl, "size" => $maxSize);
 }
 
 function getNomDeDomaine($url) {
@@ -66,5 +65,4 @@ function getNomDeDomaine($url) {
     }
     return $domain;
 }
-
  ?>
