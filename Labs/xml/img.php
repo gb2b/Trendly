@@ -31,8 +31,8 @@ function getImageActu($url, $except = array())
 	$imageTags = $doc->getElementsByTagName('img');
 	$maxSize = 0;
 	foreach($imageTags as $tag) {
-		if (preg_match("\/.*", $tag->getAttribute('src'))) {
-            $img = getNomDeDomaine($url).$tag->getAttribute('src');
+		if (preg_match("#^\/.*#", $tag->getAttribute('src'))) {
+            $img = "http://".getNomDeDomaine($url).$tag->getAttribute('src');
         }else{
             $img = $tag->getAttribute('src');
         }
@@ -46,6 +46,25 @@ function getImageActu($url, $except = array())
         }
 	}
 	return array("url" => $imgUrl, "size" => $maxSize);
+}
+
+function getNomDeDomaine($url) {
+    
+    $hostname = parse_url($url, PHP_URL_HOST);
+    $hostParts = explode('.', $hostname);
+    $numberParts = sizeof($hostParts);
+    $domain='';
+    
+    // Domaine sans tld (ex: http://server/page.php)
+    if(1 === $numberParts) {
+        $domain = current($hostParts);
+    }
+    // Domaine avec tld (ex: http://fr.php.net/parse-url)
+    elseif($numberParts>=2) {
+        $hostParts = array_reverse($hostParts);
+        $domain = $hostParts[1] .'.'. $hostParts[0];
+    }
+    return $domain;
 }
 
  ?>

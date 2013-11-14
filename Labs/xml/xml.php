@@ -31,9 +31,6 @@ try{
     }
     file_put_contents('gnews.json', json_encode($infos));
     $infos2 = json_decode(file_get_contents('gnews.json'));
-    // echo "<pre>";
-    // print_r($infos2);
-    // echo "</pre>";
     foreach ($infos2 as $info) {
         echo "<h1>".$info->title."</h1>";
         echo "<a href='".$info->url."'>".$info->url."</a>.</br>";
@@ -95,16 +92,16 @@ function getImageActu($url, $except = array())
     $imageTags = $doc->getElementsByTagName('img');
     $maxSize = 0;
     foreach($imageTags as $tag) {
-        if (preg_match("\/.*", $tag->getAttribute('src'))) {
-            $img = getNomDeDomaine($url).$tag->getAttribute('src');
+        if (preg_match("#^\/.*#", $tag->getAttribute('src'))) {
+            $img = "http://".getNomDeDomaine($url).$tag->getAttribute('src');
         }else{
             $img = $tag->getAttribute('src');
         }
         if (!in_array($img, $except)) {
             $size = getimagesize($img);
-            if ($size[0]>$maxSize) {
+            if ($size[1]>$maxSize) {
                 $imgUrl  = $img;
-                $maxSize = $size[0];
+                $maxSize = $size[1];
             }
         }
     }
