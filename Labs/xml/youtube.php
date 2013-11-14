@@ -1,8 +1,27 @@
 <?php 
-$url = "https://gdata.youtube.com/feeds/api/standardfeeds/FR/most_popular?v=2&alt=json";
-$result = json_decode(file_get_contents($url));
+require_once("Zend/Loader.php");
 
+Zend_Loader::loadClass("Zend_Gdata_YouTube");
+$yt = new Zend_Gdata_Youtube();
+if (isset($_GET["q"]) && !empty($_GET["q"])) {
+	$videoFeed = $yt->getVideoFeed("http://gdata.youtube.com/feeds/api/videos?q=hero+corp&orderby=published&max-results=10&v=2");
+}else{
+	$videoFeed = $yt->getVideoFeed("http://gdata.youtube.com/feeds/api/standardfeeds/most_popular?min-results=10&v=2");
+}
+$i = 0;
+foreach ($videoFeed as $video): $thumbs = $video->getVideoThumbnails();
+	$v[$i] = array(
+		"title"       => $video->getVideoTitle(),
+		"url"         => $video->getVideoWatchPageUrl(),
+		"description" => $video->getVideoDescription(),
+		"thumbnail"   => $thumbs[0]["url"]
+		);
+	$i++;
+endforeach;
+
+file_put_contents('youtube.json', json_encode($v));
+$infos2 = json_decode(file_get_contents('youtube.json'));
 echo "<pre>";
-echo($result->feed->entry[0]->title->0);
+print_r($infos2);
 echo "</pre>";
  ?>
