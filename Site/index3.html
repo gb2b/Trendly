@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>Trendly : Les tendances de demain</title>
+        <meta name="description" content="">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+       <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+ 		<!--<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>-->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/trendly.css">
+
+</head>
+<body style="transition : all 2s linear">
+	<h1><span>trend.</span>ly</h1>
+  	<section>
+		<section id="module" style="width: 500px;margin:-10px auto;">
+  		</section>
+
+		<form id="search">
+			<input type="text" placeholder="Search a trend" name="text-search" id="text-search"/>
+			<input type="submit" value="A" id="submit" name="submit"/>
+		</form>
+  	</section>
+	<div id="searchtest" style="border: 3px solid black;background:red;display:none"> Test </div>
+  	
+  	
+
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
+  	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script>
+        var formu = document.forms['search'];
+        var element = formu.elements['text-search'];
+
+        var opaque = [0.9,0.9,0.9,0.7,0.7,0.7,0.5,0.5,0.5,0.5];
+
+        var dataset = {
+          apples: [1],
+          oranges: [2],
+          lemons: [3],
+          pears: [4],
+          framboise: [5],
+          poire: [6],
+          cerise: [7],
+          test: [8],
+          test2: [9],
+          test3: [10],
+        };
+
+        var width = 500,
+            height = 500,
+            cwidth = 20;
+
+        var p = Math.PI * 2;
+
+        var color = d3.scale.ordinal()
+                    .range(["#DF6C4F", "#ECD06F", "#1A99AA", "#00A651"]);
+
+        var pie = d3.layout.pie()
+            .sort(null);
+
+        var arc = d3.svg.arc();
+
+        var svg = d3.select("#module").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        var gs = svg.selectAll("g")
+            .data(d3.values(dataset))
+            .enter()
+            .append("g")
+            .attr("class", "arc");
+            
+        
+        var path = gs.selectAll("path")
+            .data(function(d) { return pie(d); })
+            .enter().append("path")
+            
+            .attr("fill", function(d, i) { return color(Math.floor(Math.random()*10)); })
+
+            .attr("d", function(d, i, j) { 
+              return arc.startAngle(Math.floor(Math.random()*4))
+                      .endAngle(p- (Math.floor((Math.random()*8)+1)))
+                      .innerRadius(35+cwidth*j)
+                      .outerRadius(cwidth*(j+1))(d)
+            })
+            .style("opacity", function(j){return opaque[j];})
+            
+            .on("mouseover", function(d,i,j){
+                
+                d3.select(this).style("opacity", 0.6);
+                d3.select(this).style("cursor", "default");
+                var key = function(d,i) {
+                    var map = d3.map(dataset);
+                    idkey = map.keys();
+                    namekey = idkey[j];
+                    return namekey;
+                };
+              
+                 element.value = key(d,i,j);
+
+             })
+            .on("mouseout", function(d){
+                d3.select(this).style("opacity", 1);
+                d3.select(this).style("cursor", "default");
+
+            })
+            .data(d3.keys(dataset));
+            
+
+
+
+
+
+    </script>
+</body>
+</html>

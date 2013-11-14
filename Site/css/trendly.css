@@ -32,7 +32,7 @@ h1 span{
 #search{
 	border-bottom: 1px solid #58595B;
 	width: 300px;
-	margin: 80px auto 0px;
+	margin: -20px auto 0px;
 }
 
 #text-search{
@@ -49,3 +49,48 @@ h1 span{
 #submit{
 	
 }
+
+.arc{
+	-webkit-animation : rotation 50s linear 0.4s infinite ;
+	animation : rotation 50s linear 0.4s infinite ;
+}
+.arc:nth-child(2n + 1){
+	-webkit-animation : rotation2 50s linear 0.4s infinite ;
+	animation : rotation2 50s linear 0.4s infinite ;
+}
+
+@-webkit-keyframes rotation{
+	  from{
+	  	-webkit-transform : rotate(0deg);
+	  }
+
+	  to{
+	  	-webkit-transform : rotate(360deg);
+	  }
+ }
+ @keyframes rotation{
+	from{
+	  	transform : rotate(0deg);
+	  }
+
+	to{
+	  	transform : rotate(360deg);
+	}
+ }@-webkit-keyframes rotation2{
+	  from{
+	  	-webkit-transform : rotate(360deg);
+	  }
+
+	  to{
+	  	-webkit-transform : rotate(0deg);
+	  }
+ }
+ @keyframes rotation2{
+	from{
+	  	transform : rotate(360deg);
+	  }
+
+	to{
+	  	transform : rotate(0deg);
+	}
+ }
