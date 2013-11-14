@@ -27,7 +27,7 @@ try{
         $infos[$i]["url"] = substr($url1[0][0], 4);
         $urlImg           = getImageActu(substr($url1[0][0], 4), $except);
         $infos[$i]["img"] = $urlImg["url"];
-    	$i++;
+        $i++;
     }
     file_put_contents('gnews.json', json_encode($infos));
     $infos2 = json_decode(file_get_contents('gnews.json'));
@@ -95,11 +95,11 @@ function getImageActu($url, $except = array())
     $imageTags = $doc->getElementsByTagName('img');
     $maxSize = 0;
     foreach($imageTags as $tag) {
-        //if (preg_match("\/.*", $tag->getAttribute('src'))) {
-        //    $img = getNomDeDomaine($url).$tag->getAttribute('src');
-        //}else{
+        if (preg_match("\/.*", $tag->getAttribute('src'))) {
+            $img = getNomDeDomaine($url).$tag->getAttribute('src');
+        }else{
             $img = $tag->getAttribute('src');
-        //}
+        }
         if (!in_array($img, $except)) {
             $size = getimagesize($img);
             if ($size[0]>$maxSize) {

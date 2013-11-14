@@ -15,7 +15,7 @@
 if (isset($_POST["url"]) && !empty($_POST["url"])) {
 	$except = array("http://referentiel.nouvelobs.com/file/3935010.jpg");
 	$infos = getImageActu($_POST["url"], $except);
-	echo $infos["url"]." ".$infos["size"][0];
+	//echo $infos["url"]." ".$infos["size"][0];
 }
 
 
@@ -36,6 +36,7 @@ function getImageActu($url, $except = array())
         }else{
             $img = $tag->getAttribute('src');
         }
+        echo $img."</br>";
         if (!in_array($img, $except)) {
         	$size = getimagesize($img);
 	    	if ($size[1]>$maxSize) {
