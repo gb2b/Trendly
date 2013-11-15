@@ -30,7 +30,7 @@
         </div>
         <form id="search">
             <input type="text" placeholder="Search a trend" name="s" id="s"/>
-            <a href="" onclick="submit(this);" class="submit"><span class="glyphicon glyphicon-search icon"></span></a>
+            <a href="" onclick="submit(this); return false;" class="submit"><span class="glyphicon glyphicon-search icon"></span></a>
         </form>
       </div>
       <div class="row">
@@ -108,7 +108,7 @@
         var p = Math.PI * 2;
 
         var color = d3.scale.ordinal()
-                    .range(["#12ff00","#ffdd3c","#3cf4ff","#ff3cea","#ff0000"]);
+                    .range(["#fff"]);
 
         var pie = d3.layout.pie()
             .sort(null);
@@ -171,7 +171,17 @@
                 }
 
             })
-            .data(d3.keys(dataset));
+            .on("click",function(d,i,j){
+                 var key = function(d,i) {
+                    var map = d3.map(dataset);
+                    idkey = map.keys();
+                    namekey = idkey[j];
+                    return namekey;
+                };
+                
+                searchname = key(d,i,j);
+                document.location.href="?s="+searchname; // Le contenu de la variable nb -> notre nombre est transmis dans l'url
+            });
             
 
 
