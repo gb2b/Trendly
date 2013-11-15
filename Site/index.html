@@ -34,10 +34,12 @@
         </form>
       </div>
       <div class="row">
+        <div id="trends-description">
+          <span class="titletrend">Trend</span>
+          <span class="descr"></span>
+        </div>
       	<section>
-    		    <div id="module">
-
-      		  </div>
+    		    <div id="module"></div>
       	</section>
       </div>
     </div>
@@ -47,9 +49,11 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
     
   	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="trends.json" type="text/javascript"></script>
     <script>
         var formu = document.forms['search'];
         var element = formu.elements['s'];
+        var trend = document.querySelector(".titletrend");
 
         function submit(event){
           formu.submit();
@@ -61,19 +65,6 @@
         
 
         var start = 0;
-
-        var dataset = {
-          apples: [1],
-          oranges: [2],
-          lemons: [3],
-          pears: [4],
-          framboise: [5],
-          poire: [6],
-          cerise: [7],
-          test: [8],
-          test2: [9],
-          test3: [10],
-        };
 
 
         function stopAnimation(element)
@@ -92,18 +83,18 @@
         }
 
         var startfunction= function(nombre){
-          var positiondepart = [0,1,2,3,4,5];
+          var positiondepart = [0,1,2,3,4,5,6];
           return positiondepart[nombre];
         }
 
         var endfunction = function(nombre){
-          var positionfin = [3,4,5,6,1,2];
+          var positionfin = [3,4,5,6,0,1,2];
           return positionfin[nombre];
         }
 
         var width = 520,
             height = 520,
-            cwidth = 25;
+            cwidth = 23;
 
         var p = Math.PI * 2;
 
@@ -122,7 +113,7 @@
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
         var gs = svg.selectAll("g")
-            .data(d3.values(dataset))
+            .data(d3.values(trends))
             .enter()
             .append("g")
             .attr("class", "arc");
@@ -148,18 +139,19 @@
                 d3.select(this).style("opacity", 1);
                 d3.select(this).style("cursor", "pointer");
                 var key = function(d,i) {
-                    var map = d3.map(dataset);
+                    var map = d3.map(trends);
                     idkey = map.keys();
                     namekey = idkey[j];
                     return namekey;
                 };
-              
-                 element.value = key(d,i,j);
+                var name = key(d,i,j);
+                element.value = name;
                var arcs = document.querySelectorAll('.arc');
                 for (var l = 0; l < arcs.length; l++) {
                   stopAnimation(arcs[l]);
-                  
                 }
+                trend.innerHTML = name;
+                $("#trends-description").toggle(400);
              })
             .on("mouseout", function(d,i,j){
                 d3.select(this).style("opacity", function(d,i){return opaque[j];});
@@ -169,11 +161,12 @@
                   playAnimation(arcs[l]);
                   
                 }
+                $("#trends-description").toggle(400);
 
             })
             .on("click",function(d,i,j){
                  var key = function(d,i) {
-                    var map = d3.map(dataset);
+                    var map = d3.map(trends);
                     idkey = map.keys();
                     namekey = idkey[j];
                     return namekey;
