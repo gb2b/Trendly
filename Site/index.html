@@ -7,35 +7,60 @@
         <title>Trendly : Les tendances de demain</title>
         <meta name="description" content="">
 
+
         <meta name="viewport" content="width=device-width,initial-scale=1">
-       <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
  		<!--<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>-->
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="css/style.css">
+        
         <link rel="stylesheet" href="css/trendly.css">
 
 </head>
-<body style="transition : all 2s linear">
-	<h1><span>trend.</span>ly</h1>
-  	<section>
-		<section id="module" style="width: 600px;margin:-10px auto;">
-  		</section>
+<body>
+  <div id="background">
+    <div class="container">
+      <div class="row">
+        <div id="logo">
+        	<h1><span>trend.</span>ly</h1>
+          <p class="slogan">Les tendances, en un coup d'oeil</p>
+        </div>
+        <form id="search">
+            <input type="text" placeholder="Search a trend" name="s" id="s"/>
+            <a href="" onclick="submit(this);" class="submit"><span class="glyphicon glyphicon-search icon"></span></a>
+        </form>
+      </div>
+      <div class="row">
+      	<section>
+    		    <div id="module">
 
-		<form id="search">
-			<input type="text" placeholder="Search a trend" name="text-search" id="text-search"/>
-			<input type="submit" value="A" id="submit" name="submit"/>
-		</form>
-  	</section>
-	<div id="searchtest" style="border: 3px solid black;background:red;display:none"> Test </div>
+      		  </div>
+      	</section>
+      </div>
+    </div>
+  </div>
   	
-  	
-
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
+    
   	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>
         var formu = document.forms['search'];
-        var element = formu.elements['text-search'];
+        var element = formu.elements['s'];
 
-        var opaque = [0.9,0.9,0.9,0.7,0.7,0.7,0.5,0.5,0.5,0.5];
+        function submit(event){
+          formu.submit();
+        }
+
+
+        var compteur = 0;
+        var opaque = [1,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1];
+        
+
+        var start = 0;
 
         var dataset = {
           apples: [1],
@@ -50,14 +75,40 @@
           test3: [10],
         };
 
-        var width = 600,
-            height = 600,
+
+        function stopAnimation(element)
+        {
+            $(element).css("-webkit-animation-play-state", "paused");
+            $(element).css("-moz-animation-play-state", "paused");
+            $(element).css("-ms-animation-play-state", "paused");
+            $(element).css("animation-play-state", "paused");
+        }
+        function playAnimation(element)
+        {
+            $(element).css("-webkit-animation-play-state", "running");
+            $(element).css("-moz-animation-play-state", "running");
+            $(element).css("-ms-animation-play-state", "running");
+            $(element).css("animation-play-state", "running");
+        }
+
+        var startfunction= function(nombre){
+          var positiondepart = [0,1,2,3,4,5];
+          return positiondepart[nombre];
+        }
+
+        var endfunction = function(nombre){
+          var positionfin = [3,4,5,6,1,2];
+          return positionfin[nombre];
+        }
+
+        var width = 520,
+            height = 520,
             cwidth = 25;
 
         var p = Math.PI * 2;
 
         var color = d3.scale.ordinal()
-                    .range(["#FFF"]);
+                    .range(["#12ff00","#ffdd3c","#3cf4ff","#ff3cea","#ff0000"]);
 
         var pie = d3.layout.pie()
             .sort(null);
@@ -81,19 +132,20 @@
             .data(function(d) { return pie(d); })
             .enter().append("path")
             
-            .attr("fill", function(d, i) { return color(Math.floor(Math.random()*10)); })
+            .attr("fill", function(d, i) { return color(Math.floor(Math.random()*20)); })
 
             .attr("d", function(d, i, j) { 
-              return arc.startAngle(1)
-                      .endAngle(p- 4)
-                      .innerRadius(35+cwidth*j)
+              start=Math.floor(Math.random()*6);
+              return arc.startAngle(startfunction(start))
+                      .endAngle(endfunction(start))
+                      .innerRadius(30+cwidth*j)
                       .outerRadius(cwidth*(j+1))(d)
             })
-            .style("opacity", function(j){return opaque[j];})
+            .style("opacity", function(){compteur++;return opaque[compteur-1];})
             
             .on("mouseover", function(d,i,j){
                 
-                d3.select(this).style("opacity", 0.6);
+                d3.select(this).style("opacity", 1);
                 d3.select(this).style("cursor", "pointer");
                 var key = function(d,i) {
                     var map = d3.map(dataset);
@@ -103,16 +155,24 @@
                 };
               
                  element.value = key(d,i,j);
-
+               var arcs = document.querySelectorAll('.arc');
+                for (var l = 0; l < arcs.length; l++) {
+                  stopAnimation(arcs[l]);
+                  
+                }
              })
-            .on("mouseout", function(d){
-                d3.select(this).style("opacity", 1);
+            .on("mouseout", function(d,i,j){
+                d3.select(this).style("opacity", function(d,i){return opaque[j];});
                 d3.select(this).style("cursor", "default");
+                var arcs = document.querySelectorAll('.arc');
+                for (var l = 0; l < arcs.length; l++) {
+                  playAnimation(arcs[l]);
+                  
+                }
 
             })
             .data(d3.keys(dataset));
             
-
 
 
 
