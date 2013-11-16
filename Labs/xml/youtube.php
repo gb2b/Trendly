@@ -14,7 +14,7 @@ foreach ($videoFeed as $video): $thumbs = $video->getVideoThumbnails();
 		"title"       => $video->getVideoTitle(),
 		"url"         => $video->getVideoWatchPageUrl(),
 		"description" => $video->getVideoDescription(),
-		"thumbnail"   => $thumbs[0]["url"]
+		"thumbnail"   => $thumbs[2]["url"]
 		);
 	$i++;
 endforeach;
@@ -22,6 +22,6 @@ endforeach;
 file_put_contents('youtube.json', json_encode($v));
 $infos2 = json_decode(file_get_contents('youtube.json'));
 echo "<pre>";
-print_r($infos2);
+print_r($v);
 echo "</pre>";
  ?>
