@@ -4,10 +4,10 @@ html{
 }
 
 body{
-	background : #000 url("../back.jpg") center no-repeat; 
+	background : #ecf0f1; 
 	background-size: cover;/*gris*/
 	font-family : "";
-	color: #FFF; /*gris foncé*/
+	color: #58595B; /*gris foncé*/
 	font-size: 14px;
 	transition : opacity 2s linear;
 	width: 100%;
@@ -20,7 +20,8 @@ body{
 #background{
 	width: 100%;
 	height: 100%;
-	background : rgba(0,0,0,0.8);
+	
+
 	background-size : cover;
 }
 
@@ -37,14 +38,14 @@ h1{
 }
 
 h1 span{
-	color: #44a0ff; /*orange*/
+	color: #F47032; /*orange*/
 	font-weight: 800;
 
 }
 
 p.slogan{
 	font-size: 0.9em;
-	color: white;
+	color: #58595B;
 	font-family : "Helvetica NEUE LT";
 	text-transform: uppercase;
 	font-weight: 200;
@@ -61,7 +62,7 @@ p.slogan{
 }
 
 #search{
-	border-bottom: 1px solid #44a0ff;
+	border-bottom: 1px solid #F47032;
 	
 	margin: 50px 0px 0px;
 	margin-right: 100px;
@@ -74,19 +75,19 @@ p.slogan{
 	background: none ;
 	padding: 5px 0px;
 	text-align: center;
-	color: #FFF;
+	color: #58595B;
 	font-size: 2em;
 	font-family : "Monserrat";
 }
 
 a:visited{
-	color : #44a0ff;
+	color : #F47032;
 }
 .submit{
 	font-size: 1.5em;
 }
 .submit .span{
-	color : #44a0ff;
+	color : #F47032;
 	margin-top: 5px;
 }
 
@@ -122,11 +123,12 @@ a:visited{
 	top: 200px;
 	float: right;
 	margin-right: 50px;
-	background: white;
-	color: grey;
+	background: #C9A68B;
+	color: white;
 	border-radius: 200px;
-	box-shadow: 0px 0px 5px white;
+	box-shadow: 0px 0px 5px #8B645A;
 	z-index: 999;
+	padding:20px;
 }
 
 .titletrend{

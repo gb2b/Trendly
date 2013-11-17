@@ -39,6 +39,7 @@
           <span class="descr"></span>
         </div>
       	<section>
+          <span class=".glyphicon .glyphicon-user icon" style="color: white"></span>
     		    <div id="module"></div>
       	</section>
       </div>
@@ -88,18 +89,18 @@
         }
 
         var endfunction = function(nombre){
-          var positionfin = [3,4,5,6,0,1,2];
+          var positionfin = [3,4,5,6,7,8,9];
           return positionfin[nombre];
         }
 
         var width = 520,
             height = 520,
-            cwidth = 23;
+            cwidth = 24;
 
         var p = Math.PI * 2;
 
         var color = d3.scale.ordinal()
-                    .range(["#fff"]);
+                    .range(["#DF6C4F","#DF6C4F","#ECD06F","#ECD06F","#ECD06F","#ECD06F","#00A651","#00A651","#00A651","#00A651"]);
 
         var pie = d3.layout.pie()
             .sort(null);
@@ -118,18 +119,43 @@
             .append("g")
             .attr("class", "arc");
             
-        
+        function arcAppear(d,i,j){
+          var path2 = gs.selectAll("path")
+            .data(function(d) { return pie(d); })
+            .enter().append("path")
+            
+            .attr("fill", function(d, i,j) { return color(j); })
+
+            .attr("d", function(d, i, j) { 
+              start=Math.floor(Math.random()*7);
+              return arc.startAngle(startfunction(start))
+                      .endAngle(endfunction(start))
+                      .innerRadius(function(){
+                          if(j===0){
+                            return 40+cwidth*(j);
+                          } 
+                          else {return 40+cwidth*10;}
+                      })
+                      .outerRadius(cwidth*(11))(d)
+            })
+        }
+
         var path = gs.selectAll("path")
             .data(function(d) { return pie(d); })
             .enter().append("path")
             
-            .attr("fill", function(d, i) { return color(Math.floor(Math.random()*20)); })
+            .attr("fill", function(d, i,j) { return color(j); })
 
             .attr("d", function(d, i, j) { 
-              start=Math.floor(Math.random()*6);
+              start=Math.floor(Math.random()*7);
               return arc.startAngle(startfunction(start))
                       .endAngle(endfunction(start))
-                      .innerRadius(30+cwidth*j)
+                      .innerRadius(function(){
+                          if(j===0){
+                            return 40+cwidth*(j);
+                          } 
+                          else {return 40+cwidth*j;}
+                      })
                       .outerRadius(cwidth*(j+1))(d)
             })
             .style("opacity", function(){compteur++;return opaque[compteur-1];})
@@ -151,7 +177,9 @@
                   stopAnimation(arcs[l]);
                 }
                 trend.innerHTML = name;
-                $("#trends-description").toggle(400);
+                $("#trends-description").show();
+
+                arcAppear(d,i,j);
              })
             .on("mouseout", function(d,i,j){
                 d3.select(this).style("opacity", function(d,i){return opaque[j];});
@@ -161,7 +189,7 @@
                   playAnimation(arcs[l]);
                   
                 }
-                $("#trends-description").toggle(400);
+                $("#trends-description").hide();
 
             })
             .on("click",function(d,i,j){
@@ -173,7 +201,7 @@
                 };
                 
                 searchname = key(d,i,j);
-                document.location.href="?s="+searchname; // Le contenu de la variable nb -> notre nombre est transmis dans l'url
+                document.location.href="?s="+searchname; // Le contenu de la variable s -> le trend est transmis dans l'url
             });
             
 
