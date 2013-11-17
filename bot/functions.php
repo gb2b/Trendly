@@ -15,9 +15,14 @@ $cache = array(
 	"tw_cache"        => "twitter.json",
 	"yt_cache"        => "youtube.json",
 	"instg_cache"     => "instagram.json",
+	"gnews_cache"     => "gnews.json",
 	"time"            => 5, 
 	"path_cache"      => "tmp"
 	);
+
+echo "<pre>";
+print_r(getTrendGnews($cache));
+echo "</pre>";
 
 function getSearchTweets($auth, $q, $cache)
 {
@@ -104,8 +109,7 @@ function getVideoYoutube($auth, $q = null, $cache)
 			$v[$i]->url         = $video->getVideoWatchPageUrl();
 			$v[$i]->description = $video->getVideoDescription();
 			$v[$i]->thumbnail   = $thumbs[2]["url"];
-/*			$v[$i]->username = $video->getUserId();
-*/			$i++;
+			$i++;
 		endforeach;
 		$videoCache->write(cleanCaracteresSpeciaux($q)."_".$cache->yt_cache, json_encode($v));
 	}
@@ -147,6 +151,56 @@ function getPopularInstgImage($auth, $cache)
 	}
 }
 
+function getTrendGnews($cache)
+{
+	$cache  = array_to_object($cache);
+	require_once $cache->classe;
+
+	$gCache = new Cache($cache->path_cache,$cache->time);
+	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss";
+
+	if ($gCache->read("_".$cache->gnews_cache)) {
+		$infos = json_decode($gCache->read("_".$cache->gnews_cache));
+	}else{
+		try{
+		    if(!@$fluxrss=simplexml_load_file($url)){
+		        throw new Exception('Flux introuvable');
+		    }
+		    if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title))
+		        throw new Exception('Flux invalide');
+		        $i = 0;
+		        $caractereRemove = array(".", "!", ";", ",","faire","font","avec","supprimer");
+		        $except = array("http://referentiel.nouvelobs.com/file/3935010.jpg");
+		    	foreach ($fluxrss->channel->item as $item) {
+			        $b                         = explode("<font size=\"-1\">", $item->description);
+			        $b[]                       = utf8_decode(utf8_encode(strip_tags($item->title)));
+			        $title                     = bestWord($b, $caractereRemove);
+			        $infos[$i]["title"]        = $title["mot"];
+			        $infos[$i]["nbOccurences"] = $title["nbOccurences"];
+			        $b                         = explode("<b>", $item->description);
+			        $nbArticles                = end($b);
+			        $infos[$i]["nbArticles"]   = intval(utf8_decode($nbArticles));
+			        $b                         = explode("<font size=\"-1\">", $item->description);
+			        $description               = $b[2];
+			        $infos[$i]["description"]  = strip_tags($description);
+			        $infos[$i]["date"]         = strtotime($item->pubDate);
+			        preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
+			        $infos[$i]["url"] = substr($url1[0][0], 4);
+			    	$i++;
+		    	}
+		    $gCache->write("_".$cache->gnews_cache, json_encode($infos));		 
+		}catch(Exception $e){
+		    echo $e->getMessage();
+		} 
+	}
+	return $infos;
+}
+
+function getTrendsPonderation($auth, $cache, $minimal = false)
+{
+		//getPopularTwTrends($auth)
+}
+
 function array_to_object($array) {
   $object = new stdClass;
   foreach($array as $key => $value) {
@@ -158,6 +212,43 @@ function array_to_object($array) {
    }
   }
   return $object;
+}
+
+function dateTexte($date, $pattern = null){
+    setlocale(LC_TIME, "fr_FR.UTF8");
+    date_default_timezone_get("Etc/GMT+1");
+    if (!isset($pattern) || empty($pattern)) {
+        $pattern = "%A %e %B %G à %H:%M";
+    }
+    return strftime($pattern, $date);
+}
+
+function bestWord($phrases, $caractereRemove = array())
+{
+    for ($i=0; $i < count($caractereRemove); $i++) { 
+        $caractereRemoved[$i] = "";
+    }
+    $chaine = "";
+    foreach ($phrases as $phrase) {
+        $chaine .= trim(strtolower(str_replace($caractereRemove, $caractereRemoved, $phrase)))." ";
+     } 
+    $motsAChercher = explode(" ", strip_tags($chaine));
+
+    $i = 0;
+    $max = 0;
+    foreach ($motsAChercher as $mot) {
+        $nbMotAChercher[$i] = @mb_substr_count($chaine, $mot);
+        if (strlen($mot)>3) {
+            if (intval($nbMotAChercher[$i]) > $max) {
+                $max = $nbMotAChercher[$i];
+                $idMax = $i;
+            }
+        }
+    $i++;
+    }
+
+    return array("mot" => $motsAChercher[$idMax], "nbOccurences" => $max);
+
 }
 
 function cleanCaracteresSpeciaux($chaine)
