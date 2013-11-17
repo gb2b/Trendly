@@ -20,9 +20,7 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-echo "<pre>";
-print_r(getTrendGnews($cache));
-echo "</pre>";
+print_r(getTrendsPonderation($auth, $cache));
 
 function getSearchTweets($auth, $q, $cache)
 {
@@ -84,7 +82,7 @@ function getPopularTwTrends($auth, $cache)
 	return $tweets;
 }
 
-function getVideoYoutube($auth, $q = null, $cache)
+function getVideoYoutube($auth, $cache, $q = null)
 {
 	$cache = array_to_object($cache);
 	$auth  = array_to_object($auth);
@@ -198,7 +196,22 @@ function getTrendGnews($cache)
 
 function getTrendsPonderation($auth, $cache, $minimal = false)
 {
-		//getPopularTwTrends($auth)
+		$twitter = getPopularTwTrends($auth, $cache);
+		$gnews   = getTrendGnews($cache);
+		$result[0]  = $twitter[0];
+		$result[1]  = $gnews[0]->title;
+		$result[2] = $twitter[1];
+		$result[3] = $gnews[1]->title;
+		$result[4] = $twitter[2];
+		$result[5] = $gnews[3]->title;
+		$result[6] = $twitter[3];
+		$result[7] = $gnews[4]->title;
+		$result[8] = $twitter[4];
+		$result[9] = $gnews[5]->title;
+
+
+		return $result;
+
 }
 
 function array_to_object($array) {
