@@ -6,18 +6,21 @@ $auth =  array(
 	"tw_oauth_token"        => "123935211-meMJIWjVL4iaD6mNchXOhbTEYPv5ag4jcfs9wocK",
 	"tw_oauth_token_secret" => "rHm8e8ZRZ6iTl7u0JnPzmTDXDq4N69yTeZoHsQ1wpM",
 	"tw_path_file_oauth"    => "auth/twitteroauth/twitteroauth.php",
-	"instg_client_id"       => "9110e8c268384cb79901a96e3a16f588"
+	"instg_client_id"       => "9110e8c268384cb79901a96e3a16f588",
+	"zend_yt_path_file"     => "Zend/Loader.php"
 	);
 
 $cache = array(
-	"classe" => "class.cache.php",
-	"tw_cache"  => "twitter.json",
-	"yt_cache" => "youtube.json",
-	"instg_cache" => "instagram.json",
-	"time"   => 5, 
-	"path_cache" => "tmp"
+	"classe"          => "class.cache.php",
+	"tw_cache"        => "twitter.json",
+	"yt_cache"        => "youtube.json",
+	"instg_cache"     => "instagram.json",
+	"time"            => 5, 
+	"path_cache"      => "tmp"
 	);
-
+echo "<pre>";
+print_r(getPopularInstgImage($auth, $cache));
+echo "</pre>";
 function getSearchTweets($auth, $q, $cache)
 {
 	$auth   = array_to_object($auth);
@@ -78,10 +81,11 @@ function getPopularTwTrends($auth, $cache)
 	return $tweets;
 }
 
-function getVideoYoutube($cache, $q = null)
+function getVideoYoutube($auth, $q = null, $cache)
 {
-	$cache  = array_to_object($cache);
-	require_once("Zend/Loader.php");
+	$cache = array_to_object($cache);
+	$auth  = array_to_object($auth);
+	require_once($auth->zend_yt_path_file);
 	require_once($cache->classe);
 	$videoCache = new Cache($cache->path_cache,$cache->time);
 
@@ -91,9 +95,10 @@ function getVideoYoutube($cache, $q = null)
 		Zend_Loader::loadClass("Zend_Gdata_YouTube");
 		$yt = new Zend_Gdata_Youtube();
 		if (isset($q) && !empty($q)) {
-			$videoFeed = $yt->getVideoFeed("http://gdata.youtube.com/feeds/api/videos?q=".urlencode($q)."&orderby=published&max-results=10&v=2&region=FR");
+			$videoFeed = $yt->getVideoFeed("http://gdata.youtube.com/feeds/api/videos?q=".urlencode($q)."&orderby=published&max-results=10&v=2&region=FR&orderby=relevance");
+
 		}else{
-			$videoFeed = $yt->getVideoFeed("http://gdata.youtube.com/feeds/api/standardfeeds/FR/most_popular?min-results=10&time=today&v=2");
+			$videoFeed = $yt->getVideoFeed("http://gdata.youtube.com/feeds/api/standardfeeds/FR/most_popular?min-results=10&time=today&v=2&region=FR");
 		}
 		$i = 0;
 		foreach ($videoFeed as $video): $thumbs = $video->getVideoThumbnails();
@@ -101,8 +106,8 @@ function getVideoYoutube($cache, $q = null)
 			$v[$i]->url         = $video->getVideoWatchPageUrl();
 			$v[$i]->description = $video->getVideoDescription();
 			$v[$i]->thumbnail   = $thumbs[2]["url"];
-
-			$i++;
+/*			$v[$i]->username = $video->getUserId();
+*/			$i++;
 		endforeach;
 		$videoCache->write(cleanCaracteresSpeciaux($q)."_".$cache->yt_cache, json_encode($v));
 	}
