@@ -18,9 +18,7 @@ $cache = array(
 	"time"            => 5, 
 	"path_cache"      => "tmp"
 	);
-echo "<pre>";
-print_r(getPopularInstgImage($auth, $cache));
-echo "</pre>";
+
 function getSearchTweets($auth, $q, $cache)
 {
 	$auth   = array_to_object($auth);
