@@ -20,8 +20,9 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-// print_r(getTrendGnews($cache));
-print_r(getTrendsPonderation($auth, $cache));
+/*echo "<pre>";
+print_r(getPopularInstgImage($auth, $cache));
+echo "</pre>";*/
 
 function getSearchTweets($auth, $q, $cache)
 {
