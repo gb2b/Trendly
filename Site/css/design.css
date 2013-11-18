@@ -66,13 +66,16 @@ p.slogan{
 
 
 /* FORM SEARCH */
+
 #search{
-	position: relative;
+	position:absolute;
 	bottom:0px;
+	
 }
 
+
 fieldset{
- 			
+ 		
  			position:relative;
  			background-color: none;
  			font-size: 60px;
@@ -89,7 +92,6 @@ input{
  		border: none;
 }
  		
-
 #search input[type=submit]{
 		background-image: url("asset/search-icon.png");
 		background-color: none;
@@ -97,7 +99,7 @@ input{
 		width: 80px;
 		height: 80px;
 		margin-top: -10px;
-		float: right;
+		float:right;
 	
 }
 /* END TOP FORM*/
@@ -106,7 +108,7 @@ input{
 /* MODULE TRENDS */
 #module{
 	width: 550px;
-	margin: -40px auto 0px;
+	margin: 40px auto 20px;
 }
 
 .arc{
@@ -124,18 +126,13 @@ input{
 }
 
 
-#trends-description{
-	display: none;
-	position: relative;
-	top: 200px;
-	float: right;
-	margin-right: 50px;
-	background: #C9A68B;
-	color: white;
-	border-radius: 200px;
-	box-shadow: 0px 0px 5px #8B645A;
-	z-index: 999;
-	padding:20px;
+#trends-desc{
+	width: 100px;
+	margin: auto;
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	visibility: hidden;
 }
 
 .titletrend{

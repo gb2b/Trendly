@@ -53,6 +53,7 @@
 
         var arc = d3.svg.arc();
 
+
         var svg = d3.select("#module").append("svg")
             .attr("width", width)
             .attr("height", height)
@@ -64,27 +65,8 @@
             .enter()
             .append("g")
             .attr("class", "arc");
-            
-        function arcAppear(d,i,j){
-          var path2 = gs.selectAll("path")
-            .data(function(d) { return pie(d); })
-            .enter().append("path")
-            
-            .attr("fill", function(d, i,j) { return color(j); })
-
-            .attr("d", function(d, i, j) { 
-              start=Math.floor(Math.random()*7);
-              return arc.startAngle(startfunction(start))
-                      .endAngle(endfunction(start))
-                      .innerRadius(function(){
-                          if(j===0){
-                            return 40+cwidth*(j);
-                          } 
-                          else {return 40+cwidth*10;}
-                      })
-                      .outerRadius(cwidth*(11))(d)
-            })
-        }
+          
+       
 
         var path = gs.selectAll("path")
             .data(function(d) { return pie(d); })
@@ -122,10 +104,10 @@
                 for (var l = 0; l < arcs.length; l++) {
                   stopAnimation(arcs[l]);
                 }
-                trend.innerHTML = name;
+                //trend.innerHTML = name;
                 //$("#trends-description").show();
 
-                arcAppear(d,i,j);
+                arcAppear();
              })
             .on("mouseout", function(d,i,j){
                 d3.select(this).style("opacity", function(d,i){return opaque[j];});
@@ -136,6 +118,8 @@
                   
                 }
                 //$("#trends-description").hide();
+
+                arcDisappear();
 
             })
             .on("click",function(d,i,j){
@@ -150,6 +134,38 @@
                 document.location.href="?s="+searchname; // Le contenu de la variable s -> le trend est transmis dans l'url
             });
             
+        var arcTest = d3.svg.arc()
+            .startAngle(0)
+            .endAngle(p-2)
+            .innerRadius(520-80)
+            .outerRadius(520);
 
+        var canvas = d3.select('#trends-desc').append("svg")
+            .attr("width", 800)
+            .attr("height", 800)
+            .append("path")
+            .attr("d",arcTest)
+            .attr("fill", "white");
+
+        //Make an SVG Container
+        /*var svgContainer = d3.select("#trends-desc").append("svg")
+            .attr("width", 100)
+            .attr("height", 100);
+
+        //Draw the Circle
+        var circle = svgContainer.append("circle")
+            .attr("cx", 30)
+            .attr("cy", 30)
+            .attr("r", 20)
+            .attr("fill","red");
+        */
+
+        function arcAppear(){
+            canvas.attr("visibility", "visible");
+        }
+
+        function arcDisappear(){
+            canvas.attr("visibility", "hidden");
+        }
 
 
