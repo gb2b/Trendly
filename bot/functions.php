@@ -20,6 +20,7 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
+// print_r(getTrendGnews($cache));
 print_r(getTrendsPonderation($auth, $cache));
 
 function getSearchTweets($auth, $q, $cache)
@@ -168,23 +169,22 @@ function getTrendGnews($cache)
 		        throw new Exception('Flux invalide');
 		        $i = 0;
 		        $caractereRemove = array(".", "!", ";", ",","faire","font","avec","supprimer");
-		        $except = array("http://referentiel.nouvelobs.com/file/3935010.jpg");
 		    	foreach ($fluxrss->channel->item as $item) {
-			        $b                         = explode("<font size=\"-1\">", $item->description);
-			        $b[]                       = utf8_decode(utf8_encode(strip_tags($item->title)));
-			        $title                     = bestWord($b, $caractereRemove);
-			        $infos[$i]["title"]        = $title["mot"];
-			        $infos[$i]["nbOccurences"] = $title["nbOccurences"];
-			        $b                         = explode("<b>", $item->description);
-			        $nbArticles                = end($b);
-			        $infos[$i]["nbArticles"]   = intval(utf8_decode($nbArticles));
-			        $b                         = explode("<font size=\"-1\">", $item->description);
-			        $description               = $b[2];
-			        $infos[$i]["description"]  = strip_tags($description);
-			        $infos[$i]["date"]         = strtotime($item->pubDate);
-			        preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
-			        $infos[$i]["url"] = substr($url1[0][0], 4);
-			    	$i++;
+					$b                       = explode("<font size=\"-1\">", $item->description);
+					$b[]                     = utf8_decode(utf8_encode(strip_tags($item->title)));
+					$title                   = bestWord($b, $caractereRemove);
+					$infos[$i]->title        = $title["mot"];
+					$infos[$i]->nbOccurences = $title["nbOccurences"];
+					$b                       = explode("<b>", $item->description);
+					$nbArticles              = end($b);
+					$infos[$i]->nbArticles   = intval(utf8_decode($nbArticles));
+					$b                       = explode("<font size=\"-1\">", $item->description);
+					$description             = $b[2];
+					$infos[$i]->description  = strip_tags($description);
+					$infos[$i]->date         = strtotime($item->pubDate);
+					preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
+					$infos[$i]->url          = substr($url1[0][0], 4);
+					$i++;
 		    	}
 		    $gCache->write("_".$cache->gnews_cache, json_encode($infos));		 
 		}catch(Exception $e){
@@ -196,10 +196,10 @@ function getTrendGnews($cache)
 
 function getTrendsPonderation($auth, $cache, $minimal = false)
 {
-		$twitter = getPopularTwTrends($auth, $cache);
-		$gnews   = getTrendGnews($cache);
-		$result[0]  = $twitter[0];
-		$result[1]  = $gnews[0]->title;
+		$twitter   = getPopularTwTrends($auth, $cache);
+		$gnews     = getTrendGnews($cache);
+		$result[0] = $twitter[0];
+		$result[1] = $gnews[0]->title;
 		$result[2] = $twitter[1];
 		$result[3] = $gnews[1]->title;
 		$result[4] = $twitter[2];
@@ -208,9 +208,17 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 		$result[7] = $gnews[4]->title;
 		$result[8] = $twitter[4];
 		$result[9] = $gnews[5]->title;
-
-
-		return $result;
+		$content = "var trends = {";
+		for ($i=0; $i < count($result); $i++) { 
+			if (isset($result[$i]) && !empty($result[$i])) {
+				$content .= "\"".$result[$i]."\": [".$i."]";
+			}
+			if ($i > 0 && $i < (count($result)-1)) {
+				$content .= ",";
+			}
+		}
+		$content .= "}";
+		return $content;
 
 }
 
