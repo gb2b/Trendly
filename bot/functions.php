@@ -290,6 +290,24 @@ function cleanCaracteresSpeciaux($chaine)
 	return $chaine;
 }
 
+function explodeHastag($chaine)
+{
+	if (preg_match("/^#.*/", $chaine)) {
+		$chaine = substr($chaine, 1);
+	}
+	preg_match_all('#[A-Z]#',$chaine, $chaine3);
+	$chaine2 = preg_split('#[A-Z]#',$chaine);
+	if (count($chaine2)>0){
+		$chaine = "";
+		for ($i=0; $i < count($chaine2); $i++) { 
+			if (strlen($chaine2[$i])>=1) {
+				$chaine .= $chaine3[0][$i-1].$chaine2[$i]." ";
+			}
+		}
+	}
+	return trim($chaine);
+}
+
 function get_curl($url){
     if(function_exists('curl_init')){
         $ch = curl_init();
