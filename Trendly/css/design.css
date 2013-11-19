@@ -105,6 +105,43 @@ input{
 }
 /* END TOP FORM*/
 
+/* Add favori */
+#trend-desc{
+	display:none;
+	
+	height: 200px;
+	background: white;
+	border-bottom: 5px solid #3498db;
+	position: absolute;
+	top: 20%;
+	right: 5%;
+}
+#trend-desc h2{
+	width: 100%;
+	text-align: center;
+	border-bottom:1px solid grey;
+	padding: 10px 15px;
+}
+
+#trend-desc p{
+	font-family:"helvetica_neue_lt_std35_thin" ;
+	font-size: 1.5em;
+	padding-left: 15px;
+	font-weight: bold;
+	position: relative;
+	padding-right: 15px;
+}
+#trend-desc p .buttons{
+	padding-top: 60px;
+}
+.buttons a{
+	color: #3498db;
+}
+.buttons a:hover{
+	text-decoration: none;
+	color: #1A608E;
+}
+
 
 /* MODULE TRENDS */
 #module{
@@ -127,19 +164,7 @@ input{
 }
 
 
-#trends-desc{
-	width: 100px;
-	margin: auto;
-	position: absolute;
-	top: 25%;
-	left: 50%;
-	visibility: hidden;
-}
 
-.titletrend{
-	font-size: 2em;
-	padding: 50px 50px;
-}
 /*END MODULE TRENDS*/
 
 #loading{

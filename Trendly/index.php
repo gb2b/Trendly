@@ -16,7 +16,7 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
   
         <!-- Bootstrap & FontAwesome -->
-        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
         <!-- Css reset for all browsers -->
@@ -31,9 +31,7 @@
 <body>
 
     <div class="container">
-      <div class="row">
-        
-      </div>
+      
       <div class="row">
         
       	<section>
@@ -42,6 +40,16 @@
                 <div class="load-animation"></div>
                 <p class="load-text">Chargement des trends...</p>
               </div>
+            </div>
+            <div id="trend-desc" onclick="fctclic(this);">
+                <h2 class="trend-title">Trend</h2>
+                <p>
+                  Top : <span class="top">1</span><br/>
+                </p>
+                <p class="buttons">
+                    <a href="" class="seetrend"><span class="glyphicon glyphicon-flash"></span> See Trend</a><br/>
+                    <a href="" class="favtrend"><span class="glyphicon glyphicon-bookmark"></span> Add Trend</a>
+                </p>
             </div>
             <div id="module"></div>
       	</section>
@@ -64,9 +72,10 @@
     </div>
  
   	<script>
-      
       // print_r(getTrendGnews($cache));
       <?php print_r(getTrendsPonderation($auth, $cache)); ?>
+
+
     </script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>

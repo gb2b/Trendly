@@ -3,6 +3,8 @@
         var formu = document.forms['search'];
         var element = formu.elements['trend'];
         var trend = document.querySelector(".titletrend");
+        var clic = false;
+        var cpt = 0;
 
         function submit(event){
           formu.submit();
@@ -41,6 +43,13 @@
           return positionfin[nombre];
         }
 
+        function fctclic(element){
+            if(cpt >= 1){
+                clic = false;
+                cpt--;
+                document.getElementById("trend-desc").style.display = "none";
+            }
+        }
         var width = 520,
             height = 520,
             cwidth = 24;
@@ -91,35 +100,37 @@
             .style("opacity", function(){compteur++;return opaque[compteur-1];})
             
             .on("mouseover", function(d,i,j){
-                
-                d3.select(this).style("opacity", 1);
-                d3.select(this).style("cursor", "pointer");
-                var key = function(d,i) {
-                    var map = d3.map(trends);
-                    idkey = map.keys();
-                    namekey = idkey[j];
-                    return namekey;
-                };
-                var name = key(d,i,j);
-                element.value = name;
-               var arcs = document.querySelectorAll('.arc');
-                for (var l = 0; l < arcs.length; l++) {
-                  stopAnimation(arcs[l]);
-                }
+                if(!clic){
+                        d3.select(this).style("opacity", 1);
+                        d3.select(this).style("cursor", "pointer");
+                        var key = function(d,i) {
+                            var map = d3.map(trends);
+                            idkey = map.keys();
+                            namekey = idkey[j];
+                            return namekey;
+                        };
+                        var name = key(d,i,j);
+                        element.value = name;
+                       var arcs = document.querySelectorAll('.arc');
+                        for (var l = 0; l < arcs.length; l++) {
+                          stopAnimation(arcs[l]);
+                        }
+                }   
                 //trend.innerHTML = name;
                 //$("#trends-description").show();
 
                 //arcAppear();
              })
             .on("mouseout", function(d,i,j){
-                d3.select(this).style("opacity", function(d,i){return opaque[j];});
-                d3.select(this).style("cursor", "default");
-                var arcs = document.querySelectorAll('.arc');
-                for (var l = 0; l < arcs.length; l++) {
-                  playAnimation(arcs[l]);
-                  
+                if(!clic){
+                    d3.select(this).style("opacity", function(d,i){return opaque[j];});
+                    d3.select(this).style("cursor", "default");
+                    var arcs = document.querySelectorAll('.arc');
+                    for (var l = 0; l < arcs.length; l++) {
+                      playAnimation(arcs[l]);
+                      
+                    }
                 }
-                //$("#trends-description").hide();
 
                 //arcDisappear();
 
@@ -131,10 +142,35 @@
                     namekey = idkey[j];
                     return namekey;
                 };
-                
                 searchname = key(d,i,j);
-                document.location.href="result.php?trend="+searchname; // Le contenu de la variable s -> le trend est transmis dans l'url
+                if(cpt==0){
+                    clic = true;
+                    cpt++;
+                    document.querySelector(".trend-title").innerHTML = searchname;
+                    document.querySelector(".top").innerHTML = j+1;
+                    document.querySelector(".seetrend").href = "result.php?trend="+searchname;
+
+                    document.getElementById("trend-desc").style.display = "block";
+
+
+                } 
+                else if(cpt >= 1){
+                    clic = false;
+                    cpt--;
+                    document.getElementById("trend-desc").style.display = "none";
+                }
+               
+                //searchname = key(d,i,j);
+                //document.location.href="result.php?trend="+searchname; // Le contenu de la variable s -> le trend est transmis dans l'url
             });
+
+        /*function fctClic(){
+            if(cpt>=1){
+                cpt=0;
+                clic=false;
+            }
+        }*/
+
         /* 
         var arcTest = d3.svg.arc()
             .startAngle(0)

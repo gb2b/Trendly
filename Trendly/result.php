@@ -22,7 +22,7 @@
    <meta content="" name="description">
    <meta content="width=device-width,initial-scale=1" name="viewport">
    <link href="css/result.css" rel="stylesheet">
-   <link href="css/bootstrap.css" rel="stylesheet">
+   <link href="css/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
