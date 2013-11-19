@@ -1,0 +1,753 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {background-color: #8e44ad;}
+
+section{
+	color: #fff;
+	margin: 20px;	
+}
+
+/* FONT INITIALIZER */
+
+@font-face {
+    font-family: 'helvetica_neue_lt_std35_thin';
+    src: url('fonts/helveticaneueltstd-th/helveticaneueltstd-th-webfont.eot');
+    src: url('fonts/helveticaneueltstd-th/helveticaneueltstd-th-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneueltstd-th/helveticaneueltstd-th-webfont.woff') format('woff'),
+         url('fonts/helveticaneueltstd-th/helveticaneueltstd-th-webfont.ttf') format('truetype'),
+         url('fonts/helveticaneueltstd-th/helveticaneueltstd-th-webfont.svg#helvetica_neue_lt_std35_thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* FONT INITIALIZER */
+
+
+/* TOP FORM*/
+
+ fieldset{
+ 			width:100%;
+ 			position:relative;
+ 			background-color: none;
+ 			font-size: 60px;
+ 			color:#3498db;
+ 			height: 100px;
+ 			
+ 			}
+ input{
+ 		width:100%;
+ 		position:relative; 
+ 		color: #3498db;
+ 		padding-left: 20px; 
+ 		background-color: #ecf0f1;
+ 		text-transform: uppercase;
+ 		font-weight: bold;
+ 		border: none;
+
+ 		
+ 		}
+ 		
+ 
+
+input[type=submit]{
+		background-image: url("asset/search-icon.png");
+		background-color: none;
+		text-transform: uppercase;
+		width: 80px;
+		height: 80px;
+		position: absolute;
+		right: 100px;
+		top:23px;
+	
+}
+/* TOP FORM*/
+
+
+
+/*IMG BOX*/
+
+.img-box {
+	background-image: url("img/img3.jpg");
+	background-size: cover;
+	background-position: center;
+	height: 156px;
+	width: 100%;
+	margin: 0 auto;
+		}
+
+.img-box-regular-stage {
+	background-image: url("img/img3.jpg");
+	background-size: cover;
+	background-position: center;
+	height: 225px;
+	width: 100%;
+	margin: 0 auto;
+		}
+
+/*IMG BOX*/
+
+
+/* TOP CONTENT */
+.top-content{
+	height:auto;
+}
+
+
+.top-content article {
+
+	margin: 0 0 10px 0;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	background-color: #fff;
+	border-bottom: 5px solid #3498db;
+	
+	
+}
+
+.top-content .text {
+	margin: 0 auto;
+	width: 50%;
+	color: #191919;
+}
+
+.top-content article .text h1 {
+	text-align: center;
+	font-family: "Helvetica";
+	padding-bottom: 10px;
+	border-bottom: 1px solid #bfbfbf;
+	font-size: 36px;
+
+}
+
+.top-content article .text p {
+	
+	text-align: center;
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 30px;
+
+}
+
+.top-content article .text a {
+	color: #3498db;
+	font-style: italic;
+	text-decoration: underline;
+	font-family: "lato";
+	font-weight: 100;
+	
+
+}
+
+/*CSS FOR HIGHLIGHT CONTENT*/
+
+
+.top-content article .highlight h2 {
+	font-size: 14px;
+	width: 50%;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #191919;
+	float: left;
+	padding: 0px 0px 25px 0;
+	vertical-align: top;
+	text-align: left;
+
+
+}
+
+.top-content article .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+	
+
+}
+
+.top-content article .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #3498db;
+	 text-decoration: none;
+	 color: white; 
+	 
+}
+
+
+
+
+.top-content article .highlight .icon {
+	float: left;
+	margin: 0 20px 0 20px;
+	padding: 16px 0 16px 0;
+	
+}
+
+/*CSS FOR HIGHLIGHT CONTENT*/
+
+/* END TOP CONTENT */
+
+
+
+
+/* SECOND-STAGE CONTENT */
+.second-stage-content{
+	height:auto;
+	
+
+}
+
+.second-stage-content article {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background-color: #fff;
+	margin: 0px 15px 10px 0px;
+	
+}
+
+.second-stage-content article:last-child {
+	background-color: #fff;
+	margin: 0px 0px 10px 0px;
+	
+}
+
+.second-stage-content .text {
+	margin: 0 auto;
+	width: 75%;
+	color: #191919;
+}
+
+.second-stage-content .text h1 {
+	font-family: "Helvetica";
+	font-size: 36px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #bfbfbf;
+	font-weight: bold;
+
+}
+
+.second-stage-content article .text p {
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 27px;
+}
+
+.second-stage-content article .text a {
+	color: #fff;
+	font-style: italic;
+	text-decoration: underline;
+	font-family: "HelveticaNeue LT Std";
+	font-weight: 100;
+	
+
+}
+
+.second-stage-content article .highlight {
+	margin-top:50px; 
+
+}
+
+.second-stage-content article .highlight h2 {
+	font-size: 14px;
+	width: 50%;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #191919;
+	float: left;
+	padding: 0px 0px 25px 0;
+	vertical-align: top;
+	text-align: left;
+
+}
+
+.second-stage-content article .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+	
+
+}
+
+.second-stage-content article .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #9b59b6;
+	 text-decoration: none;
+	 color: white; 
+	 
+}
+
+
+.second-stage-content article .highlight .icon {
+	float: left;
+	margin: 0 20px 0 5px;
+	padding: 16px 0 16px 0;
+
+}
+
+
+
+/* SECOND-STAGE CONTENT */
+
+
+/* REGULAR-STAGE CONTENT */
+.regular-stage-content{
+	height:auto;
+	/*margin-bottom: 30px;*/
+
+
+}
+
+.regular-stage-content article {
+	margin: 0 14px 10px 0;
+	padding-top: 30px;
+	padding-bottom: 80px;
+	background-color: #9b59b6;
+}
+
+.regular-stage-content article:last-child {
+	padding-top: 30px;
+	background-color: #fff;
+	margin: 0px 0px 10px 0px;
+	
+}
+
+.regular-stage-content .text {
+	font-family: "lato";
+	margin: 0 auto;
+	width: 85%;
+	padding-bottom: 30px;
+}
+
+.regular-stage-content .text h1 {
+	font-family: "Helvetica";
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+
+}
+
+.regular-stage-content article .text p {
+	
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 24px;
+	text-align: center;
+}
+
+.regular-stage-content article .text a {
+	color: #fff;
+	font-style: italic;
+	text-decoration: underline;
+	font-family: "lato";
+	font-weight: 100;
+	
+
+}
+
+
+
+.regular-stage-content article .highlight h2 {
+	font-size: 14px;
+	width: 50%;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #fff;
+	float: left;
+	padding: 0px 0px 25px 0;
+	vertical-align: top;
+	text-align: left;
+
+}
+
+.regular-stage-content article .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+	
+
+}
+
+.regular-stage-content article .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #fff;
+	 text-decoration: none;
+	 color: #000; 
+	 
+}
+
+.regular-stage-content article .highlight .icon {
+	float: left;
+	margin: 0 20px 0 5px;
+	padding: 16px 0 16px 0;
+
+}
+/* REGULAR-STAGE CONTENT */
+
+
+/* IMAGE-STAGE CONTENT */
+.image-stage-content{
+	height:auto;
+	
+
+}
+
+.image-stage-content figure {
+	background-color:  #ecf0f1;
+	margin: 0px 15px 10px 0px;
+	border-bottom: 5px solid #c0392b;
+
+	
+}
+
+.image-stage-content figure:last-child {
+	margin: 0px 0px 10px 0px;
+	
+}
+
+.image-stage-content figure img{
+    max-width:100%;
+}
+.image-stage-content .pic{
+    max-width: 100%;
+    max-height: 300px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    display: inline-block;
+    animation: anima 2s;
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+
+
+.image-stage-content .pic-image{
+     -webkit-transform: scale(1.1);
+             transform: scale(1.1);
+}
+.image-stage-content .pic:hover .pic-image{
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+}
+/*All classes with same attribute*/
+a ,a:hover,
+.pic .pic-image,
+.pic-caption,
+.pic:hover .pic-caption,
+.pic:hover img{
+     transition: all 0.5s ease;
+    -webkit-transition: all 0.5 ease;  
+}
+
+/*Effects in Caption*/
+.pic:hover .bottom-to-top,
+.pic:hover .top-to-bottom,
+.pic:hover .left-to-right,
+.pic:hover .right-to-left{
+    opacity: 1;
+}
+/*Bottom to Top*/
+.bottom-to-top{
+    top:50%;    
+    left:2.5%;
+}
+.pic:hover .bottom-to-top{
+    top:2.5%
+}
+/*Top to Bottom*/
+.top-to-bottom{
+    bottom:50%;    
+    left:2.5%;
+}
+.pic:hover .top-to-bottom{
+    bottom: 2.5%;
+}
+/*Left to Right*/
+.left-to-right{
+    top:2.5%;
+    right:50%;
+}
+.pic:hover .left-to-right{
+    right: 2.5%;
+}
+/*Right to Left*/
+.right-to-left{
+    top:2.5%;
+    left:50%;
+}
+.pic:hover .right-to-left{
+    left: 2.5%;
+}
+
+.image-stage-content .text {
+	margin: 0 auto;
+	width: 75%;
+	color: #191919;
+}
+
+.image-stage-content .text h1 {
+	font-family: "Helvetica";
+	font-size: 36px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #bfbfbf;
+	font-weight: bold;
+
+}
+
+.image-stage-content figure .text p {
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 27px;
+}
+
+.image-stage-content figure .text a {
+	color: #fff;
+	font-style: italic;
+	text-decoration: underline;
+	font-family: "HelveticaNeue LT Std";
+	font-weight: 100;
+	
+
+}
+
+.image-stage-content figure .highlight {
+	margin-top:50px; 
+
+}
+
+.image-stage-content figure .highlight h2 {
+	font-size: 14px;
+	width: 50%;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #fff;
+	float: left;
+	padding: 0px 0px 25px 0;
+	vertical-align: top;
+	text-align: left;
+
+}
+
+.image-stage-content figure .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "lato";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+	
+
+}
+
+.image-stage-content figure .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #c0392b;
+	 text-decoration: none;
+	 color: white; 
+	 
+}
+
+
+.image-stage-content figure .highlight .icon {
+	float: left;
+	margin: 0 20px 0 5px;
+	padding: 16px 0 16px 0;
+
+}
+
+
+
+/* IMAGE-STAGE CONTENT */
+
+
+
+
+*{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+article{
+  
+    position: relative;
+    overflow: hidden;  
+    width: 100%; 
+    animation: anima 2s;
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+
+
+
+.highlight-caption{
+    cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    opacity:0;
+    padding: 10px;
+    text-align:center;
+}
+
+.text-block{
+     -webkit-transform: scale(1);
+             transform: scale(1);
+}
+.block:hover .text-block{
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+/*All classes with same attribute*/
+a ,a:hover,
+.block .text-block,
+.highlight-caption,
+.block:hover .highlight-caption,
+.block:hover img{
+     transition: all 0.5s ease;
+    -webkit-transition: all 0.5 ease;  
+}
+
+/*Effects in Caption*/
+.block:hover .bottom-to-top,
+.block:hover .top-to-bottom,
+.block:hover .left-to-right,
+.block:hover .right-to-left{
+    opacity: 1;
+}
+/*Bottom to Top*/
+.bottom-to-top{
+    top:50%;    
+    left:2.5%;
+}
+.block:hover .bottom-to-top{
+    top:2.5%
+}
+/*Top to Bottom*/
+.top-to-bottom{
+    bottom:50%;    
+    left:2.5%;
+}
+.block:hover .top-to-bottom{
+    bottom: 2.5%;
+}
+/*Left to Right*/
+.left-to-right{
+    top:2.5%;
+    right:50%;
+}
+.block:hover .left-to-right{
+    right: 2.5%;
+}
+/*Right to Left*/
+.right-to-left{
+    top:2.5%;
+    left:50%;
+}
+.block:hover .right-to-left{
+    left: 2.5%;
+}
+
+/*Animation Effect*/
+@keyframes anima{
+    from{
+        margin-top: -50px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin: auto;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+@-webkit-keyframes anima{
+    from{
+        margin-left: -30px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin-left: 0px;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+
+
+
+
+
+
+
