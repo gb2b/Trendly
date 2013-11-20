@@ -200,15 +200,15 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 {
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
-		$result[0] = explodeHastag($twitter[0]);
+		$result[0] = explodeHashtag($twitter[0]);
 		$result[1] = $gnews[0]->title;
-		$result[2] = explodeHastag($twitter[1]);
+		$result[2] = explodeHashtag($twitter[1]);
 		$result[3] = $gnews[1]->title;
-		$result[4] = explodeHastag($twitter[2]);
+		$result[4] = explodeHashtag($twitter[2]);
 		$result[5] = $gnews[3]->title;
-		$result[6] = explodeHastag($twitter[3]);
+		$result[6] = explodeHashtag($twitter[3]);
 		$result[7] = $gnews[4]->title;
-		$result[8] = explodeHastag($twitter[4]);
+		$result[8] = explodeHashtag($twitter[4]);
 		$result[9] = $gnews[5]->title;
 		$content = "var trends = {";
 		for ($i=0; $i < count($result); $i++) { 
@@ -291,7 +291,7 @@ function cleanCaracteresSpeciaux($chaine)
 	return $chaine;
 }
 
-function explodeHastag($chaine)
+function explodeHashtag($chaine)
 {
 	if (preg_match("/^#.*/", $chaine)) {
 		$chaine = substr($chaine, 1);
