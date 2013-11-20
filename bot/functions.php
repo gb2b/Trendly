@@ -20,9 +20,9 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-// echo "<pre>";
-// print_r(getTrendsPonderation($auth, $cache));
-// echo "</pre>";
+echo "<pre>";
+print_r(getTrendGnews($cache, "pokemon"));
+echo "</pre>";
 
 
 function getSearchTweets($auth, $q, $cache)
@@ -152,13 +152,16 @@ function getPopularInstgImage($auth, $cache)
 	}
 }
 
-function getTrendGnews($cache)
+function getTrendGnews($cache, $q)
 {
 	$cache  = array_to_object($cache);
 	require_once $cache->classe;
 
 	$gCache = new Cache($cache->path_cache,$cache->time);
-	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss";
+	if (isset($q) && !empty($q)) {
+		$q = "&q=".$q;
+	}
+	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss".$q;
 
 	if ($gCache->read("_".$cache->gnews_cache)) {
 		$infos = json_decode($gCache->read("_".$cache->gnews_cache));
@@ -186,6 +189,19 @@ function getTrendGnews($cache)
 					$infos[$i]->date         = strtotime($item->pubDate);
 					preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
 					$infos[$i]->url          = substr($url1[0][0], 4);
+					$othersArticles = new DOMDocument();
+					@$othersArticles->loadHTML($item->description);
+					$urlArticles = $othersArticles->getElementsByTagName('a');
+					$j = 0;
+					foreach ($urlArticles as $urlArticle) {
+						if ($j>0) {
+							$articles = $urlArticle->getAttribute("href");
+							preg_match("/url=.*/", $articles, $url1, PREG_OFFSET_CAPTURE);
+							$infos[$i]->othersArticles[$j] = substr($url1[0][0], 4);
+
+						}
+						$j++;
+					}
 					$i++;
 		    	}
 		    $gCache->write("_".$cache->gnews_cache, json_encode($infos));		 
