@@ -20,9 +20,9 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-/*echo "<pre>";
-print_r(getTrendGnews($cache));
-echo "</pre>";*/
+echo "<pre>";
+print_r(getSearchTweets($auth, "tireur", $cache));
+echo "</pre>";
 
 function getSearchTweets($auth, $q, $cache)
 {
@@ -41,14 +41,16 @@ function getSearchTweets($auth, $q, $cache)
 		$connection->host = "https://api.twitter.com/1.1/";
 		$content = $connection->get("https://api.twitter.com/1.1/search/tweets.json?q=".$q."&lang=fr&result_type=popular");//attention à bien définir 	$query (la requête) avant
 		$i = 0;
-
 		foreach ($content->statuses as $tweet) {
 			$tweets[$i]->text = $tweet->text;
 			$tweets[$i]->user = $tweet->user->screen_name;
+			$tweets[$i]->urlTweet = "http://twitter.com/user/status/".$tweet->id_str;
+			$tweets[$i]->urls = $tweet->entities->urls[0]->url;
+			$tweets[$i]->img = $tweet->entities->media[0]->media_url;
 			$i++;
 		}
-
-		$tweetCache->write(cleanCaracteresSpeciaux($q)."_".$cache->tw_cache, json_encode($tweets));
+/*		$tweets = $content->statuses[0]->entities;
+*/		$tweetCache ->write(cleanCaracteresSpeciaux($q)."_".$cache->tw_cache, json_encode($tweets));
 	}
 	return $tweets;
 }
@@ -216,8 +218,8 @@ function getTrendGnews($cache, $q)
 							$urlFinale = substr($url1[0][0], 4);
 							if (!empty($urlFinale)) {
 								$m = $j-1;
-								$infos[$i]->othersArticles->$m->title = strip_tags($urlArticle->textContent);
-								$infos[$i]->othersArticles->$m->url = substr($url1[0][0], 4);
+								$infos[$i]->othersArticles->$m->title   = strip_tags($urlArticle->textContent);
+								$infos[$i]->othersArticles->$m->url     = substr($url1[0][0], 4);
 								$infos[$i]->othersArticles->$m->authors = $authorArticles[$m-1];
 							}
 						}
