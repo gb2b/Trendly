@@ -180,7 +180,9 @@ function getTrendGnews($cache, $q)
 					$b[]                     = utf8_decode(utf8_encode(strip_tags($item->title)));
 					$title                   = bestWord($b, $caractereRemove);
 					$infos[$i]->keyword        = $title["mot"];
-					$infos[$i]->mainTitle = strip_tags($item->title);
+					$titleSplit = preg_split("# - #", $item->title);
+					$infos[$i]->mainTitle = strip_tags($titleSplit[0]);
+					$infos[$i]->author = strip_tags($titleSplit[1]);
 					$infos[$i]->nbOccurences = $title["nbOccurences"];
 					$b                       = explode("<b>", $item->description);
 					$nbArticles              = end($b);
@@ -194,10 +196,18 @@ function getTrendGnews($cache, $q)
 					$othersArticles = new DOMDocument();
 					@$othersArticles->loadHTML($item->description);
 					$urlArticles = $othersArticles->getElementsByTagName('a');
+					$othersAuthors = new DOMDocument();
+					@$othersAuthors->loadHTML($item->description);
+					$authorsArticles = $othersAuthors->getElementsByTagName('nobr');
 					$j = 0;
 					$nbArticles = 0;
+					$k = 0;
 					foreach ($urlArticles as $urlArticle) {
 						$nbArticles++;
+					}
+					foreach ($authorsArticles as $authorArticle) {
+						$authorArticles[$k] = $authorArticle->textContent;
+						$k++;
 					}
 					foreach ($urlArticles as $urlArticle) {
 						$articles = $urlArticle->getAttribute("href");
@@ -208,6 +218,7 @@ function getTrendGnews($cache, $q)
 								$m = $j-1;
 								$infos[$i]->othersArticles->$m->title = strip_tags($urlArticle->textContent);
 								$infos[$i]->othersArticles->$m->url = substr($url1[0][0], 4);
+								$infos[$i]->othersArticles->$m->authors = $authorArticles[$m-1];
 							}
 						}
 						$j++;
