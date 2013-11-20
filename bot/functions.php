@@ -155,12 +155,14 @@ function getTrendGnews($cache, $q)
 
 	$gCache = new Cache($cache->path_cache,$cache->time);
 	if (isset($q) && !empty($q)) {
-		$q = "&q=".$q;
+		$q2 = "&q=".$q;
+	}else{
+		$q = "";
 	}
-	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss".$q;
+	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss".$q2;
 
-	if ($gCache->read("_".$cache->gnews_cache)) {
-		$infos = json_decode($gCache->read("_".$cache->gnews_cache));
+	if ($gCache->read($q."_".$cache->gnews_cache)) {
+		$infos = json_decode($gCache->read($q."_".$cache->gnews_cache));
 	}else{
 		try{
 		    if(!@$fluxrss=simplexml_load_file($url)){
@@ -200,7 +202,7 @@ function getTrendGnews($cache, $q)
 					}
 					$i++;
 		    	}
-		    $gCache->write("_".$cache->gnews_cache, json_encode($infos));		 
+		    $gCache->write($q."_".$cache->gnews_cache, json_encode($infos));		 
 		}catch(Exception $e){
 		    echo $e->getMessage();
 		} 
