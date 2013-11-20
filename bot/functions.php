@@ -20,10 +20,6 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-echo "<pre>";
-print_r(getTrendGnews($cache, "pokemon"));
-echo "</pre>";
-
 
 function getSearchTweets($auth, $q, $cache)
 {
