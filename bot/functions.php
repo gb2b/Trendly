@@ -20,7 +20,6 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-
 function getSearchTweets($auth, $q, $cache)
 {
 	$auth   = array_to_object($auth);
@@ -161,8 +160,8 @@ function getTrendGnews($cache, $q)
 	}
 	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss".$q2;
 
-	if ($gCache->read($q."_".$cache->gnews_cache)) {
-		$infos = json_decode($gCache->read($q."_".$cache->gnews_cache));
+	if ($gCache->read(cleanCaracteresSpeciaux($q)."_".$cache->gnews_cache)) {
+		$infos = json_decode($gCache->read(cleanCaracteresSpeciaux($q)."_".$cache->gnews_cache));
 	}else{
 		try{
 		    if(!@$fluxrss=simplexml_load_file($url)){
@@ -192,17 +191,19 @@ function getTrendGnews($cache, $q)
 					$urlArticles = $othersArticles->getElementsByTagName('a');
 					$j = 0;
 					foreach ($urlArticles as $urlArticle) {
-						if ($j>0) {
-							$articles = $urlArticle->getAttribute("href");
+						$articles = $urlArticle->getAttribute("href");
+						if ($j>1 && !empty($articles)) {
 							preg_match("/url=.*/", $articles, $url1, PREG_OFFSET_CAPTURE);
-							$infos[$i]->othersArticles[$j] = substr($url1[0][0], 4);
-
+							$urlFinale = substr($url1[0][0], 4);
+							if (!empty($urlFinale)) {
+								$infos[$i]->othersArticles[$j-1] = substr($url1[0][0], 4);
+							}
 						}
 						$j++;
 					}
 					$i++;
 		    	}
-		    $gCache->write($q."_".$cache->gnews_cache, json_encode($infos));		 
+		    $gCache->write(cleanCaracteresSpeciaux($q)."_".$cache->gnews_cache, json_encode($infos));		 
 		}catch(Exception $e){
 		    echo $e->getMessage();
 		} 
