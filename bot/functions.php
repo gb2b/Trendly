@@ -20,6 +20,10 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
+/*echo "<pre>";
+print_r(getTrendGnews($cache));
+echo "</pre>";*/
+
 function getSearchTweets($auth, $q, $cache)
 {
 	$auth   = array_to_object($auth);
@@ -175,7 +179,8 @@ function getTrendGnews($cache, $q)
 					$b                       = explode("<font size=\"-1\">", $item->description);
 					$b[]                     = utf8_decode(utf8_encode(strip_tags($item->title)));
 					$title                   = bestWord($b, $caractereRemove);
-					$infos[$i]->title        = $title["mot"];
+					$infos[$i]->keyword        = $title["mot"];
+					$infos[$i]->mainTitle = strip_tags($item->title);
 					$infos[$i]->nbOccurences = $title["nbOccurences"];
 					$b                       = explode("<b>", $item->description);
 					$nbArticles              = end($b);
@@ -190,13 +195,19 @@ function getTrendGnews($cache, $q)
 					@$othersArticles->loadHTML($item->description);
 					$urlArticles = $othersArticles->getElementsByTagName('a');
 					$j = 0;
+					$nbArticles = 0;
+					foreach ($urlArticles as $urlArticle) {
+						$nbArticles++;
+					}
 					foreach ($urlArticles as $urlArticle) {
 						$articles = $urlArticle->getAttribute("href");
-						if ($j>1 && !empty($articles)) {
+						if ($j>1 && !empty($articles) && $j<($nbArticles-4)) {
 							preg_match("/url=.*/", $articles, $url1, PREG_OFFSET_CAPTURE);
 							$urlFinale = substr($url1[0][0], 4);
 							if (!empty($urlFinale)) {
-								$infos[$i]->othersArticles[$j-1] = substr($url1[0][0], 4);
+								$m = $j-1;
+								$infos[$i]->othersArticles->$m->title = strip_tags($urlArticle->textContent);
+								$infos[$i]->othersArticles->$m->url = substr($url1[0][0], 4);
 							}
 						}
 						$j++;
