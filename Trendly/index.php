@@ -74,7 +74,7 @@
  
   	<script>
       // print_r(getTrendGnews($cache));
-      <?php print_r(getTrendsPonderation($auth, $cache,false)); ?>
+      <?php print_r(getTrendsPonderation($auth, $cache)); ?>
 
 
     </script>

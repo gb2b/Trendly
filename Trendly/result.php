@@ -6,7 +6,11 @@
    }
    $tweets = getSearchTweets($auth, $query, $cache);
    //$videos = getVideoYoutube($auth, $cache, $query);
-
+   $actus = getTrendGnews($cache, $query);
+   $pictures = getPicturesImgur($auth,$cache,$query);
+   /*echo "<pre>";
+   print_r($pictures);
+   echo "</pre>";*/
    
 
 ?>
@@ -41,6 +45,7 @@
          </div>
       </form>
 
+      <!-- TWEETS -->
      <div class="top-content row">
          <div class="block">
             <article>
@@ -103,15 +108,15 @@
       </div>
   
 
-
+      <!-- ARTICLES -->
       <div class="second-stage-content row">
+         <?php for($i=0;$i<2;$i++) : ?>
          <article class="col-md-6" style="border-bottom: 5px solid #9b59b6;">
             <div class="block">
                <div class="text text-block">
-                  <h1>Le Monde</h1>
+                  <h1><?php echo $actus[$i]->author; ?></h1>
 
-                  <p>Philippines : les survivants enterrent leurs morts et
-                  appellent à l'aide</p>
+                  <p><?php echo $actus[$i]->mainTitle; ?></p>
                </div>
 
                <div class="highlight-caption top-to-bottom">
@@ -119,10 +124,10 @@
                      <div class="icon"><img alt="articles" src=
                      "css/asset/articles-icon-black.png"></div>
 
-                     <h2>Le Monde</h2>
+                     <h2><?php echo $actus[$i]->author; ?></h2>
                      
                      <div class="save">
-                        <span><a href="#" alt="save">GO</a></span>
+                        <span><a href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
                         <a href="#" alt="save">LOGO</a>
                      </div>
@@ -130,37 +135,12 @@
                </div>
             </div>
          </article>
-
-         <article class="col-md-6" style="border-bottom: 5px solid #9b59b6;">
-            <div class="block">
-               <div class="text text-block">
-                  <h1>Le Monde</h1>
-
-                  <p>Philippines : les survivants enterrent leurs morts et
-                  appellent à l'aide</p>
-               </div>
-
-               <div class="highlight-caption top-to-bottom">
-                  <div class="highlight">
-                     <div class="icon"><img alt="articles" src=
-                     "css/asset/articles-icon-black.png"></div>
-
-                     <h2>Le Monde</h2>
-                     
-                     <div class="save">
-                        <span><a href="#" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
-                     </div>
-                     
-                  </div>
-               </div>
-            </div>
-         </article>
+         <?php endfor; ?>
       </div>
 
-            
-            <div class="image-stage-content row">
+      
+      <!-- PICTURES -->
+      <div class="image-stage-content row">
          <figure class="col-md-6 pic">
              <img src="http://i.imgur.com/IYvlJo3.jpg" class="pic-image" alt="Pic"/>
            <div class="highlight-caption left-to-right">
@@ -168,7 +148,7 @@
                      <div class="icon"><img alt="articles" src=
                      "css/asset/articles-icon.png"></div>
 
-                     <h2>Instagram</h2>
+                     <h2>ImgUr</h2>
                      
                      <div class="save">
                         <span><a href="#" alt="save">GO</a></span>

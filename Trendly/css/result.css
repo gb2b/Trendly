@@ -60,6 +60,17 @@ section{
 
 
 /*********************  START OF THE FONT INITIALIZER *********************/
+@font-face {
+    font-family: 'helvetica_regular';
+    src: url('fonts/helvetica_regular/helveticaneueltstd-roman-webfont.eot');
+    src: url('fonts/helvetica_regular/helveticaneueltstd-roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helvetica_regular/helveticaneueltstd-roman-webfont.woff') format('woff'),
+         url('fonts/helvetica_regular/helveticaneueltstd-roman-webfont.ttf') format('truetype'),
+         url('fonts/helvetica_regular/helveticaneueltstd-roman-webfont.svg#helvetica_neue_lt_std55_roman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 @font-face {
     font-family: 'helvetica_neue_lt_std35_thin';
@@ -70,6 +81,42 @@ section{
          url('fonts/helveticaneueltstd-th/helveticaneueltstd-th-webfont.svg#helvetica_neue_lt_std35_thin') format('svg');
     font-weight: normal;
     font-style: normal;
+    
+    }
+    
+@font-face {
+    font-family: 'latobold';
+    src: url('fonts/lato_bold/lato-bold-webfont.eot');
+    src: url('fonts/lato_bold/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lato_bold/lato-bold-webfont.woff') format('woff'),
+         url('fonts/lato_bold/lato-bold-webfont.ttf') format('truetype'),
+         url('fonts/lato_bold/lato-bold-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoitalic';
+    src: url('fonts/lato_italic/lato-italic-webfont.eot');
+    src: url('fonts/lato_italic/lato-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lato_italic/lato-italic-webfont.woff') format('woff'),
+         url('fonts/lato_italic/lato-italic-webfont.ttf') format('truetype'),
+         url('fonts/lato_italic/lato-italic-webfont.svg#latoitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'latoregular';
+    src: url('fonts/lato_regular/lato-regular-webfont.eot');
+    src: url('fonts/lato_regular/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lato_regular/lato-regular-webfont.woff') format('woff'),
+         url('fonts/lato_regular/lato-regular-webfont.ttf') format('truetype'),
+         url('fonts/lato_regular/lato-regular-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
 }
 
@@ -78,6 +125,172 @@ section{
 
 /*********************  GENERIC CSS *********************/
 
+*{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+article{
+  
+    position: relative;
+    overflow: hidden;  
+    width: 100%; 
+    animation: anima 2s;
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+
+
+
+.highlight-caption{
+    /*cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    border: 1px solid black;
+    opacity:0;
+    padding: 10px;
+    text-align:center;*/
+    
+    cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 0;
+    opacity:0;
+    text-align:center;
+}
+
+.text-block{
+     -webkit-transform: scale(1);
+             transform: scale(1);
+}
+.block:hover .text-block{
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+/*All classes with same attribute*/
+a ,a:hover,
+.block .text-block,
+.highlight-caption,
+.block:hover .highlight-caption,
+.block:hover img{
+     transition: all 0.5s ease;
+    -webkit-transition: all 0.5 ease;  
+}
+
+/*Effects in Caption*/
+.block:hover .bottom-to-top,
+.block:hover .top-to-bottom,
+.block:hover .left-to-right,
+.block:hover .right-to-left{
+    opacity: 1;
+}
+/*Bottom to Top*/
+.bottom-to-top{
+    top:50%;    
+    left:2.5%;
+}
+.block:hover .bottom-to-top{
+    top:6%
+}
+/*Top to Bottom*/
+.top-to-bottom{
+    bottom:50%;    
+    left:2.5%;
+}
+.block:hover .top-to-bottom{
+    bottom:36.5%;
+}
+/*Left to Right*/
+.left-to-right{
+    top:2.5%;
+    right:50%;
+}
+.block:hover .left-to-right{
+    right: 2.5%;
+}
+/*Right to Left*/
+.right-to-left{
+    top:2.5%;
+    left:50%;
+}
+.block:hover .right-to-left{
+    left: 2.5%;
+}
+
+/*Animation Effect*/
+@keyframes anima{
+    from{
+        margin-top: -50px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin: auto;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+@-webkit-keyframes anima{
+    from{
+        margin-left: -30px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin-left: 0px;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+
+
+
+.container {
+  //background: red;
+}
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.carousel ul{
+  list-style-type:none;
+  width:924%;
+  margin-left:0;
+  left:0;
+  padding-left:1px;
+}
+.carousel li{
+  display:inline;
+
+  
+}
+.carousel ul li{
+  width: 11%;
+  float:left;
+}
+.navPrev{
+	background-image: url("asset/arrow-left-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:left;
+  color: #000;
+}
+.navNext{
+	background-image: url("asset/arrow-right-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:right;
+   color: #000;
+}
+
 /*********************  END GENERIC CSS *********************/
 
 
@@ -85,7 +298,7 @@ section{
 /*********************  START OF THE INDEX.HTML *********************/
 
 header > article {
-	margin-top: 80px;
+	margin-top: 100px;
 	color: #000;
 	text-align: center;
 	font-family: "helvetica_neue_lt_std35_thin";
@@ -96,6 +309,7 @@ header > article {
 header > article h1{
 	font-family: "helvetica_neue_lt_std35_thin";
 	font-size: 70px;
+	color: #428bca;
 }
 
 header > article a{
@@ -357,7 +571,7 @@ input[type=submit]{
 
 .top-content article .text h1 {
 	text-align: center;
-	font-family: "Helvetica";
+	font-family: "helvetica_regular";
 	padding-bottom: 10px;
 	border-bottom: 1px solid #bfbfbf;
 	font-size: 36px;
@@ -376,7 +590,7 @@ input[type=submit]{
 	color: #3498db;
 	font-style: italic;
 	text-decoration: underline;
-	font-family: "lato";
+	font-family: "latoitalic";
 	font-weight: 100;
 	
 
@@ -389,15 +603,16 @@ input[type=submit]{
 
 .top-content article .highlight h2 {
 	font-size: 14px;
-	width: 50%;
+	width: 10%;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #191919;
 	float: left;
 	padding: 0px 0px 25px 0;
 	vertical-align: top;
 	text-align: left;
+	
 
 
 }
@@ -405,13 +620,14 @@ input[type=submit]{
 .top-content article .highlight .save {
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #191919;
 	float: right;
 	vertical-align: top;
 	margin-top:20px; 
 	padding: 0px 10px 20px 0;
+	
 	
 
 }
@@ -421,6 +637,7 @@ input[type=submit]{
 	 background-color: #3498db;
 	 text-decoration: none;
 	 color: white; 
+	 
 	 
 }
 
@@ -469,7 +686,7 @@ input[type=submit]{
 }
 
 .second-stage-content .text h1 {
-	font-family: "Helvetica";
+	font-family: "helvetica_regular";
 	font-size: 36px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #bfbfbf;
@@ -501,7 +718,7 @@ input[type=submit]{
 	font-size: 14px;
 	width: 50%;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #191919;
 	float: left;
@@ -514,7 +731,7 @@ input[type=submit]{
 .second-stage-content article .highlight .save {
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #191919;
 	float: right;
@@ -568,14 +785,14 @@ input[type=submit]{
 }
 
 .regular-stage-content .text {
-	font-family: "lato";
+	font-family: "latoregular";
 	margin: 0 auto;
 	width: 85%;
 	padding-bottom: 30px;
 }
 
 .regular-stage-content .text h1 {
-	font-family: "Helvetica";
+	font-family: "helvetica_regular";
 	font-size: 18px;
 	font-weight: bold;
 	text-align: center;
@@ -593,7 +810,7 @@ input[type=submit]{
 	color: #fff;
 	font-style: italic;
 	text-decoration: underline;
-	font-family: "lato";
+	font-family: "latoitalic";
 	font-weight: 100;
 	
 
@@ -605,7 +822,7 @@ input[type=submit]{
 	font-size: 14px;
 	width: 50%;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #fff;
 	float: left;
@@ -618,7 +835,7 @@ input[type=submit]{
 .regular-stage-content article .highlight .save {
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #191919;
 	float: right;
@@ -749,7 +966,7 @@ a ,a:hover,
 }
 
 .image-stage-content .text h1 {
-	font-family: "Helvetica";
+	font-family: "helvetica_regular";
 	font-size: 36px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #bfbfbf;
@@ -781,7 +998,7 @@ a ,a:hover,
 	font-size: 14px;
 	width: 50%;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #fff;
 	float: left;
@@ -794,7 +1011,7 @@ a ,a:hover,
 .image-stage-content figure .highlight .save {
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: "lato";
+	font-family: "latobold";
 	font-weight: bold;
 	color: #191919;
 	float: right;
@@ -828,160 +1045,3 @@ a ,a:hover,
 
 
 
-*{
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-
-
-article{
-  
-    position: relative;
-    overflow: hidden;  
-    width: 100%; 
-    animation: anima 2s;
-    -webkit-animation: anima 2s;
-   backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-}
-
-
-
-
-.highlight-caption{
-    cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 35%;
-    opacity:0;
-    padding: 10px;
-    text-align:center;
-}
-
-.text-block{
-     -webkit-transform: scale(1);
-             transform: scale(1);
-}
-.block:hover .text-block{
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-}
-/*All classes with same attribute*/
-a ,a:hover,
-.block .text-block,
-.highlight-caption,
-.block:hover .highlight-caption,
-.block:hover img{
-     transition: all 0.5s ease;
-    -webkit-transition: all 0.5 ease;  
-}
-
-/*Effects in Caption*/
-.block:hover .bottom-to-top,
-.block:hover .top-to-bottom,
-.block:hover .left-to-right,
-.block:hover .right-to-left{
-    opacity: 1;
-}
-/*Bottom to Top*/
-.bottom-to-top{
-    top:50%;    
-    left:2.5%;
-}
-.block:hover .bottom-to-top{
-    top:2.5%
-}
-/*Top to Bottom*/
-.top-to-bottom{
-    bottom:50%;    
-    left:2.5%;
-}
-.block:hover .top-to-bottom{
-    bottom: 2.5%;
-}
-/*Left to Right*/
-.left-to-right{
-    top:2.5%;
-    right:50%;
-}
-.block:hover .left-to-right{
-    right: 2.5%;
-}
-/*Right to Left*/
-.right-to-left{
-    top:2.5%;
-    left:50%;
-}
-.block:hover .right-to-left{
-    left: 2.5%;
-}
-
-/*Animation Effect*/
-@keyframes anima{
-    from{
-        margin-top: -50px;
-        opacity: 0;
-        -webkit-opacity: 0;
-    }
-    to{
-        margin: auto;
-        opacity: 1;
-        -webkit-opacity: 1;
-    }
-}
-@-webkit-keyframes anima{
-    from{
-        margin-left: -30px;
-        opacity: 0;
-        -webkit-opacity: 0;
-    }
-    to{
-        margin-left: 0px;
-        opacity: 1;
-        -webkit-opacity: 1;
-    }
-}
-
-
-
-.container {
-  //background: red;
-}
-.carousel {
-  width: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.carousel ul{
-  list-style-type:none;
-  width:924%;
-  margin-left:0;
-  left:0;
-  padding-left:1px;
-}
-.carousel li{
-  display:inline;
-
-  
-}
-.carousel ul li{
-  width: 11%;
-  float:left;
-}
-.navPrev{
-	background-image: url("asset/arrow-left-icon.png");
-	background-color: none;
-	padding: 11px;
-	margin:0 10px 0 10px;
-  float:left;
-  color: #000;
-}
-.navNext{
-	background-image: url("asset/arrow-right-icon.png");
-	background-color: none;
-	padding: 11px;
-	margin:0 10px 0 10px;
-  float:right;
-   color: #000;
-}

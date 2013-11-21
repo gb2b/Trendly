@@ -7,6 +7,7 @@ $auth =  array(
 	"tw_oauth_token_secret" => "rHm8e8ZRZ6iTl7u0JnPzmTDXDq4N69yTeZoHsQ1wpM",
 	"tw_path_file_oauth"    => "auth/twitteroauth/twitteroauth.php",
 	"instg_client_id"       => "9110e8c268384cb79901a96e3a16f588",
+	"imgur_client_id" 		=> "7bf23d0ba414535",
 	"zend_yt_path_file"     => "Zend/Loader.php"
 	);
 
@@ -16,14 +17,15 @@ $cache = array(
 	"yt_cache"        => "youtube.json",
 	"instg_cache"     => "instagram.json",
 	"gnews_cache"     => "gnews.json",
+	"imgur_cache"	  => "imgur.json",
 	"time"            => 5, 
 	"path_cache"      => "tmp"
 	);
 
 /*echo "<pre>";
-print_r(getPopularTwTrends($auth, $cache));
-echo "</pre>";
-*/
+print_r(getSearchTweets($auth, "tireur", $cache));
+echo "</pre>";*/
+
 function getSearchTweets($auth, $q, $cache)
 {
 	$auth   = array_to_object($auth);
@@ -76,7 +78,8 @@ function getPopularTwTrends($auth, $cache)
 
 		if (!empty($content)) {
 			foreach ($content[$i]->trends as $trend) {
-				$tweets[$i] = $trend->name;
+				$TwName = preg_replace("/^#([a-zA-Z0-9]+)/", "$1", $trend->name);
+				$tweets[$i] = $TwName;
 				$i++;
 			}
 		}
@@ -181,10 +184,10 @@ function getTrendGnews($cache, $q)
 					$b                       = explode("<font size=\"-1\">", $item->description);
 					$b[]                     = utf8_decode(utf8_encode(strip_tags($item->title)));
 					$title                   = bestWord($b, $caractereRemove);
-					$infos[$i]->keyword        = $title["mot"];
-					$titleSplit = preg_split("# - #", $item->title);
-					$infos[$i]->mainTitle = strip_tags($titleSplit[0]);
-					$infos[$i]->author = strip_tags($titleSplit[1]);
+					$infos[$i]->keyword      = $title["mot"];
+					$titleSplit              = preg_split("# - #", $item->title);
+					$infos[$i]->mainTitle    = strip_tags($titleSplit[0]);
+					$infos[$i]->author       = strip_tags($titleSplit[1]);
 					$infos[$i]->nbOccurences = $title["nbOccurences"];
 					$b                       = explode("<b>", $item->description);
 					$nbArticles              = end($b);
@@ -195,12 +198,12 @@ function getTrendGnews($cache, $q)
 					$infos[$i]->date         = strtotime($item->pubDate);
 					preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
 					$infos[$i]->url          = substr($url1[0][0], 4);
-					$othersArticles = new DOMDocument();
+					$othersArticles          = new DOMDocument();
 					@$othersArticles->loadHTML($item->description);
-					$urlArticles = $othersArticles->getElementsByTagName('a');
-					$othersAuthors = new DOMDocument();
+					$urlArticles             = $othersArticles->getElementsByTagName('a');
+					$othersAuthors           = new DOMDocument();
 					@$othersAuthors->loadHTML($item->description);
-					$authorsArticles = $othersAuthors->getElementsByTagName('nobr');
+					$authorsArticles         = $othersAuthors->getElementsByTagName('nobr');
 					$j = 0;
 					$nbArticles = 0;
 					$k = 0;
@@ -240,17 +243,16 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
 
-		$result[0] = explodeHashtag($twitter[0]);
+		$result[0] = $twitter[0];
 		$result[1] = $gnews[0]->keyword;
-		$result[2] = explodeHashtag($twitter[1]);
+		$result[2] = $twitter[1];
 		$result[3] = $gnews[1]->keyword;
-		$result[4] = explodeHashtag($twitter[2]);
+		$result[4] = $twitter[2];
 		$result[5] = $gnews[3]->keyword;
-		$result[6] = explodeHashtag($twitter[3]);
+		$result[6] = $twitter[3];
 		$result[7] = $gnews[4]->keyword;
-		$result[8] = explodeHashtag($twitter[4]);
+		$result[8] = $twitter[4];
 		$result[9] = $gnews[5]->keyword;
-
 		$content = "var trends = {";
 		for ($i=0; $i < count($result); $i++) { 
 			if (isset($result[$i]) && !empty($result[$i])) {
@@ -261,16 +263,45 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 			}
 		}
 		$content .= "}";
-
 		return $content;
 
 }
+
+function getPicturesImgur($auth,$cache,$q){
+	$auth   = array_to_object($auth);
+	$cache  = array_to_object($cache);
+	require_once $cache->classe;
+
+	$imagesCache = new Cache($cache->path_cache,$cache->time);
+	$api = 'https://api.imgur.com/3/gallery/search/?q='.$q;
+	$response = getCurlImgur($api,$auth->imgur_client_id);
+	
+	if($response){
+	    $i = 0; 
+	    if ($imagesCache->read("_".$cache->imgur_cache)) {
+			$images = json_decode($imagesCache->read("_".$cache->imgur_cache));
+		}else{
+		    foreach(json_decode($response)->data as $item){
+				
+				$title                   = (isset($item->title))?$item->title:null;
+				$src                     = $item->link; 
+				$description             = (isset($item->description))?$item->description:null; 
+				$images[$i]->title       = htmlspecialchars($title);
+				$images[$i]->src         = htmlspecialchars($src);
+				$images[$i]->description = htmlspecialchars($description);
+		        $i++;
+		    }
+		    $imagesCache->write("_".$cache->imgur_cache, json_encode($images));
+		}
+	    return $images;
+	}
+}
+
 
 function array_to_object($array) {
   $object = new stdClass;
   foreach($array as $key => $value) {
    if(is_array($value)) {
-     // Si c'est un tableau multidimensionnel, on appelle de nouveau la fonction.
      $object->$key = array_to_object($value);
    } else {
      $object->$key = $value;
@@ -349,6 +380,26 @@ function explodeHashtag($chaine)
 		}
 	}
 	return trim($chaine);
+}
+
+function getCurlImgur($theurl,$the_clientid){
+	if(function_exists('curl_init')){
+		$headr = array();
+		$headr[] = 'Content-length: 0';
+		$headr[] = 'Content-type: application/json';
+		$headr[] = 'Authorization: Client-Id '.$the_clientid; 
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_URL,$theurl);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_GET,true);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER,$headr);
+	    $output = curl_exec($ch);
+	    echo curl_error($ch);
+	    curl_close($ch);
+	    return $output;
+    }else{
+        return file_get_contents($url);
+    }
 }
 
 function get_curl($url){
