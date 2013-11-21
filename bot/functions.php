@@ -20,9 +20,9 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-echo "<pre>";
+/*echo "<pre>";
 print_r(getSearchTweets($auth, "tireur", $cache));
-echo "</pre>";
+echo "</pre>";*/
 
 function getSearchTweets($auth, $q, $cache)
 {
@@ -261,6 +261,58 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 		$content .= "}";
 		return $content;
 
+}
+
+function getPicturesImgur($auth,$cache,$q){
+	$auth   = array_to_object($auth);
+	$cache  = array_to_object($cache);
+	require_once $cache->classe;
+
+	$imagesCache = new Cache($cache->path_cache,$cache->time);
+	$api = 'https://api.imgur.com/3/gallery/search/?q='.$q;
+	$response = getCurlImgur($api,$auth->imgur_client_id);
+	
+	if($response){
+	    $i = 0; 
+	    if ($imagesCache->read("_".$cache->imgur_cache)) {
+			$images = json_decode($imagesCache->read("_".$cache->imgur_cache));
+		}else{
+		    foreach(json_decode($response)->data as $item){
+
+		        $title = (isset($item->title))?$item->title:null;
+		        $src = $item->link; 
+		        $description = (isset($item->description))?$item->description:null; 
+
+		        $images[$i]->title = htmlspecialchars($title);
+		        $images[$i]->src   = htmlspecialchars($src);
+		        $images[$i]->description  = htmlspecialchars($description);
+		     
+		        $i++;
+		    }
+		    $imagesCache->write("_".$cache->imgur_cache, json_encode($images));
+		}
+	    return $images;
+	}
+}
+
+function getCurlImgur($theurl,$the_clientid){
+	if(function_exists('curl_init')){
+		$headr = array();
+		$headr[] = 'Content-length: 0';
+		$headr[] = 'Content-type: application/json';
+		$headr[] = 'Authorization: Client-Id '.$the_clientid; 
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_URL,$theurl);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_GET,true);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER,$headr);
+	    $output = curl_exec($ch);
+	    echo curl_error($ch);
+	    curl_close($ch);
+	    return $output;
+    }else{
+        return file_get_contents($url);
+    }
 }
 
 function array_to_object($array) {
