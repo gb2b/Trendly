@@ -42,11 +42,11 @@ function getSearchTweets($auth, $q, $cache)
 		$content = $connection->get("https://api.twitter.com/1.1/search/tweets.json?q=".$q."&lang=fr&result_type=popular");//attention à bien définir 	$query (la requête) avant
 		$i = 0;
 		foreach ($content->statuses as $tweet) {
-			$tweets[$i]->text = $tweet->text;
-			$tweets[$i]->user = $tweet->user->screen_name;
+			$tweets[$i]->text     = $tweet->text;
+			$tweets[$i]->user     = $tweet->user->screen_name;
 			$tweets[$i]->urlTweet = "http://twitter.com/user/status/".$tweet->id_str;
-			$tweets[$i]->urls = $tweet->entities->urls[0]->url;
-			$tweets[$i]->img = $tweet->entities->media[0]->media_url;
+			$tweets[$i]->urls     = $tweet->entities->urls[0]->url;
+			$tweets[$i]->img      = $tweet->entities->media[0]->media_url;
 			$i++;
 		}
 /*		$tweets = $content->statuses[0]->entities;
@@ -181,10 +181,10 @@ function getTrendGnews($cache, $q)
 					$b                       = explode("<font size=\"-1\">", $item->description);
 					$b[]                     = utf8_decode(utf8_encode(strip_tags($item->title)));
 					$title                   = bestWord($b, $caractereRemove);
-					$infos[$i]->keyword        = $title["mot"];
-					$titleSplit = preg_split("# - #", $item->title);
-					$infos[$i]->mainTitle = strip_tags($titleSplit[0]);
-					$infos[$i]->author = strip_tags($titleSplit[1]);
+					$infos[$i]->keyword      = $title["mot"];
+					$titleSplit              = preg_split("# - #", $item->title);
+					$infos[$i]->mainTitle    = strip_tags($titleSplit[0]);
+					$infos[$i]->author       = strip_tags($titleSplit[1]);
 					$infos[$i]->nbOccurences = $title["nbOccurences"];
 					$b                       = explode("<b>", $item->description);
 					$nbArticles              = end($b);
@@ -195,12 +195,12 @@ function getTrendGnews($cache, $q)
 					$infos[$i]->date         = strtotime($item->pubDate);
 					preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
 					$infos[$i]->url          = substr($url1[0][0], 4);
-					$othersArticles = new DOMDocument();
+					$othersArticles          = new DOMDocument();
 					@$othersArticles->loadHTML($item->description);
-					$urlArticles = $othersArticles->getElementsByTagName('a');
-					$othersAuthors = new DOMDocument();
+					$urlArticles             = $othersArticles->getElementsByTagName('a');
+					$othersAuthors           = new DOMDocument();
 					@$othersAuthors->loadHTML($item->description);
-					$authorsArticles = $othersAuthors->getElementsByTagName('nobr');
+					$authorsArticles         = $othersAuthors->getElementsByTagName('nobr');
 					$j = 0;
 					$nbArticles = 0;
 					$k = 0;
@@ -278,15 +278,13 @@ function getPicturesImgur($auth,$cache,$q){
 			$images = json_decode($imagesCache->read("_".$cache->imgur_cache));
 		}else{
 		    foreach(json_decode($response)->data as $item){
-
-		        $title = (isset($item->title))?$item->title:null;
-		        $src = $item->link; 
-		        $description = (isset($item->description))?$item->description:null; 
-
-		        $images[$i]->title = htmlspecialchars($title);
-		        $images[$i]->src   = htmlspecialchars($src);
-		        $images[$i]->description  = htmlspecialchars($description);
-		     
+				
+				$title                   = (isset($item->title))?$item->title:null;
+				$src                     = $item->link; 
+				$description             = (isset($item->description))?$item->description:null; 
+				$images[$i]->title       = htmlspecialchars($title);
+				$images[$i]->src         = htmlspecialchars($src);
+				$images[$i]->description = htmlspecialchars($description);
 		        $i++;
 		    }
 		    $imagesCache->write("_".$cache->imgur_cache, json_encode($images));
@@ -295,31 +293,11 @@ function getPicturesImgur($auth,$cache,$q){
 	}
 }
 
-function getCurlImgur($theurl,$the_clientid){
-	if(function_exists('curl_init')){
-		$headr = array();
-		$headr[] = 'Content-length: 0';
-		$headr[] = 'Content-type: application/json';
-		$headr[] = 'Authorization: Client-Id '.$the_clientid; 
-	    $ch = curl_init();
-	    curl_setopt($ch, CURLOPT_URL,$theurl);
-	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_GET,true);
-	    curl_setopt($ch, CURLOPT_HTTPHEADER,$headr);
-	    $output = curl_exec($ch);
-	    echo curl_error($ch);
-	    curl_close($ch);
-	    return $output;
-    }else{
-        return file_get_contents($url);
-    }
-}
 
 function array_to_object($array) {
   $object = new stdClass;
   foreach($array as $key => $value) {
    if(is_array($value)) {
-     // Si c'est un tableau multidimensionnel, on appelle de nouveau la fonction.
      $object->$key = array_to_object($value);
    } else {
      $object->$key = $value;
@@ -398,6 +376,26 @@ function explodeHashtag($chaine)
 		}
 	}
 	return trim($chaine);
+}
+
+function getCurlImgur($theurl,$the_clientid){
+	if(function_exists('curl_init')){
+		$headr = array();
+		$headr[] = 'Content-length: 0';
+		$headr[] = 'Content-type: application/json';
+		$headr[] = 'Authorization: Client-Id '.$the_clientid; 
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_URL,$theurl);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_GET,true);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER,$headr);
+	    $output = curl_exec($ch);
+	    echo curl_error($ch);
+	    curl_close($ch);
+	    return $output;
+    }else{
+        return file_get_contents($url);
+    }
 }
 
 function get_curl($url){
