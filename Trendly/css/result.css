@@ -1,3 +1,5 @@
+/********************* RESET CSS *********************/
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -53,8 +55,11 @@ section{
 	color: #fff;
 	margin: 20px;	
 }
+/********************* END OF THE RESET CSS *********************/
 
-/* FONT INITIALIZER */
+
+
+/*********************  START OF THE FONT INITIALIZER *********************/
 
 @font-face {
     font-family: 'helvetica_neue_lt_std35_thin';
@@ -68,7 +73,198 @@ section{
 
 }
 
-/* FONT INITIALIZER */
+/*********************  END START OF THE FONT INITIALIZER *********************/
+
+
+/*********************  GENERIC CSS *********************/
+
+/*********************  END GENERIC CSS *********************/
+
+
+
+/*********************  START OF THE INDEX.HTML *********************/
+
+header > article {
+	margin-top: 80px;
+	color: #000;
+	text-align: center;
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	
+}
+
+header > article h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 70px;
+}
+
+header > article a{
+	font-size: 30px;
+	color: #428bca;
+	padding: 10px 0 5px 0;
+}
+
+header > article a:hover{
+	text-decoration: none;
+}
+
+header article a svg {
+display: block;
+margin: 15px auto 0 auto;
+-moz-transition: all 0.6s ease 0s;
+-webkit-transition: all 0.6s ease 0s;
+-ms-transition: all 0.6s ease 0s;
+-khtml-transition: all 0.6s ease 0s;
+transition: all 0.6s ease 0s;
+}
+
+header article a:hover svg {
+margin-top: 20px;
+}
+
+/*********************  END OF THE INDEX.HTML *********************/
+
+
+/*********************  START OF THE MYDASH.HTML *********************/
+
+section .content article {
+	margin-top:0;
+	color: #000;
+	text-align: center;
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	padding: 5% 0 5% 0;
+	color: #fff;
+	
+	
+}
+
+section .content article:nth-child(1n-5){
+	background-color: #3498db; 
+
+}
+
+section .content article:nth-child(2n-5){
+	background-color: #f1c40f; 
+
+}
+
+section .content article:nth-child(3n-5){
+	background-color: #e74c3c; 
+
+}
+
+section .content article:nth-child(4n-5){
+	background-color: #1abc9c; 
+
+}
+
+
+section .content article:nth-child(5n-5){
+	background-color: #f1c40f; 
+
+}
+
+section .content > article h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	width: 100%;
+	text-transform: uppercase;
+}
+
+section .content > article a{
+	color:#fff;
+}
+
+section .content > article a:hover{
+	text-decoration: none;
+}
+
+section .content > article .fav-trends{
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	text-align: left;
+	padding: 15px;
+	margin: 35px;
+	
+	/*display: none;*/
+}
+
+section .content > article .fav-trends h3{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	text-align: left;
+	/*display: none;*/
+}
+
+section .content > article .fav-trends .action-buttons{
+	font-size: 12px;
+}
+
+section .content > article .fav-trends .action-buttons a:hover{
+	text-decoration: underline;
+}
+
+section .content > article .fav-trends .action-buttons span{
+	margin-right: 10px;
+}
+
+section .content > article .fav-trends .accordeon label {
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	text-align: left;
+	text-transform: uppercase;
+	/*display: none;*/
+}
+
+.accordeon .inner {
+    height: 0;
+    display: none;
+    opacity: 0;
+    color: #f0f0f0;
+    
+}
+
+section .content > article .fav-trends .inner-content:first-child {
+	margin-top: 20px;
+	border-top:none;
+	
+	
+}
+
+section .content > article .fav-trends .inner-content {
+	margin-top: 20px;
+	font-size: 15px;
+	border-top:1px solid #fff;
+	
+	
+	
+}
+
+.accordeon input[type="checkbox"] {
+    display: none;
+    
+}
+/* Show .inner for corresponding to checked radio or checkbox */
+ .accordeon input[type="checkbox"]:checked + .inner {
+    height: auto;
+    display: block;
+    opacity: 1;
+    padding: 1.5em;
+    
+    
+}
+
+
+
+
+
+
+
+
+
+/*********************  END OF THE MYDASH.HTML *********************/
+
 
 
 /* TOP FORM*/
@@ -100,9 +296,9 @@ section{
 input[type=submit]{
 		background-image: url("asset/search-icon.png");
 		background-color: none;
-		text-transform: uppercase;
 		width: 80px;
 		height: 80px;
+		/*position: absolute;*/ 
 		position: absolute;
 		right: 100px;
 		top:23px;
@@ -156,6 +352,7 @@ input[type=submit]{
 	margin: 0 auto;
 	width: 50%;
 	color: #191919;
+
 }
 
 .top-content article .text h1 {
@@ -184,6 +381,8 @@ input[type=submit]{
 	
 
 }
+
+
 
 /*CSS FOR HIGHLIGHT CONTENT*/
 
@@ -363,7 +562,6 @@ input[type=submit]{
 }
 
 .regular-stage-content article:last-child {
-	padding-top: 30px;
 	background-color: #fff;
 	margin: 0px 0px 10px 0px;
 	
@@ -747,7 +945,43 @@ a ,a:hover,
 
 
 
+.container {
+  //background: red;
+}
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.carousel ul{
+  list-style-type:none;
+  width:924%;
+  margin-left:0;
+  left:0;
+  padding-left:1px;
+}
+.carousel li{
+  display:inline;
 
-
-
-
+  
+}
+.carousel ul li{
+  width: 11%;
+  float:left;
+}
+.navPrev{
+	background-image: url("asset/arrow-left-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:left;
+  color: #000;
+}
+.navNext{
+	background-image: url("asset/arrow-right-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:right;
+   color: #000;
+}

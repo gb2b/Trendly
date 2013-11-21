@@ -28,7 +28,17 @@
         
 
 </head>
-<body>
+<body onclick="fctclic(this);">      
+      <div id="trend-desc">
+          <h2 class="trend-title">Trend</h2>
+          <p>
+            Top : <span class="top">1</span><br/>
+          </p>
+          <p class="buttons">
+              <a href="" class="seetrend"><span class="glyphicon glyphicon-flash"></span> See Trend</a><br/>
+              <a href="" class="favtrend"><span class="glyphicon glyphicon-bookmark"></span> Add Trend</a>
+          </p>
+      </div>
 
     <div class="container">
       
@@ -41,16 +51,7 @@
                 <p class="load-text">Chargement des trends...</p>
               </div>
             </div>
-            <div id="trend-desc" onclick="fctclic(this);">
-                <h2 class="trend-title">Trend</h2>
-                <p>
-                  Top : <span class="top">1</span><br/>
-                </p>
-                <p class="buttons">
-                    <a href="" class="seetrend"><span class="glyphicon glyphicon-flash"></span> See Trend</a><br/>
-                    <a href="" class="favtrend"><span class="glyphicon glyphicon-bookmark"></span> Add Trend</a>
-                </p>
-            </div>
+            
             <div id="module"></div>
       	</section>
         
@@ -73,7 +74,7 @@
  
   	<script>
       // print_r(getTrendGnews($cache));
-      <?php print_r(getTrendsPonderation($auth, $cache)); ?>
+      <?php print_r(getTrendsPonderation($auth, $cache,false)); ?>
 
 
     </script>

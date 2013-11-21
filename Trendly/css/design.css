@@ -107,8 +107,7 @@ input{
 
 /* Add favori */
 #trend-desc{
-	display:none;
-	
+	display: none;
 	height: 200px;
 	background: white;
 	border-bottom: 5px solid #3498db;

@@ -16,13 +16,14 @@ $cache = array(
 	"yt_cache"        => "youtube.json",
 	"instg_cache"     => "instagram.json",
 	"gnews_cache"     => "gnews.json",
-	"trends_cache"	  => "trends.json",
 	"time"            => 5, 
 	"path_cache"      => "tmp"
 	);
 
-
-
+/*echo "<pre>";
+print_r(getPopularTwTrends($auth, $cache));
+echo "</pre>";
+*/
 function getSearchTweets($auth, $q, $cache)
 {
 	$auth   = array_to_object($auth);
@@ -40,14 +41,16 @@ function getSearchTweets($auth, $q, $cache)
 		$connection->host = "https://api.twitter.com/1.1/";
 		$content = $connection->get("https://api.twitter.com/1.1/search/tweets.json?q=".$q."&lang=fr&result_type=popular");//attention à bien définir 	$query (la requête) avant
 		$i = 0;
-
 		foreach ($content->statuses as $tweet) {
-			$tweets[$i]->text = $tweet->text;
-			$tweets[$i]->user = $tweet->user->screen_name;
+			$tweets[$i]->text     = $tweet->text;
+			$tweets[$i]->user     = $tweet->user->screen_name;
+			$tweets[$i]->urlTweet = "http://twitter.com/user/status/".$tweet->id_str;
+			$tweets[$i]->urls     = $tweet->entities->urls[0]->url;
+			$tweets[$i]->img      = $tweet->entities->media[0]->media_url;
 			$i++;
 		}
-
-		$tweetCache->write(cleanCaracteresSpeciaux($q)."_".$cache->tw_cache, json_encode($tweets));
+/*		$tweets = $content->statuses[0]->entities;
+*/		$tweetCache ->write(cleanCaracteresSpeciaux($q)."_".$cache->tw_cache, json_encode($tweets));
 	}
 	return $tweets;
 }
@@ -73,8 +76,7 @@ function getPopularTwTrends($auth, $cache)
 
 		if (!empty($content)) {
 			foreach ($content[$i]->trends as $trend) {
-				$TwName = preg_replace("/^#([a-zA-Z0-9]+)/", "$1", $trend->name);
-				$tweets[$i] = $TwName;
+				$tweets[$i] = $trend->name;
 				$i++;
 			}
 		}
@@ -84,7 +86,7 @@ function getPopularTwTrends($auth, $cache)
 	return $tweets;
 }
 
-function getVideoYoutube($auth, $cache, $q)
+function getVideoYoutube($auth, $cache, $q = null)
 {
 	$cache = array_to_object($cache);
 	$auth  = array_to_object($auth);
@@ -151,16 +153,21 @@ function getPopularInstgImage($auth, $cache)
 	}
 }
 
-function getTrendGnews($cache)
+function getTrendGnews($cache, $q)
 {
 	$cache  = array_to_object($cache);
 	require_once $cache->classe;
 
 	$gCache = new Cache($cache->path_cache,$cache->time);
-	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss";
+	if (isset($q) && !empty($q)) {
+		$q2 = "&q=".$q;
+	}else{
+		$q = "";
+	}
+	$url = "http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss".$q2;
 
-	if ($gCache->read("_".$cache->gnews_cache)) {
-		$infos = json_decode($gCache->read("_".$cache->gnews_cache));
+	if ($gCache->read(cleanCaracteresSpeciaux($q)."_".$cache->gnews_cache)) {
+		$infos = json_decode($gCache->read(cleanCaracteresSpeciaux($q)."_".$cache->gnews_cache));
 	}else{
 		try{
 		    if(!@$fluxrss=simplexml_load_file($url)){
@@ -174,7 +181,10 @@ function getTrendGnews($cache)
 					$b                       = explode("<font size=\"-1\">", $item->description);
 					$b[]                     = utf8_decode(utf8_encode(strip_tags($item->title)));
 					$title                   = bestWord($b, $caractereRemove);
-					$infos[$i]->title        = $title["mot"];
+					$infos[$i]->keyword        = $title["mot"];
+					$titleSplit = preg_split("# - #", $item->title);
+					$infos[$i]->mainTitle = strip_tags($titleSplit[0]);
+					$infos[$i]->author = strip_tags($titleSplit[1]);
 					$infos[$i]->nbOccurences = $title["nbOccurences"];
 					$b                       = explode("<b>", $item->description);
 					$nbArticles              = end($b);
@@ -185,9 +195,39 @@ function getTrendGnews($cache)
 					$infos[$i]->date         = strtotime($item->pubDate);
 					preg_match("/url=.*/", $item->link, $url1, PREG_OFFSET_CAPTURE);
 					$infos[$i]->url          = substr($url1[0][0], 4);
+					$othersArticles = new DOMDocument();
+					@$othersArticles->loadHTML($item->description);
+					$urlArticles = $othersArticles->getElementsByTagName('a');
+					$othersAuthors = new DOMDocument();
+					@$othersAuthors->loadHTML($item->description);
+					$authorsArticles = $othersAuthors->getElementsByTagName('nobr');
+					$j = 0;
+					$nbArticles = 0;
+					$k = 0;
+					foreach ($urlArticles as $urlArticle) {
+						$nbArticles++;
+					}
+					foreach ($authorsArticles as $authorArticle) {
+						$authorArticles[$k] = $authorArticle->textContent;
+						$k++;
+					}
+					foreach ($urlArticles as $urlArticle) {
+						$articles = $urlArticle->getAttribute("href");
+						if ($j>1 && !empty($articles) && $j<($nbArticles-4)) {
+							preg_match("/url=.*/", $articles, $url1, PREG_OFFSET_CAPTURE);
+							$urlFinale = substr($url1[0][0], 4);
+							if (!empty($urlFinale)) {
+								$m = $j-1;
+								$infos[$i]->othersArticles->$m->title   = strip_tags($urlArticle->textContent);
+								$infos[$i]->othersArticles->$m->url     = substr($url1[0][0], 4);
+								$infos[$i]->othersArticles->$m->authors = $authorArticles[$m-1];
+							}
+						}
+						$j++;
+					}
 					$i++;
 		    	}
-		    $gCache->write("_".$cache->gnews_cache, json_encode($infos));		 
+		    $gCache->write(cleanCaracteresSpeciaux($q)."_".$cache->gnews_cache, json_encode($infos));		 
 		}catch(Exception $e){
 		    echo $e->getMessage();
 		} 
@@ -199,28 +239,29 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 {
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
-		
-		$result[0] = $gnews[0]->title;
-		$result[1] = $gnews[1]->title;
-		$result[2] = $gnews[2]->title;
-		$result[3] = $twitter[0];
-		$result[4] = $gnews[3]->title;
-		$result[5] = $twitter[1];
-		$result[6] = $gnews[4]->title;
-		$result[7] = $twitter[2];
-		$result[8] = $twitter[3];
-		$result[9] = $twitter[4];
-		
+
+		$result[0] = explodeHashtag($twitter[0]);
+		$result[1] = $gnews[0]->keyword;
+		$result[2] = explodeHashtag($twitter[1]);
+		$result[3] = $gnews[1]->keyword;
+		$result[4] = explodeHashtag($twitter[2]);
+		$result[5] = $gnews[3]->keyword;
+		$result[6] = explodeHashtag($twitter[3]);
+		$result[7] = $gnews[4]->keyword;
+		$result[8] = explodeHashtag($twitter[4]);
+		$result[9] = $gnews[5]->keyword;
+
 		$content = "var trends = {";
 		for ($i=0; $i < count($result); $i++) { 
 			if (isset($result[$i]) && !empty($result[$i])) {
 				$content .= "\"".$result[$i]."\": [".$i."]";
 			}
-			if ($i >= 0 && $i < (count($result)-1)) {
+			if ($i < (count($result)-1)) {
 				$content .= ",";
 			}
 		}
 		$content .= "}";
+
 		return $content;
 
 }
@@ -290,6 +331,24 @@ function cleanCaracteresSpeciaux($chaine)
 	$chaine = trim($chaine, '-');
 
 	return $chaine;
+}
+
+function explodeHashtag($chaine)
+{
+	if (preg_match("/^#.*/", $chaine)) {
+		$chaine = substr($chaine, 1);
+	}
+	preg_match_all('#[A-Z]#',$chaine, $chaine3);
+	$chaine2 = preg_split('#[A-Z]#',$chaine);
+	if (count($chaine2)>0){
+		$chaine = "";
+		for ($i=0; $i < count($chaine2); $i++) { 
+			if (strlen($chaine2[$i])>=1) {
+				$chaine .= $chaine3[0][$i-1].$chaine2[$i]." ";
+			}
+		}
+	}
+	return trim($chaine);
 }
 
 function get_curl($url){
