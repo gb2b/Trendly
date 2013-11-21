@@ -8,9 +8,9 @@
    //$videos = getVideoYoutube($auth, $cache, $query);
    $actus = getTrendGnews($cache, $query);
    $pictures = getPicturesImgur($auth,$cache,$query);
-   /*echo "<pre>";
+   echo "<pre>";
    print_r($pictures);
-   echo "</pre>";*/
+   echo "</pre>";
    
 
 ?>
@@ -119,12 +119,10 @@
                   <p><?php echo $actus[$i]->mainTitle; ?></p>
                </div>
 
-               <div class="highlight-caption top-to-bottom">
+               <div class="highlight-caption bottom-to-top">
                   <div class="highlight">
                      <div class="icon"><img alt="articles" src=
                      "css/asset/articles-icon-black.png"></div>
-
-                     <h2><?php echo $actus[$i]->author; ?></h2>
                      
                      <div class="save">
                         <span><a href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
@@ -137,6 +135,7 @@
          </article>
          <?php endfor; ?>
       </div>
+
 
       
       <!-- PICTURES -->

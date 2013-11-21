@@ -273,13 +273,13 @@ function getPicturesImgur($auth,$cache,$q){
 	require_once $cache->classe;
 
 	$imagesCache = new Cache($cache->path_cache,$cache->time);
-	$api = 'https://api.imgur.com/3/gallery/search/?q='.$q;
+	$api = 'https://api.imgur.com/3/gallery/search/1?q='.urlencode($q);
 	$response = getCurlImgur($api,$auth->imgur_client_id);
 	
 	if($response){
 	    $i = 0; 
-	    if ($imagesCache->read("_".$cache->imgur_cache)) {
-			$images = json_decode($imagesCache->read("_".$cache->imgur_cache));
+	    if ($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache)) {
+			$images = json_decode($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache));
 		}else{
 		    foreach(json_decode($response)->data as $item){
 				
@@ -291,7 +291,7 @@ function getPicturesImgur($auth,$cache,$q){
 				$images[$i]->description = htmlspecialchars($description);
 		        $i++;
 		    }
-		    $imagesCache->write("_".$cache->imgur_cache, json_encode($images));
+		    $imagesCache->write(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache, json_encode($images));
 		}
 	    return $images;
 	}
@@ -393,6 +393,8 @@ function getCurlImgur($theurl,$the_clientid){
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_GET,true);
 	    curl_setopt($ch, CURLOPT_HTTPHEADER,$headr);
+	    curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0); 
 	    $output = curl_exec($ch);
 	    echo curl_error($ch);
 	    curl_close($ch);

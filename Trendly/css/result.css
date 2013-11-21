@@ -136,11 +136,13 @@ article{
   
     position: relative;
     overflow: hidden;  
-    width: 100%; 
+    width: 100%;
+    -webkit-animation: anima 2s; 
     animation: anima 2s;
-    -webkit-animation: anima 2s;
-   backface-visibility:hidden;
+    
+   
     -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
 }
 
 
@@ -178,8 +180,9 @@ a ,a:hover,
 .highlight-caption,
 .block:hover .highlight-caption,
 .block:hover img{
+ -webkit-transition: all 0.5 ease; 
      transition: all 0.5s ease;
-    -webkit-transition: all 0.5 ease;  
+ 
 }
 
 /*Effects in Caption*/
@@ -660,9 +663,6 @@ input[type=submit]{
 
 /* SECOND-STAGE CONTENT */
 .second-stage-content{
-	height:auto;
-	
-
 }
 
 .second-stage-content article {
@@ -893,10 +893,11 @@ input[type=submit]{
     overflow: hidden;
     float: left;
     display: inline-block;
-    animation: anima 2s;
     -webkit-animation: anima 2s;
-   backface-visibility:hidden;
+    animation: anima 2s;
     -webkit-backface-visibility:hidden;
+   	backface-visibility:hidden;
+    
 }
 
 
@@ -915,8 +916,9 @@ a ,a:hover,
 .pic-caption,
 .pic:hover .pic-caption,
 .pic:hover img{
+	 -webkit-transition: all 0.5 ease; 
      transition: all 0.5s ease;
-    -webkit-transition: all 0.5 ease;  
+    
 }
 
 /*Effects in Caption*/
