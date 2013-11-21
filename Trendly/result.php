@@ -8,10 +8,10 @@
    //$videos = getVideoYoutube($auth, $cache, $query);
    $actus = getTrendGnews($cache, $query);
    $pictures = getPicturesImgur($auth,$cache,$query);
-   echo "<pre>";
+   /*echo "<pre>";
    print_r($pictures);
    echo "</pre>";
-   
+   */
 
 ?>
 
@@ -83,7 +83,7 @@
                      <div class="save">
                         <span><a href="<?php if(isset($tweets)) echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
                      </div>
                      
                   </div>
@@ -127,7 +127,7 @@
                      <div class="save">
                         <span><a href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
                      </div>
                   </div>
                </div>
@@ -140,8 +140,9 @@
       
       <!-- PICTURES -->
       <div class="image-stage-content row">
+         <?php for($i=0;$i<4;$i++) : ?>
          <figure class="col-md-6 pic">
-             <img src="http://i.imgur.com/IYvlJo3.jpg" class="pic-image" alt="Pic"/>
+             <img src="<?php echo "http://i.imgur.com/".$pictures[$i]->id."m.jpg" ?>" class="pic-image" alt="Pic"/>
            <div class="highlight-caption left-to-right">
                   <div class="highlight">
                      <div class="icon"><img alt="articles" src=
@@ -150,71 +151,14 @@
                      <h2>ImgUr</h2>
                      
                      <div class="save">
-                        <span><a href="#" alt="save">GO</a></span>
+                        <span><a href="<?php echo $pictures[$i]->src ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
                      </div>
                   </div>
             
          </figure>
-
-         <figure class="col-md-6 pic">
-             <img src="http://i.imgur.com/1xtOB7g.jpg" class="pic-image" alt="Pic"/>
-          <div class="highlight-caption left-to-right">
-                  <div class="highlight">
-                     <div class="icon"><img alt="articles" src=
-                     "css/asset/articles-icon.png"></div>
-
-                     <h2>Instagram</h2>
-                     
-                     <div class="save">
-                        <span><a href="#" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
-                     </div>
-                  </div>
-            
-         </figure>
-         
-         
-         
-          </div>
-          
-          <div class="image-stage-content row">
-         <figure class="col-md-6 pic">
-             <img src="http://i.imgur.com/cc14CVy.jpg" class="pic-image" alt="Pic"/>
-          <div class="highlight-caption left-to-right">
-                  <div class="highlight">
-                     <div class="icon"><img alt="articles" src=
-                     "css/asset/articles-icon.png"></div>
-
-                     <h2>Instagram</h2>
-                     
-                     <div class="save">
-                        <span><a href="#" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
-                     </div>
-                  </div>
-            
-         </figure>
-
-         <figure class="col-md-6 pic">
-             <img src="http://i.imgur.com/xL0j0Te.png" class="pic-image" alt="Pic"/>
-          <div class="highlight-caption left-to-right">
-                  <div class="highlight">
-                     <div class="icon"><img alt="articles" src=
-                     "css/asset/articles-icon.png"></div>
-
-                     <h2>Instagram</h2>
-                     
-                     <div class="save">
-                        <span><a href="#" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save">LOGO</a>
-                     </div>
-                  </div>            
-         </figure>   
+         <?php endfor; ?>
          
        </div>
        

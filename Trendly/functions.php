@@ -285,7 +285,8 @@ function getPicturesImgur($auth,$cache,$q){
 				
 				$title                   = (isset($item->title))?$item->title:null;
 				$src                     = $item->link; 
-				$description             = (isset($item->description))?$item->description:null; 
+				$description             = (isset($item->description))?$item->description:null;  
+				$images[$i]->id          = htmlspecialchars($item->id);
 				$images[$i]->title       = htmlspecialchars($title);
 				$images[$i]->src         = htmlspecialchars($src);
 				$images[$i]->description = htmlspecialchars($description);
