@@ -20,9 +20,9 @@ $cache = array(
 	"path_cache"      => "tmp"
 	);
 
-/*echo "<pre>";
-print_r(getSearchTweets($auth, "tireur", $cache));
-echo "</pre>";*/
+echo "<pre>";
+print_r(explodeHashtag("#NBA"));
+echo "</pre>";
 
 function getSearchTweets($auth, $q, $cache)
 {
@@ -365,16 +365,19 @@ function explodeHashtag($chaine)
 	if (preg_match("/^#.*/", $chaine)) {
 		$chaine = substr($chaine, 1);
 	}
-	preg_match_all('#[A-Z]#',$chaine, $chaine3);
-	$chaine2 = preg_split('#[A-Z]#',$chaine);
-	if (count($chaine2)>0){
-		$chaine = "";
-		for ($i=0; $i < count($chaine2); $i++) { 
-			if (strlen($chaine2[$i])>=1) {
-				$chaine .= $chaine3[0][$i-1].$chaine2[$i]." ";
+	if (!preg_match("/[A-Z]*$/", $chaine)) {
+		preg_match_all('#[A-Z]#',$chaine, $chaine3);
+		$chaine2 = preg_split('#[A-Z]#',$chaine);
+		if (count($chaine2)>0){
+			$chaine = "";
+			for ($i=0; $i < count($chaine2); $i++) { 
+				if (strlen($chaine2[$i])>=1) {
+					$chaine .= $chaine3[0][$i-1].$chaine2[$i]." ";
+				}
 			}
 		}
 	}
+
 	return trim($chaine);
 }
 
