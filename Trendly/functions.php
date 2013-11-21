@@ -298,6 +298,46 @@ function getPicturesImgur($auth,$cache,$q){
 	}
 }
 
+function getPicturesBing($cache,$q){
+		$cache  = array_to_object($cache);
+		require_once $cache->classe;
+
+		$imagesCache = new Cache($cache->path_cache,$cache->time);
+
+	    // Replace this value with your account key
+	    $accountKey = 'gwqxJUSegbzJC1MyPhs4IV1A5u9yRvGjl2QYjEwzZEs=';
+	    $ServiceRootURL =  'https://api.datamarket.azure.com/Bing/SearchWeb/';  
+	    $WebSearchURL = $ServiceRootURL . 'Image?$format=json&Query=';
+
+	    $request = $WebSearchURL . urlencode($q);
+
+	    $response = get_curl_bing($request,$accountKey);
+	    
+		if($response){
+		    $i = 0; 
+		    if ($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache)) {
+				$images = json_decode($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache));
+			}else{
+			    foreach(json_decode($response)->data as $item){
+					
+					$title                   = (isset($item->title))?$item->title:null;
+					$src                     = $item->link; 
+					$description             = (isset($item->description))?$item->description:null;  
+					$images[$i]->id          = htmlspecialchars($item->id);
+					$images[$i]->title       = htmlspecialchars($title);
+					$images[$i]->src         = htmlspecialchars($src);
+					$images[$i]->description = htmlspecialchars($description);
+			        $i++;
+			    }
+			    $imagesCache->write(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache, json_encode($images));
+			}
+		    return $images;
+		}
+
+}
+
+
+
 
 function array_to_object($array) {
   $object = new stdClass;
@@ -404,6 +444,23 @@ function getCurlImgur($theurl,$the_clientid){
         return file_get_contents($url);
     }
 }
+
+function get_curl_bing($url,$accountKey){
+	if(function_exists('curl_init')){
+		$process = curl_init($url);
+	    curl_setopt($process, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	    curl_setopt($process, CURLOPT_USERPWD,  $accountKey . ":" . $accountKey);
+	    curl_setopt($process, CURLOPT_TIMEOUT, 30);
+	    curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
+	    $response = curl_exec($process);
+
+	    curl_close($process);
+	    return $response;
+	}else{
+		return file_get_contents($url);
+	}
+}
+
 
 function get_curl($url){
     if(function_exists('curl_init')){

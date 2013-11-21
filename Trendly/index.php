@@ -47,7 +47,10 @@
       	<section>
             <div id="loading">
               <div class="load-content">
-                <div class="load-animation"></div>
+                <div id="loader">
+                  <div class="outer"></div>
+                  <div class="inner"></div>
+                </div>
                 <p class="load-text">Chargement des trends...</p>
               </div>
             </div>

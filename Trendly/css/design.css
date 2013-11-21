@@ -257,3 +257,105 @@ input{
         transform: rotate(360deg);
     };
 }
+
+
+/*LOADER */
+#loader {
+  margin:;
+}
+#loader .outer {
+  border: 15px solid /*rgba(0, 183, 229, 0.9)*/#3498db;
+  opacity: .9;
+  width: 100px;
+  height: 100px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spin-right 0.5s 0 linear infinite normal;
+  -moz-animation: spin-right 0.5s 0 linear infinite normal;
+  -ms-animation: spin-right 0.5s 0 linear infinite normal;
+  animation: spin-right 0.5s 0 linear infinite normal;
+  margin: 0 auto;
+}
+#loader .inner {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 15px solid #3498db /*rgba(0, 183, 229, 0.9)*/;
+  opacity: .9;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  position: relative;
+  top: -40px;
+  margin: 0 auto;
+  -webkit-animation: spin-left 0.5s 0 linear infinite normal;
+  -moz-animation: spin-left 0.5s 0 linear infinite normal;
+  -ms-animation: spin-left 0.5s 0 linear infinite normal;
+  animation: spin-left 0.5s 0 linear infinite normal;
+}
+
+
+
+
+@-webkit-keyframes spin-right {
+  from {
+    -webkit-transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    opacity: 1.0;
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes spin-left {
+  from {
+    -webkit-transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    -webkit-transform: rotate(-180deg);
+    opacity: 1.0;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+    opacity: 0.2;
+  }
+}
+@keyframes spin-right {
+  from {
+    transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: rotate(180deg);
+    opacity: 1.0;
+  }
+  to {
+    transform: rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@-moz-keyframes spin-left {
+  from {
+    -moz-transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    -moz-transform: rotate(-180deg);
+    opacity: 1.0;
+  }
+  to {
+    -moz-transform: rotate(-360deg);
+    opacity: 0.2;
+  }
+}
+
+
+/*LOADER */
