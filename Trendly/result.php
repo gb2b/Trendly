@@ -33,7 +33,6 @@
    <link href="css/result.css" rel="stylesheet">
    <link href="css/css/bootstrap.css" rel="stylesheet">
 
-   <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 </head>
 
 <body>
@@ -260,8 +259,9 @@
       
 </section>
 </body>
-
-
+<script src="js/jquery.js"></script>
+<script src="js/local_storage.js"></script>
+<script src="js/my_local_storage.js"></script>
 <script>
 var speed = 600,
     currSel = 0,
