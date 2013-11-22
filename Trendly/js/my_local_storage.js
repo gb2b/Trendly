@@ -11,4 +11,3 @@ lien.on('click', function(event) {
 	storage.record(_datas);
 });
 
-///
