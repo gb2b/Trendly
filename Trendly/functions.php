@@ -20,6 +20,7 @@ $cache = array(
 	"gnews_cache" => "gnews.json",
 	"imgur_cache" => "imgur.json",
 	"bing_cache"  => "bing.json",
+	"trend_cache" => "trend.json",
 	"time"        => 5, 
 	"path_cache"  => "tmp"
 	);
@@ -245,26 +246,36 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
 
-		$result[0] = $twitter[0];
-		$result[1] = $gnews[0]->keyword;
-		$result[2] = $twitter[1];
-		$result[3] = $gnews[1]->keyword;
-		$result[4] = $twitter[2];
-		$result[5] = $gnews[3]->keyword;
-		$result[6] = $twitter[3];
-		$result[7] = $gnews[4]->keyword;
-		$result[8] = $twitter[4];
-		$result[9] = $gnews[5]->keyword;
-		$content = "var trends = {";
-		for ($i=0; $i < count($result); $i++) { 
-			if (isset($result[$i]) && !empty($result[$i])) {
-				$content .= "\"".$result[$i]."\": [".$i."]";
+		$cache  = array_to_object($cache);
+		require_once $cache->classe;
+
+		$trendCache = new Cache($cache->path_cache,$cache->time);
+
+		if ($trend_cache->read($cache->trend_cache)) {
+			$infos = json_decode($gCache->read($cache->trend_cache));
+		}else{
+			$result[0] = $twitter[0];
+			$result[1] = $gnews[0]->keyword;
+			$result[2] = $twitter[1];
+			$result[3] = $gnews[1]->keyword;
+			$result[4] = $twitter[2];
+			$result[5] = $gnews[3]->keyword;
+			$result[6] = $twitter[3];
+			$result[7] = $gnews[4]->keyword;
+			$result[8] = $twitter[4];
+			$result[9] = $gnews[5]->keyword;
+			$content = "var trends = {";
+			for ($i=0; $i < count($result); $i++) { 
+				if (isset($result[$i]) && !empty($result[$i])) {
+					$content .= "\"".$result[$i]."\": [".$i."]";
+				}
+				if ($i < (count($result)-1)) {
+					$content .= ",";
+				}
 			}
-			if ($i < (count($result)-1)) {
-				$content .= ",";
-			}
+			$content .= "}";
+			$trendCache->write($cache->trend_cache, json_encode($infos));		 
 		}
-		$content .= "}";
 		return $content;
 
 }
