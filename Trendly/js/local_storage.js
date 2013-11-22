@@ -1,28 +1,40 @@
 var storage = {
 	defaults : {
-<<<<<<< HEAD
 		nom : "key",
-=======
->>>>>>> 01fb14ea46ab8299ae3963af68eda705f6f0a37e
-		recorded : function(){}
+		recorded : function(){},
+		counter : 0
 	},
 	init : function(options){
 		this.params=$.extend(this.defaults,options);
-<<<<<<< HEAD
-		var datas = {};
-		for(i in localStorage){
-			datas.trend=localStorage.getItem(i);
+		return this;
+	},
+	record : function(datas){
+		this.params.counter = parseInt(this.checkMax())+1;
+		if (this.checkValueExist(datas) == false) {
+			localStorage.setItem(this.params.counter,JSON.stringify(datas));
 		}
-		return this;
-	},
-	record : function(datas){
-		localStorage.setItem(this.params.nom,JSON.stringify(datas));
-=======
-		return this;
-	},
-	record : function(datas){
-		localStorage.setItem(datas.date,JSON.stringify(datas));
->>>>>>> 01fb14ea46ab8299ae3963af68eda705f6f0a37e
 		this.params.recorded.call(this,datas);
+	},
+	checkMax : function () {
+		var max = 0;
+		for(i in localStorage){
+			max++;
+		}
+		return max;
+	},
+	checkValueExist : function (datas) {
+		var exist = false;
+		var data = JSON.stringify(datas);
+		for (i in localStorage) {
+			if (localStorage.getItem(i) == data) {
+				console.log(localStorage.getItem(i));
+				console.log(data);
+				exist = true;
+			}
+		}
+		return exist;
+	},
+	checkout : function (key) {
+		return localStorage.getItem(key);
 	}
 }

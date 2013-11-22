@@ -776,6 +776,7 @@ input[type=submit]{
 	padding-top: 30px;
 	padding-bottom: 80px;
 	background-color: #9b59b6;
+	height: 300px;
 }
 
 .regular-stage-content article:last-child {
@@ -816,7 +817,9 @@ input[type=submit]{
 
 }
 
-
+.regular-stage-content article .highlight{
+	margin-top: 60px;
+}
 
 .regular-stage-content article .highlight h2 {
 	font-size: 14px;

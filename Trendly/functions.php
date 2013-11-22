@@ -7,19 +7,21 @@ $auth =  array(
 	"tw_oauth_token_secret" => "rHm8e8ZRZ6iTl7u0JnPzmTDXDq4N69yTeZoHsQ1wpM",
 	"tw_path_file_oauth"    => "auth/twitteroauth/twitteroauth.php",
 	"instg_client_id"       => "9110e8c268384cb79901a96e3a16f588",
-	"imgur_client_id" 		=> "7bf23d0ba414535",
+	"bing_client_id"        => "gwqxJUSegbzJC1MyPhs4IV1A5u9yRvGjl2QYjEwzZEs",
+	"imgur_client_id"       => "7bf23d0ba414535",
 	"zend_yt_path_file"     => "Zend/Loader.php"
 	);
 
 $cache = array(
-	"classe"          => "class.cache.php",
-	"tw_cache"        => "twitter.json",
-	"yt_cache"        => "youtube.json",
-	"instg_cache"     => "instagram.json",
-	"gnews_cache"     => "gnews.json",
-	"imgur_cache"	  => "imgur.json",
-	"time"            => 5, 
-	"path_cache"      => "tmp"
+	"classe"      => "class.cache.php",
+	"tw_cache"    => "twitter.json",
+	"yt_cache"    => "youtube.json",
+	"instg_cache" => "instagram.json",
+	"gnews_cache" => "gnews.json",
+	"imgur_cache" => "imgur.json",
+	"bing_cache"  => "bing.json",
+	"time"        => 5, 
+	"path_cache"  => "tmp"
 	);
 
 /*echo "<pre>";
@@ -177,7 +179,7 @@ function getTrendGnews($cache, $q)
 		        throw new Exception('Flux introuvable');
 		    }
 		    if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title))
-		        throw new Exception('Flux invalide');
+		        /*throw new Exception('Flux invalide');*/
 		        $i = 0;
 		        $caractereRemove = array(".", "!", ";", ",","faire","font","avec","supprimer");
 		    	foreach ($fluxrss->channel->item as $item) {
@@ -298,39 +300,36 @@ function getPicturesImgur($auth,$cache,$q){
 	}
 }
 
-function getPicturesBing($cache,$q){
-		$cache  = array_to_object($cache);
-		require_once $cache->classe;
+function getPicturesBing($cache,$auth,$q){
+		$auth   = array_to_object($auth);
+		/*$cache  = array_to_object($cache);
+		require_once $cache->classe;*/
 
-		$imagesCache = new Cache($cache->path_cache,$cache->time);
-
-	    // Replace this value with your account key
-	    $accountKey = 'gwqxJUSegbzJC1MyPhs4IV1A5u9yRvGjl2QYjEwzZEs=';
-	    $ServiceRootURL =  'https://api.datamarket.azure.com/Bing/SearchWeb/';  
-	    $WebSearchURL = $ServiceRootURL . 'Image?$format=json&Query=';
-
-	    $request = $WebSearchURL . urlencode($q);
-
-	    $response = get_curl_bing($request,$accountKey);
+		/*$bingCache = new Cache($cache->path_cache,$cache->time);*/
+	    $api =  'https://api.datamarket.azure.com/Bing/Search/Image?$format=json&Query=%27'.urlencode($q).'%27&Market=%27fr-FR%27&Adult=%27Strict%27&ImageFilters=%27Size%3ALarge%27';  
+	    $response = get_curl_bing($api,$auth->bing_client_id);
 	    
 		if($response){
-		    $i = 0; 
-		    if ($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache)) {
-				$images = json_decode($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache));
-			}else{
-			    foreach(json_decode($response)->data as $item){
+		    /*$i = 0; 
+		    if ($bingCache->read(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache)) {
+				$images = json_decode($bingCache->read(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache));
+			}else{*/
+			    foreach(json_decode($response)->d->results as $item){
+					$title                = (isset($item->Title))?$item->Title:null;
+					$mediasrc             = $item->MediaUrl; 
+					$url                  = $item->SourceUrl; 
+					$width                = $item->Width; 
+					$height               = $item->Height; 
 					
-					$title                   = (isset($item->title))?$item->title:null;
-					$src                     = $item->link; 
-					$description             = (isset($item->description))?$item->description:null;  
-					$images[$i]->id          = htmlspecialchars($item->id);
-					$images[$i]->title       = htmlspecialchars($title);
-					$images[$i]->src         = htmlspecialchars($src);
-					$images[$i]->description = htmlspecialchars($description);
+					$images[$i]->title    = htmlspecialchars($title);
+					$images[$i]->mediasrc = htmlspecialchars($mediasrc);
+					$images[$i]->url      = htmlspecialchars($url);
+					$images[$i]->width    = htmlspecialchars($width);
+					$images[$i]->height   = htmlspecialchars($height);
 			        $i++;
 			    }
-			    $imagesCache->write(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache, json_encode($images));
-			}
+			   /* $bingCache->write(cleanCaracteresSpeciaux($q)."_".$cache->bing_cache, json_encode($images));
+			}*/
 		    return $images;
 		}
 
@@ -434,8 +433,8 @@ function getCurlImgur($theurl,$the_clientid){
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_GET,true);
 	    curl_setopt($ch, CURLOPT_HTTPHEADER,$headr);
-	    curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
 	    $output = curl_exec($ch);
 	    echo curl_error($ch);
 	    curl_close($ch);
@@ -445,20 +444,20 @@ function getCurlImgur($theurl,$the_clientid){
     }
 }
 
-function get_curl_bing($url,$accountKey){
-	if(function_exists('curl_init')){
-		$process = curl_init($url);
-	    curl_setopt($process, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-	    curl_setopt($process, CURLOPT_USERPWD,  $accountKey . ":" . $accountKey);
-	    curl_setopt($process, CURLOPT_TIMEOUT, 30);
-	    curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
-	    $response = curl_exec($process);
+function get_curl_bing($url,$key){
+    if(function_exists('curl_init')){
+        $process = curl_init($url);
+        curl_setopt($process, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($process, CURLOPT_USERPWD,  $key . ":" . $key);
+        curl_setopt($process, CURLOPT_TIMEOUT, 30);
+        curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
+        $response = curl_exec($process);
 
-	    curl_close($process);
-	    return $response;
-	}else{
-		return file_get_contents($url);
-	}
+        curl_close($process);
+        return $response;
+    }else{
+        return file_get_contents($url);
+    }
 }
 
 
