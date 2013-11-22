@@ -10,3 +10,5 @@ lien.on('click', function(event) {
 	_datas.trend = $(this).data('trend');
 	storage.record(_datas);
 });
+
+///
