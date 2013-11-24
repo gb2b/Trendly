@@ -136,17 +136,12 @@ article{
   
     position: relative;
     overflow: hidden;  
-    width: 100%;
-    -webkit-animation: anima 2s; 
+    width: 100%; 
     animation: anima 2s;
-    
-   
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
-    backface-visibility:hidden;
 }
-
-
-
 
 .highlight-caption{
     /*cursor: pointer;
@@ -166,6 +161,25 @@ article{
     text-align:center;
 }
 
+
+.highlight-caption-top{
+    /*cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    border: 1px solid black;
+    opacity:0;
+    padding: 10px;
+    text-align:center;*/
+    
+    cursor: pointer;
+    position: relative;
+    width: 95%;
+    height: 0;
+    opacity:0;
+    text-align:center;
+}
+
 .text-block{
      -webkit-transform: scale(1);
              transform: scale(1);
@@ -177,12 +191,11 @@ article{
 /*All classes with same attribute*/
 a ,a:hover,
 .block .text-block,
-.highlight-caption,
+.highlight-caption,.highlight-caption-top,
 .block:hover .highlight-caption,
 .block:hover img{
- -webkit-transition: all 0.5 ease; 
      transition: all 0.5s ease;
- 
+    -webkit-transition: all 0.5 ease;  
 }
 
 /*Effects in Caption*/
@@ -345,42 +358,62 @@ margin-top: 20px;
 /*********************  START OF THE MYDASH.HTML *********************/
 
 section .content article {
-	margin-top:0;
+	margin-top: 0;
 	color: #000;
 	text-align: center;
 	font-family: "helvetica_neue_lt_std35_thin";
 	font-size: 20px;
 	padding: 5% 0 5% 0;
-	color: #fff;
+	/*height: 240px;*/
+	margin: 10px;
+	border-radius: 10px;
+	background-color: #fff;
+	
+}
+
+
+section .content article label {
+	position: relative;
+	width: 100%;
 	
 	
 }
 
-section .content article:nth-child(1n-5){
+section .content article label div {
+	background-image: url("asset/arrow-down-icon.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 8% 0 8% 0;
+	position: relative;
+	top:70px;
+	border-radius: 0 0 10px 10px;
+	
+	
+}
+
+
+
+
+.flat-blue{
 	background-color: #3498db; 
 
 }
 
-section .content article:nth-child(2n-5){
+.flat-yellow{
 	background-color: #f1c40f; 
 
 }
 
-section .content article:nth-child(3n-5){
+.flat-red{
 	background-color: #e74c3c; 
 
 }
 
-section .content article:nth-child(4n-5){
+.flat-green{
 	background-color: #1abc9c; 
 
 }
 
-
-section .content article:nth-child(5n-5){
-	background-color: #f1c40f; 
-
-}
 
 section .content > article h1{
 	font-family: "helvetica_neue_lt_std35_thin";
@@ -389,37 +422,86 @@ section .content > article h1{
 	text-transform: uppercase;
 }
 
+section .content > article p{
+	font-size: 18px;
+	margin: 0 auto;
+	width: 70%;
+}
+
 section .content > article a{
-	color:#fff;
+	font-size: 13px;
+	color: #7f8c8d;
+}
+
+section .content > article .delete-btn{
+	background-image:url("asset/quit-icon.png");
+	background-repeat: no-repeat;
+	padding: 25px;
+	position: absolute;
+	top: 10px;
+	left:10px;
+	
 }
 
 section .content > article a:hover{
-	text-decoration: none;
+	text-decoration: underline;
+	color: #000;
 }
+
+
 
 section .content > article .fav-trends{
 	border-top: 1px solid white;
 	border-bottom: 1px solid white;
 	text-align: left;
+	color: #000;
+	width: 100%;
 	padding: 15px;
-	margin: 35px;
 	
 	/*display: none;*/
 }
 
+section .content > article .fav-trends .inner-content {
+	border-top:1px solid #7f8c8d;
+
+}
+
+section .content > article .fav-trends figure img {
+	max-width: 100%;
+    max-height: 300px;
+	height: auto; 
+
+}
+
+
 section .content > article .fav-trends h3{
 	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 20px;
+	font-size: 18px;
 	text-align: left;
+	margin: 15px 10px 10px;
+	/*display: none;*/
+}
+
+section .content > article .fav-trends p{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 15px;
+	text-align: left;
+	margin: 10px;
 	/*display: none;*/
 }
 
 section .content > article .fav-trends .action-buttons{
+	margin:10px 0 15px 10px; 
+}
+
+section .content > article .fav-trends .action-buttons a{
 	font-size: 12px;
+	color: #7f8c8d;
 }
 
 section .content > article .fav-trends .action-buttons a:hover{
 	text-decoration: underline;
+	color: #000;
 }
 
 section .content > article .fav-trends .action-buttons span{
@@ -442,21 +524,8 @@ section .content > article .fav-trends .accordeon label {
     
 }
 
-section .content > article .fav-trends .inner-content:first-child {
-	margin-top: 20px;
-	border-top:none;
-	
-	
-}
 
-section .content > article .fav-trends .inner-content {
-	margin-top: 20px;
-	font-size: 15px;
-	border-top:1px solid #fff;
-	
-	
-	
-}
+
 
 .accordeon input[type="checkbox"] {
     display: none;
@@ -467,7 +536,7 @@ section .content > article .fav-trends .inner-content {
     height: auto;
     display: block;
     opacity: 1;
-    padding: 1.5em;
+    margin-top: 66px;
     
     
 }
@@ -558,7 +627,7 @@ input[type=submit]{
 
 	margin: 0 0 10px 0;
 	padding-top: 70px;
-	padding-bottom: 70px;
+	padding-bottom: 30px;
 	background-color: #fff;
 	border-bottom: 5px solid #3498db;
 	
@@ -663,6 +732,9 @@ input[type=submit]{
 
 /* SECOND-STAGE CONTENT */
 .second-stage-content{
+	height:auto;
+	
+
 }
 
 .second-stage-content article {
@@ -670,11 +742,10 @@ input[type=submit]{
 	padding-bottom: 60px;
 	background-color: #fff;
 	margin: 0px 15px 10px 0px;
-	
+	height: 300px;
 }
 
 .second-stage-content article:last-child {
-	background-color: #fff;
 	margin: 0px 0px 10px 0px;
 	
 }
@@ -776,7 +847,7 @@ input[type=submit]{
 	padding-top: 30px;
 	padding-bottom: 80px;
 	background-color: #9b59b6;
-	height: 300px;
+	height : 300px;
 }
 
 .regular-stage-content article:last-child {
@@ -817,10 +888,8 @@ input[type=submit]{
 
 }
 
-.regular-stage-content article .highlight{
-	margin-top: 60px;
-}
 
+.regular-stage-content article .highlight{margin-top: 50px;}
 .regular-stage-content article .highlight h2 {
 	font-size: 14px;
 	width: 50%;
@@ -877,17 +946,18 @@ input[type=submit]{
 	background-color:  #ecf0f1;
 	margin: 0px 15px 10px 0px;
 	border-bottom: 5px solid #c0392b;
-
+	height: 300px;
+	background: black;
 	
 }
 
-.image-stage-content figure:last-child {
+.image-stage-content figure:nth-child(2),figure:nth-child(4) {
 	margin: 0px 0px 10px 0px;
 	
 }
 
 .image-stage-content figure img{
-    max-width:100%;
+    width:100%;
 }
 .image-stage-content .pic{
     max-width: 100%;
@@ -896,11 +966,10 @@ input[type=submit]{
     overflow: hidden;
     float: left;
     display: inline-block;
-    -webkit-animation: anima 2s;
     animation: anima 2s;
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
-   	backface-visibility:hidden;
-    
 }
 
 
@@ -919,9 +988,8 @@ a ,a:hover,
 .pic-caption,
 .pic:hover .pic-caption,
 .pic:hover img{
-	 -webkit-transition: all 0.5 ease; 
      transition: all 0.5s ease;
-    
+    -webkit-transition: all 0.5 ease;  
 }
 
 /*Effects in Caption*/
@@ -1046,7 +1114,5 @@ a ,a:hover,
 
 
 /* IMAGE-STAGE CONTENT */
-
-
 
 

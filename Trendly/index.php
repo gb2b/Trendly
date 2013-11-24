@@ -1,95 +1,38 @@
-<?php 
-  include("functions.php");
-?>
+<!DOCTYPE html>
 
-<!doctype html>
-<html lang="en">
+<html>
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta charset="utf-8">
+   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
-        <title>Trendly : Les tendances de demain</title>
-        <meta name="description" content="">
+   <title>Trendly : les Tendances du net</title>
+   <meta content="" name="description">
+   <meta content="width=device-width,initial-scale=1" name="viewport">
 
+   <link href="css/result.css" rel="stylesheet">
+   <link href="css/css/bootstrap.css" rel="stylesheet">
 
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
-  
-        <!-- Bootstrap & FontAwesome -->
-        <link href="css/css/bootstrap.css" rel="stylesheet">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
-        <!-- Css reset for all browsers -->
-        <link rel="stylesheet" href="css/reset.css">
-        
-        <!-- Css Design -->
-        <link rel="stylesheet" href="css/design.css">
-        <!-- <link rel="stylesheet" href="css/trendly.css">-->
-        
-
+   <link rel="icon" type="image/png" href="css/asset/favicon.png" />
 </head>
-<body onclick="fctclic(this);">      
-      <div id="trend-desc">
-          <h2 class="trend-title">Trend</h2>
-          <p>
-            Top : <span class="top">1</span><br/>
-          </p>
-          <p class="buttons">
-              <a href="" class="seetrend"><span class="glyphicon glyphicon-flash"></span> See Trend</a><br/>
-              <a href="" class="favtrend"><span class="glyphicon glyphicon-bookmark"></span> Add Trend</a>
-          </p>
-      </div>
 
-    <div class="container">
+<body>
+   <header  class="container">
+   
+      <article>
+        <img src="css/asset/logo.png" alt="Logo - Trendly">
+        <h1>Trendly</h1>
+        <p>Your trends personnal dashboard</p>
+        <a href="search.php">GO
+          
+          <svg version="1.1" id="arrowStart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="42.427px" height="23.334px" viewBox="0 0 42.427 23.334" enable-background="new 0 0 42.427 23.334" xml:space="preserve">
+                <polygon points="40.305,0 21.213,19.092 2.122,0 0,2.121 19.092,21.213 21.213,23.334 23.334,21.213 42.427,2.121 "/>
+            </svg>
+          
+        </a>
+      </article>
       
-      <div class="row">
-        
-      	<section>
-            <div id="loading">
-              <div class="load-content">
-                <div id="loader">
-                  <div class="outer"></div>
-                  <div class="inner"></div>
-                </div>
-                <p class="load-text">Chargement des trends...</p>
-              </div>
-            </div>
-            
-            <div id="module"></div>
-      	</section>
-        
-      </div>
-
-      <div class="row">
-
-          <form action="result.php" autocomplete="off" id="search">
-             <fieldset class="col-md-11">
-                <input id="trend" name="trend" placeholder="Search a trend"  type="text"> <label for="trend"></label>
-             </fieldset>
-
-             <div class="col-md-1">
-                <input type="submit" value="">
-             </div>
-          </form>
+       
       
-      </div>
-    </div>
- 
-  	<script>
-      // print_r(getTrendGnews($cache));
-      <?php print_r(getTrendsPonderation($auth, $cache)); ?>
-
-
-    </script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
-  	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script>
-      var load = document.getElementById("loading");
-      load.style.display = "block" ;
-
-    </script>
-    <script src="js/modul-trends.js" type="text/javascript"></script>
-    
+   </header>
 </body>
 </html>

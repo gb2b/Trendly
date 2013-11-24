@@ -146,6 +146,9 @@ input{
 #module{
 	width: 550px;
 	margin: 20px auto 10px;
+	-webkit-animation : appear 1s linear 0s 1 ;
+	-moz-animation : appear 1s linear 0s 1 ;
+	animation : appear 1s linear 0s 1 ;
 }
 
 .arc{
@@ -261,44 +264,48 @@ input{
 
 /*LOADER */
 #loader {
-  margin:;
+  margin-left: -50px;
+  width: 200px;
+  height: 200px;
 }
 #loader .outer {
   border: 15px solid /*rgba(0, 183, 229, 0.9)*/#3498db;
   opacity: .9;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-top-color: transparent;
   border-bottom-color: transparent;
   border-radius: 50%;
-  -webkit-animation: spin-right 0.5s 0 linear infinite normal;
-  -moz-animation: spin-right 0.5s 0 linear infinite normal;
-  -ms-animation: spin-right 0.5s 0 linear infinite normal;
-  animation: spin-right 0.5s 0 linear infinite normal;
+  -webkit-animation: spinright 0.5s linear infinite;
+  -moz-animation: spinright 0.5s linear infinite;
+  -ms-animation: spinright 0.5s linear infinite;
+  animation: spinright 0.5s linear infinite;
+  /* -webkit-animation: loading 3s infinite linear;
+  	animation: loading 3s infinite linear; */
   margin: 0 auto;
 }
 #loader .inner {
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   border: 15px solid #3498db /*rgba(0, 183, 229, 0.9)*/;
   opacity: .9;
   border-radius: 50%;
   border-left-color: transparent;
   border-bottom-color: transparent;
   position: relative;
-  top: -40px;
+  top: -130px;
   margin: 0 auto;
-  -webkit-animation: spin-left 0.5s 0 linear infinite normal;
-  -moz-animation: spin-left 0.5s 0 linear infinite normal;
-  -ms-animation: spin-left 0.5s 0 linear infinite normal;
-  animation: spin-left 0.5s 0 linear infinite normal;
+  -webkit-animation: spinleft 0.5s linear infinite;
+  -moz-animation: spinleft 0.5s linear infinite;
+  -ms-animation: spinleft 0.5s linear infinite;
+  animation: spinleft 0.5s linear infinite;
 }
 
 
 
 
-@-webkit-keyframes spin-right {
+@-webkit-keyframes spinright {
   from {
     -webkit-transform: rotate(0deg);
     opacity: 0.2;
@@ -313,7 +320,7 @@ input{
   }
 }
 
-@-webkit-keyframes spin-left {
+@-webkit-keyframes spinleft {
   from {
     -webkit-transform: rotate(0deg);
     opacity: 0.2;
@@ -327,7 +334,36 @@ input{
     opacity: 0.2;
   }
 }
-@keyframes spin-right {
+@-moz-keyframes spinright {
+  from {
+    -moz-transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    -moz-transform: rotate(180deg);
+    opacity: 1.0;
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@-moz-keyframes spinleft {
+  from {
+    -moz-transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    -moz-transform: rotate(-180deg);
+    opacity: 1.0;
+  }
+  to {
+    -moz-transform: rotate(-360deg);
+    opacity: 0.2;
+  }
+}
+@keyframes spinright {
   from {
     transform: rotate(0deg);
     opacity: 0.2;
@@ -342,20 +378,77 @@ input{
   }
 }
 
-@-moz-keyframes spin-left {
+@keyframes spinleft {
   from {
-    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
     opacity: 0.2;
   }
   50% {
-    -moz-transform: rotate(-180deg);
+    transform: rotate(-180deg);
     opacity: 1.0;
   }
   to {
-    -moz-transform: rotate(-360deg);
+    transform: rotate(-360deg);
     opacity: 0.2;
   }
 }
 
 
 /*LOADER */
+
+
+.logo{
+	position: absolute;
+	top: 20px;
+	left: 50px;
+}
+
+.logo img{
+	width: 40%;
+	height: 40%;
+}
+
+.logo h1{
+	float:right;
+	font-size: 4em;
+	color: #2C95D3;
+	margin-left: -100px;
+	margin-top: 20px;
+}
+
+
+@keyframes appear{
+  from {
+    transform: rotate(0deg);
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(360deg);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes appear{
+  from {
+  	-webkit-transform: rotate(0deg);
+    -webkit-transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+  	-webkit-transform: rotate(360deg);
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}@-moz-keyframes appear{
+  from {
+  	-moz-transform: rotate(0deg);
+    -moz-transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+  	-moz-transform: rotate(360deg);
+    -moz-transform: scale(1);
+    opacity: 1;
+  }
+}

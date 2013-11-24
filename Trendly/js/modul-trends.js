@@ -39,20 +39,6 @@
           return positionfin[nombre];
         }
 
-        function fctclic(element){
-            if(cpt>=1){
-                clic = false;
-                cpt = 0;
-                
-                
-                var arcs = document.querySelectorAll('.arc');
-                for (var l = 0; l < arcs.length; l++) {
-                    playAnimation(arcs[l]);
-                    console.log(arcs[l]);
-                    $(arcs[l]+" path").css("opacity", opaque[l]);
-                }
-            }
-        }
         var width = 520,
             height = 520,
             cwidth = 24;
@@ -146,79 +132,8 @@
                     return namekey;
                 };
                 searchname = key(d,i,j);
-                if(cpt==0){
-                    clic = true;
-                    cpt++;
-
-                    d3.select(this).style("opacity", 1);
-                    document.querySelector(".trend-title").innerHTML = searchname;
-                    document.querySelector(".top").innerHTML = j+1;
-                    document.querySelector(".seetrend").href = "result.php?trend="+searchname;
-                    var arcs = document.querySelectorAll('.arc');
-                    for (var l = 0; l < arcs.length; l++) {
-                      stopAnimation(arcs[l]);
-                    }
-                    document.getElementById("trend-desc").style.display = "block";
-
-
-                } 
-                else if(cpt>=1){
-                    clic = false;
-                    cpt = 0;
-                    d3.select(this).style("opacity", function(d,i){return opaque[j];});
-                    d3.select(this).style("cursor", "default");
-                    var arcs = document.querySelectorAll('.arc');
-                    for (var l = 0; l < arcs.length; l++) {
-                      playAnimation(arcs[l]);
-                    }
-                    document.getElementById("trend-desc").style.display = "none";
-                }
-               
-                //searchname = key(d,i,j);
-                //document.location.href="result.php?trend="+searchname; // Le contenu de la variable s -> le trend est transmis dans l'url
+                document.location.href="result.php?trend="+searchname; // Le contenu de la variable trend-> le trend est transmis dans l'url
             });
 
-        /*function fctClic(){
-            if(cpt>=1){
-                cpt=0;
-                clic=false;
-            }
-        }*/
-
-        /* 
-        var arcTest = d3.svg.arc()
-            .startAngle(0)
-            .endAngle(p-2)
-            .innerRadius(520-80)
-            .outerRadius(520);
-
-        var canvas = d3.select('#trends-desc').append("svg")
-            .attr("width", 800)
-            .attr("height", 800)
-            .append("path")
-            .attr("d",arcTest)
-            .attr("fill", "white");
-
-        //Make an SVG Container
-        var svgContainer = d3.select("#trends-desc").append("svg")
-            .attr("width", 100)
-            .attr("height", 100);
-
-        //Draw the Circle
-        var circle = svgContainer.append("circle")
-            .attr("cx", 30)
-            .attr("cy", 30)
-            .attr("r", 20)
-            .attr("fill","red");
-        
-
-        function arcAppear(){
-            canvas.attr("visibility", "visible");
-        }
-
-        function arcDisappear(){
-            canvas.attr("visibility", "hidden");
-        }
-        */
-
+       
         load.style.display = "none" ;
