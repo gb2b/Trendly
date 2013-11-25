@@ -34,16 +34,25 @@ $('.navPrev').on('click',function(){
 
 
 
-var cible = $('.cible');
-var save = $('.save');
-var onsaved = false;
-save.on('click', function(event) {onsaved = true;})
-save.on('mouseout',function(event){onsaved=false;})
 
-cible.on('click', function(event) {
-  if(!onsaved)
-  {event.preventDefault();
-  url = $(this).data('url');
-  window.open(url);
-  return false;}
-});
+
+
+
+  var onsaved = false;
+  $("#content").on('click','.save',function(event) {onsaved = true;})
+  $("#content").on('mouseout','.save',function(event){onsaved = false;})
+
+  $('#content').on('click',".cible",function(event) {
+    if(!onsaved)
+    {
+      event.preventDefault();
+      url = $(this).data('url');
+      window.open(url);
+      return false;
+    }
+  });
+
+  $("body").on('click', '.localstorage', function(event) {
+    $("#notif").addClass('nappear');
+    $("#notif").removeClass('nappear');
+  });

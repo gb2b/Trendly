@@ -29,7 +29,7 @@
     else $nbcontent=1;
 ?>
 
-    <div id="content">
+ 
       
 
       <!-- ARTICLES -->
@@ -55,7 +55,7 @@
                      <div class="save">
                         <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
                      </div>
                   </div>
                </div>
@@ -90,7 +90,7 @@
                      <div class="save">
                         <span><a target="_blank" href="<?php echo $bing[$i]->url ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $bing[$i]->mediasrc ?>" data-text="<?php echo $bing[$i]->title ?>" data-url="<?php echo $bing[$i]->url ?>">LOGO</a>
                      </div>
                   </div>
             
@@ -133,7 +133,7 @@
                          <div class="save">
                             <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                             <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save">LOGO</a>
+                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
                          </div>
                       </div>
                    </div>
@@ -170,7 +170,7 @@
                          <div class="save">
                             <span><a target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
                             <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save">LOGO</a>
+                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">>LOGO</a>
                          </div>
                       </div>
                    </div>
@@ -197,9 +197,9 @@
  
        </div>
     -->
-   </div>
+   
 
-  
+
 
 
   

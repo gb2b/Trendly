@@ -51,7 +51,7 @@
       
 
     <div id="content">
-
+      <div id="notif">Le trend a bien été enregistré ! <a href='dashboard.php'>Voir</a></div>
       <!-- TWEETS -->
       <?php if( (isset($_GET["trend"]) && !empty($_GET["trend"])) || isset($tweets) ) : ?>
       <div class="top-content row">
@@ -81,7 +81,7 @@
                              <div class="save">
                                 <span><a target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
                                 <span><a href="#" alt="save">SHARE</a></span>
-                                <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                                <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
                              </div>
                           </div>
                        </div>
@@ -124,7 +124,7 @@
                      <div class="save">
                         <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
                      </div>
                   </div>
                </div>
@@ -159,7 +159,7 @@
                      <div class="save">
                         <span><a target="_blank" href="<?php echo $bing[$i]->url ?>" alt="save">GO</a></span>
                         <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $bing[$i]->mediasrc ?>" data-text="<?php echo $bing[$i]->title ?>" data-url="<?php echo $bing[$i]->url ?>">LOGO</a>
                      </div>
                   </div>
             
@@ -199,7 +199,7 @@
                          <div class="save">
                             <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                             <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
                          </div>
                       </div>
                    </div>
@@ -235,7 +235,7 @@
                          <div class="save">
                             <span><a target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
                             <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>">LOGO</a>
+                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
                          </div>
                       </div>
                    </div>
@@ -275,7 +275,7 @@
       
   </section>
   <script src="js/jquery.js"></script>
- 
+ <script src="js/main.js"></script>
   <script src="js/local_storage.js"></script>
   <script src="js/my_local_storage.js"></script>
 
@@ -327,6 +327,8 @@
                         $('.hidden').fadeIn(400);
                         $('#loadergif').fadeOut(400);
                         $(window).data('ajaxready', true);
+                        /*oncible();
+                        onLocalStorage();*/
                       }
 
                   }
@@ -344,7 +346,7 @@
 
 
   </script>
-   <script src="js/main.js"></script>
+   
 
 </body>
 

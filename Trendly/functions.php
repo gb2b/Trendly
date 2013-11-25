@@ -26,7 +26,7 @@ $cache = array(
 	);
 
 /*echo "<pre>";
-print_r(getSearchTweets($auth, "tireur", $cache));
+print_r(explodeHashtag("#OnSeFolowLeDimancheSansPression"));
 echo "</pre>";*/
 
 function getSearchTweets($auth, $q, $cache)
