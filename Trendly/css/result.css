@@ -355,65 +355,43 @@ margin-top: 20px;
 /*********************  END OF THE INDEX.HTML *********************/
 
 
-/*********************  START OF THE MYDASH.HTML *********************/
-
 section .content article {
-	margin-top: 0;
+	margin-top:0;
 	color: #000;
 	text-align: center;
 	font-family: "helvetica_neue_lt_std35_thin";
 	font-size: 20px;
 	padding: 5% 0 5% 0;
-	/*height: 240px;*/
-	margin: 10px;
-	border-radius: 10px;
-	background-color: #fff;
-	
-}
-
-
-section .content article label {
-	position: relative;
-	width: 100%;
+	color: #fff;
 	
 	
 }
 
-section .content article label div {
-	background-image: url("asset/arrow-down-icon.png");
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 8% 0 8% 0;
-	position: relative;
-	top:70px;
-	border-radius: 0 0 10px 10px;
-	
-	
-}
-
-
-
-
-.flat-blue{
+section .content article:nth-child(1n-5){
 	background-color: #3498db; 
 
 }
 
-.flat-yellow{
+section .content article:nth-child(2n-5){
 	background-color: #f1c40f; 
 
 }
 
-.flat-red{
+section .content article:nth-child(3n-5){
 	background-color: #e74c3c; 
 
 }
 
-.flat-green{
+section .content article:nth-child(4n-5){
 	background-color: #1abc9c; 
 
 }
 
+
+section .content article:nth-child(5n-5){
+	background-color: #f1c40f; 
+
+}
 
 section .content > article h1{
 	font-family: "helvetica_neue_lt_std35_thin";
@@ -422,86 +400,37 @@ section .content > article h1{
 	text-transform: uppercase;
 }
 
-section .content > article p{
-	font-size: 18px;
-	margin: 0 auto;
-	width: 70%;
-}
-
 section .content > article a{
-	font-size: 13px;
-	color: #7f8c8d;
-}
-
-section .content > article .delete-btn{
-	background-image:url("asset/quit-icon.png");
-	background-repeat: no-repeat;
-	padding: 25px;
-	position: absolute;
-	top: 10px;
-	left:10px;
-	
+	color:#fff;
 }
 
 section .content > article a:hover{
-	text-decoration: underline;
-	color: #000;
+	text-decoration: none;
 }
-
-
 
 section .content > article .fav-trends{
 	border-top: 1px solid white;
 	border-bottom: 1px solid white;
 	text-align: left;
-	color: #000;
-	width: 100%;
 	padding: 15px;
+	margin: 35px;
 	
 	/*display: none;*/
 }
 
-section .content > article .fav-trends .inner-content {
-	border-top:1px solid #7f8c8d;
-
-}
-
-section .content > article .fav-trends figure img {
-	max-width: 100%;
-    max-height: 300px;
-	height: auto; 
-
-}
-
-
 section .content > article .fav-trends h3{
 	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 18px;
+	font-size: 20px;
 	text-align: left;
-	margin: 15px 10px 10px;
-	/*display: none;*/
-}
-
-section .content > article .fav-trends p{
-	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 15px;
-	text-align: left;
-	margin: 10px;
 	/*display: none;*/
 }
 
 section .content > article .fav-trends .action-buttons{
-	margin:10px 0 15px 10px; 
-}
-
-section .content > article .fav-trends .action-buttons a{
 	font-size: 12px;
-	color: #7f8c8d;
 }
 
 section .content > article .fav-trends .action-buttons a:hover{
 	text-decoration: underline;
-	color: #000;
 }
 
 section .content > article .fav-trends .action-buttons span{
@@ -524,8 +453,21 @@ section .content > article .fav-trends .accordeon label {
     
 }
 
+section .content > article .fav-trends .inner-content:first-child {
+	margin-top: 20px;
+	border-top:none;
+	
+	
+}
 
-
+section .content > article .fav-trends .inner-content {
+	margin-top: 20px;
+	font-size: 15px;
+	border-top:1px solid #fff;
+	
+	
+	
+}
 
 .accordeon input[type="checkbox"] {
     display: none;
@@ -536,20 +478,11 @@ section .content > article .fav-trends .accordeon label {
     height: auto;
     display: block;
     opacity: 1;
-    margin-top: 66px;
+    padding: 1.5em;
     
     
 }
 
-
-
-
-
-
-
-
-
-/*********************  END OF THE MYDASH.HTML *********************/
 
 
 
@@ -1115,4 +1048,188 @@ a ,a:hover,
 
 /* IMAGE-STAGE CONTENT */
 
+
+section .content article {
+	margin-top: 0;
+	color: #000;
+	text-align: center;
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	padding: 5% 0 5% 0;
+	/*height: 240px;*/
+	margin: 10px;
+	border-radius: 10px;
+	background-color: #fff;
+	
+}
+
+
+section .content article label {
+	position: relative;
+	width: 100%;
+	
+	
+}
+
+section .content article label div {
+	background-image: url("asset/arrow-down-icon.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 8% 0 8% 0;
+	position: relative;
+	top:70px;
+	border-radius: 0 0 10px 10px;
+	
+	
+}
+
+
+
+
+.flat-blue{
+	background-color: #3498db; 
+
+}
+
+.flat-yellow{
+	background-color: #f1c40f; 
+
+}
+
+.flat-red{
+	background-color: #e74c3c; 
+
+}
+
+.flat-green{
+	background-color: #1abc9c; 
+
+}
+
+
+section .content > article h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	width: 100%;
+	text-transform: uppercase;
+}
+
+section .content > article p{
+	font-size: 18px;
+	margin: 0 auto;
+	width: 70%;
+}
+
+section .content > article a{
+	font-size: 13px;
+	color: #7f8c8d;
+}
+
+section .content > article .delete-btn{
+	background-image:url("asset/quit-icon.png");
+	background-repeat: no-repeat;
+	padding: 25px;
+	position: absolute;
+	top: 10px;
+	left:10px;
+	
+}
+
+section .content > article a:hover{
+	text-decoration: underline;
+	color: #000;
+}
+
+
+
+section .content > article .fav-trends{
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	text-align: left;
+	color: #000;
+	width: 100%;
+	padding: 15px;
+	
+	/*display: none;*/
+}
+
+section .content > article .fav-trends .inner-content {
+	border-top:1px solid #7f8c8d;
+
+}
+
+section .content > article .fav-trends figure img {
+	max-width: 100%;
+    max-height: 300px;
+	height: auto; 
+
+}
+
+
+section .content > article .fav-trends h3{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 18px;
+	text-align: left;
+	margin: 15px 10px 10px;
+	/*display: none;*/
+}
+
+section .content > article .fav-trends p{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 15px;
+	text-align: left;
+	margin: 10px;
+	/*display: none;*/
+}
+
+section .content > article .fav-trends .action-buttons{
+	margin:10px 0 15px 10px; 
+}
+
+section .content > article .fav-trends .action-buttons a{
+	font-size: 12px;
+	color: #7f8c8d;
+}
+
+section .content > article .fav-trends .action-buttons a:hover{
+	text-decoration: underline;
+	color: #000;
+}
+
+section .content > article .fav-trends .action-buttons span{
+	margin-right: 10px;
+}
+
+section .content > article .fav-trends .accordeon label {
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	text-align: left;
+	text-transform: uppercase;
+	/*display: none;*/
+}
+
+.accordeon .inner {
+    height: 0;
+    display: none;
+    opacity: 0;
+    color: #f0f0f0;
+    
+}
+
+
+
+
+.accordeon input[type="checkbox"] {
+    display: none;
+    
+}
+/* Show .inner for corresponding to checked radio or checkbox */
+ .accordeon input[type="checkbox"]:checked + .inner {
+    height: auto;
+    display: block;
+    opacity: 1;
+    margin-top: 66px;
+    
+    
+}
 
