@@ -9,30 +9,20 @@ var storage = {
 		return this;
 	},
 	record : function(datas){
-		this.params.counter = parseInt(this.checkMax())+1;
-		if (this.checkValueExist(datas) == false) {
-			localStorage.setItem(this.params.counter,JSON.stringify(datas));
+		var actualLocalStorage = $.parseJSON(this.getItem(datas));
+		var newLocalStorage = new Array;
+		newLocalStorage[datas.title] = datas; 
+		if (actualLocalStorage != null) {
+			newLocalStorage[datas.title].push(actualLocalStorage);
+			localStorage.setItem(datas.title,JSON.stringify(newLocalStorage));
+		}else{
+			localStorage.setItem(datas.title,JSON.stringify(datas));
 		}
+		this.getItem(datas);
 		this.params.recorded.call(this,datas);
 	},
-	checkMax : function () {
-		var max = 0;
-		for(i in localStorage){
-			max++;
-		}
-		return max;
-	},
-	checkValueExist : function (datas) {
-		var exist = false;
-		var data = JSON.stringify(datas);
-		for (i in localStorage) {
-			if (localStorage.getItem(i) == data) {
-				console.log(localStorage.getItem(i));
-				console.log(data);
-				exist = true;
-			}
-		}
-		return exist;
+	getItem : function (datas) {
+		return localStorage.getItem(datas.title);
 	},
 	checkout : function (key) {
 		return localStorage.getItem(key);
