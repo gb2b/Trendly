@@ -10,10 +10,14 @@ var storage = {
 	},
 	record : function(datas){
 		var actualLocalStorage = $.parseJSON(this.getItem(datas));
-		var newLocalStorage = new Array;
-		newLocalStorage[datas.title] = datas; 
+		console.log(datas.title.length);
+		if (datas.title.length > 0) {
+			var newLocalStorage = $.makeArray(actualLocalStorage);
+		}else{
+			var newLocalStorage = new Array;
+		}
+		newLocalStorage.push(datas);
 		if (actualLocalStorage != null) {
-			newLocalStorage[datas.title].push(actualLocalStorage);
 			localStorage.setItem(datas.title,JSON.stringify(newLocalStorage));
 		}else{
 			localStorage.setItem(datas.title,JSON.stringify(datas));
