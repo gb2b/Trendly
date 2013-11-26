@@ -1,8 +1,6 @@
 var storage = {
 	defaults : {
-		nom : "key",
-		recorded : function(){},
-		counter : 0
+		recorded : function(){}
 	},
 	init : function(options){
 		this.params=$.extend(this.defaults,options);
@@ -12,17 +10,16 @@ var storage = {
 		var actualLocalStorage = $.parseJSON(this.getItem(datas));
 		console.log(datas.title.length);
 		if (datas.title.length > 0) {
-			var newLocalStorage = $.makeArray(actualLocalStorage);
+			var newLocalStorage = datas.title;
+			newLocalStorage.push($.makeArray(actualLocalStorage));
 		}else{
 			var newLocalStorage = new Array;
 		}
-		newLocalStorage.push(datas);
 		if (actualLocalStorage != null) {
 			localStorage.setItem(datas.title,JSON.stringify(newLocalStorage));
 		}else{
 			localStorage.setItem(datas.title,JSON.stringify(datas));
 		}
-		this.getItem(datas);
 		this.params.recorded.call(this,datas);
 	},
 	getItem : function (datas) {

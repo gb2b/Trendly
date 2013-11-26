@@ -8,18 +8,18 @@
    <title>Trendly - Dashboard</title>
    <meta content="" name="description">
    <meta content="width=device-width,initial-scale=1" name="viewport">
-   <link href="css/result.css" rel="stylesheet">
-   <link href="css/css/bootstrap.css" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet">
+   <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
    
 	    <script id="trendTlp" type="text/template">
 	   		<div class="inner-content">
 		   		<span class="fav-icon"></span>
-		   		<h3>{{author}}</h3>
-		   		<p>{contenu}}</p>
+		   		<h3>{{title}}</h3>
+		   		<p>{{texte}}</p>
 		   		<div class="action-buttons">
-			   		<span data-url="{{url}}" class="open"><a href="{{url}}" alt="#">Ouvrir</a></span>
-			   		<span data-url="{{url}}" class="share"><a href="#" alt="#">Partager</a></span>
-			   		<span data-key="{{key}}" class="delete"><a href="#" alt="#">Supprimer</a></span>
+			   		<span data-url="{{url}}{{mediasrc}}" class="open"><a href="{{url}}{{mediasrc}}" alt="#">Ouvrir</a></span>
+			   		<span data-url="{{url}}{{mediasrc}}" class="share"><a href="#" alt="#">Partager</a></span>
+			   		<span data-key="{{title}}" class="delete"><a href="#" alt="#">Supprimer</a></span>
 		   		</div>
 	   		</div>
         </script>
