@@ -31,7 +31,7 @@
 		   		<div class="inner-content" data-trend="{{key}}">
 			   		<span class="fav-icon"></span>
 			   		<h3>{{source}}</h3>
-			   		<p>{{text}}<img src="{{mediasrc}}"></p>
+			   		<p>{{text}}{{videoid}}<img src="{{mediasrc}}"></p>
 			   		<div class="action-buttons">
 				   		<span data-url="{{url}}{{mediasrc}}" class="open"><a href="{{url}}{{mediasrc}}" alt="#">Ouvrir</a></span>
 				   		<span data-url="{{url}}{{mediasrc}}" class="share"><a title="Facebook" href="https://www.facebook.com/sharer.php?u={{url}}{{mediasrc}}&t={{source}}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">Partager</a></span>
