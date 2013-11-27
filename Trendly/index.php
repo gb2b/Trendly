@@ -8,9 +8,10 @@
    <title>Trendly : les Tendances du net</title>
    <meta content="" name="description">
    <meta content="width=device-width,initial-scale=1" name="viewport">
+   
+   <link href="css/style.css" rel="stylesheet">
+   <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
 
-   <link href="css/result.css" rel="stylesheet">
-   <link href="css/css/bootstrap.css" rel="stylesheet">
 
    <link rel="icon" type="image/png" href="css/asset/favicon.png" />
 </head>

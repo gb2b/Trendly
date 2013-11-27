@@ -33,11 +33,6 @@ $('.navPrev').on('click',function(){
 
 
 
-
-
-
-
-
   var onsaved = false;
   $("#content").on('click','.save',function(event) {onsaved = true;})
   $("#content").on('mouseout','.save',function(event){onsaved = false;})
@@ -56,3 +51,6 @@ $('.navPrev').on('click',function(){
     $("#notif").addClass('nappear');
     $("#notif").removeClass('nappear');
   });
+
+
+

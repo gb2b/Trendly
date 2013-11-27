@@ -9,76 +9,205 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>Trendly - Search</title>
+        <title>Trendly - Search a Trend</title>
         <meta name="description" content="">
-
 
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
   
-        <!-- Bootstrap & FontAwesome -->
-        <link href="css/css/bootstrap.css" rel="stylesheet">
+        <!-- Favicon & FontAwesome -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="css/asset/favicon.png" />
-
-        <!-- Css reset for all browsers -->
-        <link rel="stylesheet" href="css/reset.css">
         
         <!-- Css Design -->
-        <link rel="stylesheet" href="css/design.css">
+       
+        <link rel="stylesheet" href="css/style.css">
+        
+        <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+        
+         <link rel="stylesheet" href="css/media-queries.css">
         <!-- <link rel="stylesheet" href="css/trendly.css">-->
         
 
 </head>
-<body>      
+
+
+<body> 
+
+	<!-- START OF THE HEADER -->
+	<header>
+		<!-- START OF THE NAV BAR -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="navbar-header">
+		    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				      <span class="sr-only">Toggle navigation</span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				</button>
+		    
+				<!-- LOGO -->
+				<div class="navbar-brand logo">
+			    	<img src="css/asset/logo-b.png" alt="Logo - Trendly">
+			    	<span><a href="search.php">Trendly - Les Trends en un clic</a></span>
+			    </div>
+			    <!-- END LOGO -->
+			    
+			</div><!-- /.navbar-header -->
+		
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav">
+			    
+			    </ul>
+			    
+		    
+		    <!-- INFO BUTTON -->
+		    <ul class="nav navbar-nav navbar-right">
+		      <li>
+		      	<a class="info-icon" href="#">
+		      		<div class="help">
+		      			<i class="glyphicon glyphicon-info-sign help" style="color: #fff;"></i>
+		      		</div>
+		      	</a>
+		      </li>
+		    </ul>
+		  </div><!-- /.navbar-collapse -->
+		</nav><!-- /.navbar -->
+		
+		<!-- END OF THE NAV BAR -->
+	</header>
+	<!-- END OF THE HEADER -->
+    
+    <!-- START OF THE CONTENT -->  
     <div class="container">
-      <div class="logo">
-        <img src="css/asset/logo.png" alt="Logo - Trendly"><h1>Trendly</h1>
-      </div>
-      <div class="row">
-        
-      	<section>
-            <div id="loading">
-              <div class="load-content">
-                <div id="loader">
-                  <div class="outer"></div>
-                  <div class="inner"></div>
-                </div>
-                <p class="load-text">Chargement des trends...</p>
-              </div>
-            </div>
-            
-            <div id="module"></div>
-      	</section>
-        
-      </div>
+    
+	
+	<div class="row">
+	        
+		<section>
+			<!-- START OF THE LOADING -->  
+			
+			<div id="loading">
+				<div class="content">
+						<div id="loader">
+							<div class="outer"></div>
+							<div class="inner"></div>
+						</div><!-- /.loader -->
+					<p class="text">Chargement des trends...</p>
+				</div><!-- /.content -->
+			</div><!-- /.loading -->
+			
+			<!-- END OF THE LOADING -->  
+			            
+			            
+			            
+			<!-- START OF THE MODULE -->            
+			<div id="module"></div>
+			<!-- END OF THE MODULE -->  
+			
+			
+			<!-- START OF THE BASIC LIST-->
+			<div class="basic-list row">
+				
+				<ul>
+					<li class="col-md-6">Etl</li>
+					<li class="col-md-6">Demorand</li>
+					<li class="col-md-6">Mikl</li>
+					<li class="col-md-6">Cahuzac</li>
+					<li class="col-md-6">Sortie</li>
+					<li class="col-md-6">Naufrage</li>
+					<li class="col-md-6">Event</li>
+					<li class="col-md-6">Louvois</li>
+					<li class="col-md-6">Ldc</li>
+					<li class="col-md-6">Appel</li>
+				</ul>
+				
+			</div>
+			<!-- START OF THE BASIC LIST-->
+			
+		</section>
+	        
+	</div><!-- /.row -->
+		
+		<section class="bottom-search row">
+		
+		
+			<div>
 
-      <div class="row">
-
-          <form action="result.php" autocomplete="off" id="search">
-             <fieldset class="col-md-11">
-                <input id="trend" name="trend" placeholder="Search a trend"  type="text"> <label for="trend"></label>
-             </fieldset>
-
-             <div class="col-md-1">
-                <input type="submit" value="">
-             </div>
-          </form>
+	          <form action="result.php" autocomplete="off" id="search">
+	             <fieldset class="col-md-12">
+	                 <input type="submit" value="">
+	                <input id="trend" name="trend" placeholder="Search a trend"  type="text"> 
+	                <label for="trend"></label>
+	               
+	                
+	             </fieldset><!-- /.fieldset -->
+	
+	             
+	          </form><!-- /.form -->
       
+          </div>
+
+		
+		
+		</section><!-- /.row -->
+	</div><!-- /.container -->
+		
+		<section class="content-presentation row">
+		
+			
+		
+		
+		</section>
+		
+		<section class="content-presentation-2 row">
+		
+			
+		
+		
+		</section>
+		
+		<section class="content-presentation-3 row">
+		
+			
+		
+		
+		</section>
+		
+		<section class="content-presentation-4 row">
+		
+			
+		
+		
+		</section>
+
+		
+            
+ 
+     <!-- END OF THE CONTENT -->  
+    
+    
+    <!-- POPUP VIDEO --> 
+    <div id="modal">
+      <div id="player">
+        <video id="video" controls src="css/video/trendly_module.mp4">
+        Ici la description alternative
+        </video>
       </div>
     </div>
- 
+    <!-- POPUP VIDEO --> 
+   
+
+
+    
+</body>
     <script type="text/javascript"> 
       var trends = <?php echo $trends ?>;
     </script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
-  	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script>
-      var load = document.getElementById("loading");
-      load.style.display = "block" ;
-    </script>
-    <script src="js/modul-trends.js" type="text/javascript"></script>
-    
-</body>
+
+    <script type="text/javascript" src="js/main-search.js"></script>
+    <script type="text/javascript" src="js/modul-trends.js" type="text/javascript"></script>
 </html>

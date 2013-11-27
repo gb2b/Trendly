@@ -16,7 +16,7 @@ $cache = array(
 	"classe"      => "class.cache.php",
 	"tw_cache"    => "twitter.json",
 	"yt_cache"    => "youtube.json",
-	"instg_cache" => "instagram.json",
+	"instg_cache" => "instg.json",
 	"gnews_cache" => "gnews.json",
 	"imgur_cache" => "imgur.json",
 	"bing_cache"  => "bing.json",
@@ -26,7 +26,7 @@ $cache = array(
 	);
 
 /*echo "<pre>";
-print_r(explodeHashtag("#OnSeFolowLeDimancheSansPression"));
+print_r(getVideoYoutube($auth, $cache, "loup"));
 echo "</pre>";*/
 
 function getSearchTweets($auth, $q, $cache)
@@ -113,6 +113,7 @@ function getVideoYoutube($auth, $cache, $q = null)
 		}
 		$i = 0;
 		foreach ($videoFeed as $video): $thumbs = $video->getVideoThumbnails();
+			$v[$i]->id          = $video->getVideoId();
 			$v[$i]->title       = $video->getVideoTitle();
 			$v[$i]->url         = $video->getVideoWatchPageUrl();
 			$v[$i]->description = $video->getVideoDescription();
@@ -125,39 +126,34 @@ function getVideoYoutube($auth, $cache, $q = null)
 	return $v;
 }
 
-/*function getPopularInstgImage($auth, $cache)
+function getPopularInstgImage($auth,$cache,$q)
 {
 	$auth   = array_to_object($auth);
 	$cache  = array_to_object($cache);
 	require_once $cache->classe;
 
-	$imagesCache = new Cache($cache->path_cache,$cache->time);
-	$api = 'https://api.instagram.com/v1/media/popular?client_id='.$auth->instg_client_id; //api request (edit this to reflect tags)
+	$instgCache = new Cache($cache->path_cache,$cache->time);
+	$api = 'https://api.instagram.com/v1/tags/'.urlencode($q).'/media/recent?client_id='.$auth->instg_client_id; //api request (edit this to reflect tags)
 	$response = get_curl($api); //change request path to pull different photos
 
 	if($response){
 	    $i = 0; 
-	    if ($imagesCache->read("_".$cache->instg_cache)) {
-			$images = json_decode($imagesCache->read("_".$cache->instg_cache));
+	    if ($instgCache->read(cleanCaracteresSpeciaux($q)."_".$cache->instg_cache)) {
+			$images = json_decode($instgCache->read(cleanCaracteresSpeciaux($q)."_".$cache->instg_cache));
 		}else{
 		    foreach(json_decode($response)->data as $item){
 
 		        $title = (isset($item->caption))?mb_substr($item->caption->text,0,70,"utf8"):null;
-
 		        $src = $item->images->standard_resolution->url; 
-		        $lat = (isset($item->data->location->latitude))?$item->data->location->latitude:null; 
-		        $lon = (isset($item->data->location->longtitude))?$item->data->location->longtitude:null;
 		        $images[$i]->title = htmlspecialchars($title);
 		        $images[$i]->src   = htmlspecialchars($src);
-		        $images[$i]->lat   = htmlspecialchars($lat);
-		        $images[$i]->lon   = htmlspecialchars($lon);
 		        $i++;
 		    }
-		    $imagesCache->write("_".$cache->instg_cache, json_encode($images));
+		    $instgCache->write(cleanCaracteresSpeciaux($q)."_".$cache->instg_cache, json_encode($images));
 		}
 	    return $images;
 	}
-}*/
+}
 
 function getTrendGnews($cache, $q)
 {

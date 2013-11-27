@@ -35,7 +35,7 @@
         }
 
         var endfunction = function(nombre){
-          var positionfin = [3,4,5,6,7,8,9];
+          var positionfin = [4,4,5,6,8,8,9];
           return positionfin[nombre];
         }
 
@@ -46,7 +46,7 @@
         var p = Math.PI * 2;
 
         var color = d3.scale.ordinal()
-                    .range(["#DF6C4F","#ECD06F","#ECD06F","#00A651","#00A651","#00A651","#1A99AA","#1A99AA","#1A99AA","#1A99AA"]);
+                    .range(["#d43e3e","#e9da5b","#e9da5b","#29b947","#29b947","#29b947","#2980b9","#2980b9","#2980b9","#2980b9"]);
 
         var pie = d3.layout.pie()
             .sort(null);
