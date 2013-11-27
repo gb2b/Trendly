@@ -33,7 +33,6 @@ var storage = {
 		for (var i = 0; i < actualLocalStorage.length; i++) {
 			if (actualLocalStorage[i].key == key) {
 				actualLocalStorage.splice(i, 1);
-				
 			}
 		}
 		actualLocalStorage = $.makeArray(actualLocalStorage);
@@ -44,8 +43,6 @@ var storage = {
 			localStorage.removeItem(title);
 			return true;
 		}
-		
-
 	},
 	deleteKey : function(title){
 		localStorage.removeItem(title);
