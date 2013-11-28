@@ -49,8 +49,8 @@
 		    
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
-			    	<img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span><a href="search.php">Trendly - Les Trends en un clic</a></span>
+			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
+			    	<span>Trendly - Les Trends en un clic</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    

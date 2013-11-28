@@ -16,17 +16,19 @@
 
         function stopAnimation(element)
         {
-            $(element).css("-webkit-animation-play-state", "paused");
+/*          $(element).css("-webkit-animation-play-state", "paused");
             $(element).css("-moz-animation-play-state", "paused");
             $(element).css("-ms-animation-play-state", "paused");
-            $(element).css("animation-play-state", "paused");
+            $(element).css("animation-play-state", "paused");*/
+            $(element).addClass('stopAnimation').removeClass('playAnimation');
         }
         function playAnimation(element)
         {
-            $(element).css("-webkit-animation-play-state", "running");
+/*            $(element).css("-webkit-animation-play-state", "running");
             $(element).css("-moz-animation-play-state", "running");
             $(element).css("-ms-animation-play-state", "running");
-            $(element).css("animation-play-state", "running");
+            $(element).css("animation-play-state", "running");*/
+            $(element).addClass('playAnimation').removeClass('stopAnimation');
         }
 
         var startfunction= function(nombre){
@@ -100,10 +102,8 @@
                         };
                         var name = key(d,i,j);
                         element.value = name;
-                       var arcs = document.querySelectorAll('.arc');
-                        for (var l = 0; l < arcs.length; l++) {
-                          stopAnimation(arcs[l]);
-                        }
+                       
+                       stopAnimation($(this).parent());
                 }   
                 //trend.innerHTML = name;
                 //$("#trends-description").show();
@@ -114,11 +114,8 @@
                 if(cpt==0){
                     d3.select(this).style("opacity", function(d,i){return opaque[j];});
                     d3.select(this).style("cursor", "default");
-                    var arcs = document.querySelectorAll('.arc');
-                    for (var l = 0; l < arcs.length; l++) {
-                      playAnimation(arcs[l]);
-                      
-                    }
+
+                    playAnimation($(this).parent());
                 }
             })
 
