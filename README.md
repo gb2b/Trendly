@@ -1,17 +1,18 @@
-A First Level Header
+Trendly
 ====================
 
-A Second Level Header
+Soyez au courant des dernières tendances
 ---------------------
 
-Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.
+Trendly regroupe les Trends (Tendances) du moment sur internet, et vous permet de visualiser en un instant
+les contenus en rapport (tweets, articles, images, vidéos).
+Partager ou sauvegarder sur votre dashboard les contenus que vous trouvez intéressants !
 
-The quick brown fox jumped over the lazy
-dog's back.
 
-### Header 3
+
+### Auteur :
+- Guillaume de Beauchesne [@will_finoak](https://twitter.com/Will_Finoak "@will_finoak")
+- Adrian Vaucoret
 
 > This is a blockquote.
 > 
