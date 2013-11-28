@@ -397,10 +397,28 @@
   <script src="js/main.js"></script>
   <script src="js/local_storage.js"></script>
   <script src="js/my_local_storage.js"></script>
+  <script src="js/infiniteScroll.js"></script>
+  <script>
+    scroll.init({
+      trend       : <?php echo "\"".$query."\"";?>,
+      nbactus     : <?php echo $cptactus;?>,
+      nbtweets    : <?php echo $cpttweets;?>,
+      nbpics      : <?php echo $cptpics;?>,
+      nbvids      : <?php echo $cptvid;?>,
+      totaltweets : <?php echo count($tweets) ?>,
+      totalactus  : <?php echo count($actus) ?>,
+      totalpics   : <?php echo count($inst) ?>,
+      totalvids   : <?php echo count($videos) ?>
+    });
+    $(window).scroll(function()
+    {
+      scroll.loadData();
+    });
 
+  </script>
   <script type="text/javascript">
         // on initialise ajaxready à true au premier chargement de la fonction
-        $(window).data('ajaxready', true);
+        /*$(window).data('ajaxready', true);
       
         $('.top-content a').tooltip({placement:'bottom'});
         $('a').tooltip({placement:'top'});
@@ -453,7 +471,7 @@
                         $('#loadergif').fadeOut(400);
                         $(window).data('ajaxready', true);
                         /*oncible();
-                        onLocalStorage();*/
+                        onLocalStorage();
                       }
 
                   }
@@ -470,7 +488,7 @@
           }
         });
 
-
+*/
   </script>
    
 
