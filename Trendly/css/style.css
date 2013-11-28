@@ -443,15 +443,16 @@ border-radius: 10px;
 }
 
 .bottom-search input{
- 		position:relative; 
- 		color: #2980b9;
- 		background: none;
- 		border: none;
- 		float:left;
- 		width: 70%;
- 		margin-left:20px; 
- 		text-transform: uppercase;
- 		font-weight: bold;
+	position: relative;
+	color: #2980b9;
+	background: none;
+	border: none;
+	float: left;
+	width: 80%;
+	margin: 0 auto;
+	margin-left: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
  		
 }
 
@@ -490,7 +491,7 @@ border-radius: 10px;
 ****************/
 #module{
 	width: 550px;
-	margin: 70px auto 10px;
+	margin: -50px auto 10px;
 	-webkit-animation : appear 1s linear 0s 1 ;
 	-moz-animation : appear 1s linear 0s 1 ;
   -ms-animation : appear 1s linear 0s 1;
@@ -1521,6 +1522,8 @@ a ,a:hover,
 /*** AU SCROLL ***/
 #loadergif{
   display:none;
+  width: 218px;
+  margin: 0 auto;
 }
 
 #nocontent{
@@ -1533,62 +1536,39 @@ a ,a:hover,
   font-size: 1.5em;
   margin-top: 10px;
 }
-/*** Notif ***/
 
-#notif{
-	display: none;
-	padding: 10px 20px;
-	position : fixed;
-	left: 45%;
+/*** Notification ***/
+#listnotif{
+    position : fixed;
+    top: 12%;
+    left: 40%;
+    z-index: 9999;
+}
+.notif{
+	display : none;
 	background: rgba(0,0,0,0.5);
 	color: white;
 	font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+  margin-bottom: 10px;
+}
+.notif p{
+    padding: 10px 20px 10px;
+}
+.notif .close{
+  margin-left: 10px;
+}
 
-}
-#notif.nappear{
-	display: block;
-	-webkit-animation: notif 4s linear 1;
-	   -moz-animation: notif 4s linear 1;
-	    -ms-animation: notif 4s linear 1;
-	  		animation: notif 4s linear 1;
-}
-
-@keyframes notif{
-    from{
-        top: 0%;
-        opacity: 0;
-    }
-    50%{
-    	top: 1%;
-    	opacity: 1;
-    }
-    to{
-        top: 0%;
-        opacity: 0;
-        display : none;
-    }
-}
-@-webkit-keyframes notif{
-    from{
-        top: 0%;
-        -webkit-opacity: 0;
-    }
-    50%{
-    	top: 1%;
-    	-webkit-opacity: 1;
-    }
-    to{
-        top: 0%;
-        -webkit-opacity: 0;
-        display : none;
-    }
-}
 
 
 
 
 /*VIDEO*/
 .video-stage-content article{
+  backface-visibility: visible;
+}
+.content article{
   backface-visibility: visible;
 }
 
@@ -1649,6 +1629,7 @@ a ,a:hover,
 	vertical-align: top;
 	margin-top:20px; 
 	padding: 0px 10px 20px 0;
+  z-index: 9999;
 	
 
 }

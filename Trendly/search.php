@@ -1,6 +1,7 @@
 <?php 
   include("functions.php");
-  $trends = getTrendsPonderation($auth, $cache,false);
+  $trends = getTrendsPonderation($auth,$cache,false);
+  $trendsMob = getTrendsPonderation($auth,$cache,true);
 ?>
 
 <!doctype html>
@@ -81,6 +82,30 @@
     <!-- START OF THE CONTENT -->  
     <div class="container">
     
+    <section class="bottom-search row">
+		
+		
+			<div>
+
+	          <form action="result.php" autocomplete="off" id="search">
+	             <fieldset class="col-md-12">
+	                 
+	                <input id="trend" name="trend" placeholder="Search a trend"  type="text"> 
+	                <label for="trend"></label>
+	                <input type="submit" value="">
+	               
+	                
+	             </fieldset><!-- /.fieldset -->
+	
+	             
+	          </form><!-- /.form -->
+      
+          </div>
+
+		
+		
+		</section><!-- /.bottom-search -->
+
 	
 	<div class="row">
 	        
@@ -108,18 +133,11 @@
 			
 			<!-- START OF THE BASIC LIST-->
 			<div class="basic-list row">
-				
+				<h2>Top Trends</h2>
 				<ul>
-					<li class="col-md-6">Etl</li>
-					<li class="col-md-6">Demorand</li>
-					<li class="col-md-6">Mikl</li>
-					<li class="col-md-6">Cahuzac</li>
-					<li class="col-md-6">Sortie</li>
-					<li class="col-md-6">Naufrage</li>
-					<li class="col-md-6">Event</li>
-					<li class="col-md-6">Louvois</li>
-					<li class="col-md-6">Ldc</li>
-					<li class="col-md-6">Appel</li>
+					<?php foreach($trendsMob as $t): ?>
+					<li class="col-md-6"><a href="result?trend=<?php echo $t?>"><?php echo $t ?></a></li>
+					<?php endforeach; ?>
 				</ul>
 				
 			</div>
@@ -129,59 +147,8 @@
 	        
 	</div><!-- /.row -->
 		
-		<section class="bottom-search row">
-		
-		
-			<div>
-
-	          <form action="result.php" autocomplete="off" id="search">
-	             <fieldset class="col-md-12">
-	                 <input type="submit" value="">
-	                <input id="trend" name="trend" placeholder="Search a trend"  type="text"> 
-	                <label for="trend"></label>
-	               
-	                
-	             </fieldset><!-- /.fieldset -->
-	
-	             
-	          </form><!-- /.form -->
-      
-          </div>
-
-		
-		
-		</section><!-- /.row -->
-	</div><!-- /.container -->
-		
-		<section class="content-presentation row">
-		
+</div><!-- /.container -->
 			
-		
-		
-		</section>
-		
-		<section class="content-presentation-2 row">
-		
-			
-		
-		
-		</section>
-		
-		<section class="content-presentation-3 row">
-		
-			
-		
-		
-		</section>
-		
-		<section class="content-presentation-4 row">
-		
-			
-		
-		
-		</section>
-
-		
             
  
      <!-- END OF THE CONTENT -->  
@@ -206,6 +173,7 @@
     </script>
 
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
 
     <script type="text/javascript" src="js/main-search.js"></script>

@@ -1,3 +1,4 @@
+//Slider pour les tweets
 var speed = 600,
     currSel = 0,
     itemCount = $('.carousel ul li')
@@ -32,7 +33,7 @@ $('.navPrev').on('click',function(){
 });
 
 
-
+  //Permet d'accéder à la source d'un contenu en cliquant sur son bloc
   var onsaved = false;
   $("#content").on('click','.save',function(event) {onsaved = true;})
   $("#content").on('mouseout','.save',function(event){onsaved = false;})
@@ -47,10 +48,20 @@ $('.navPrev').on('click',function(){
     }
   });
 
-  $("body").on('click', '.localstorage', function(event) {
-    $("#notif").addClass('nappear');
-    $("#notif").removeClass('nappear');
+
+  //Notification pour un contenu sauvegardé
+   $("body").on('click', '.localstorage', function(event) {
+    $("#listnotif").append("<li class=\"notif\"><p>Votre contenu a bien été enregistré !  <i class=\"glyphicon glyphicon-remove-circle close\"></i></p></li>");
+    $(".notif").fadeIn(500);
+
+    $(".notif").on('click','.close',function(event){
+      $(this).parent().parent().fadeOut(500);
+      $(this).parent().parent().remove();
+    })
+    
   });
+
+ 
 
 
 

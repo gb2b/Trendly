@@ -92,8 +92,8 @@
                      
                      <div class="save">
                         <span><a target="_blank" href="<?php echo $inst[$i]->src ?>" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>">LOGO</a>
+                        <span><a href="javascript:void(0);" alt="save">SHARE</a></span>
+                        <a href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>">LOGO</a>
                      </div>
                   </div>
             

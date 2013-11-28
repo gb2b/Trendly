@@ -237,8 +237,9 @@ function getTrendGnews($cache, $q)
 	return $infos;
 }
 
-function getTrendsPonderation($auth, $cache, $minimal = false)
+function getTrendsPonderation($auth, $cache, $minimal)
 {
+
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
 
@@ -262,41 +263,13 @@ function getTrendsPonderation($auth, $cache, $minimal = false)
 			}
 		}
 		$content .= "}";
-				 
-		return $content;
-
+		if(!$minimal)return $content;
+		else return $result;	 
 }
 
-/*function getPicturesImgur($auth,$cache,$q){
-	$auth   = array_to_object($auth);
-	$cache  = array_to_object($cache);
-	require_once $cache->classe;
 
-	$imagesCache = new Cache($cache->path_cache,$cache->time);
-	$api = 'https://api.imgur.com/3/gallery/search/1?q='.urlencode($q);
-	$response = getCurlImgur($api,$auth->imgur_client_id);
-	
-	if($response){
-	    $i = 0; 
-	    if ($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache)) {
-			$images = json_decode($imagesCache->read(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache));
-		}else{
-		    foreach(json_decode($response)->data as $item){
-				
-				$title                   = (isset($item->title))?$item->title:null;
-				$src                     = $item->link; 
-				$description             = (isset($item->description))?$item->description:null;  
-				$images[$i]->id          = htmlspecialchars($item->id);
-				$images[$i]->title       = htmlspecialchars($title);
-				$images[$i]->src         = htmlspecialchars($src);
-				$images[$i]->description = htmlspecialchars($description);
-		        $i++;
-		    }
-		    $imagesCache->write(cleanCaracteresSpeciaux($q)."_".$cache->imgur_cache, json_encode($images));
-		}
-	    return $images;
-	}
-}*/
+
+
 
 function getPicturesBing($cache,$auth,$q){
 		$auth   = array_to_object($auth);

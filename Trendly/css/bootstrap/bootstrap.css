@@ -6133,14 +6133,16 @@ button.close {
 
 .tooltip {
   position: absolute;
-  z-index: 1030;
   display: block;
   font-size: 12px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);
   visibility: visible;
+  z-index: 9999;
+  text-transform: none;
 }
+
 
 .tooltip.in {
   opacity: 0.9;
@@ -6168,7 +6170,7 @@ button.close {
 }
 
 .tooltip-inner {
-  max-width: 200px;
+  max-width: 400px;
   padding: 3px 8px;
   color: #ffffff;
   text-align: center;

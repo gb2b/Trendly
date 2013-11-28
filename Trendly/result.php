@@ -16,9 +16,6 @@
 
   $actusColor = ["#d35400","#f39c12","#1abc9c","#34495e"];
 
-echo "<pre>";
-print_r(getVideoYoutube($auth, $cache,$query));
-echo "</pre>";
 ?>
 
 
@@ -59,8 +56,8 @@ echo "</pre>";
 		    
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
-			    	<img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span><a href="search.php">Trendly - Les Trends en un clic</a></span>
+			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
+			    	<span>Trendly - Les Trends en un clic</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    
@@ -91,9 +88,39 @@ echo "</pre>";
 	</header>
 	<!-- END OF THE HEADER -->
 
+  <ul id="listnotif">
+    <!-- <p>Votre contenu a bien été enregistré !  <i class="glyphicon glyphicon-remove-circle close"></i></p> -->
+  </ul>
 
    <section id="container" class="container">
-     <form id="topsearch" autocomplete="off">
+     <section class="bottom-search row">
+		
+		
+			<div>
+
+	          <form action="result.php" autocomplete="off" id="search">
+	             <fieldset class="col-md-12">
+	                 
+	                <input id="trend" name="trend" placeholder="Search a trend" required=
+            "" type="text" value="<?php if(isset($query)) echo $query; ?>"> <label for="trend"></label>
+
+	                <input type="submit" value="">
+	               
+	                
+	             </fieldset><!-- /.fieldset -->
+	
+	             
+	          </form><!-- /.form -->
+      
+          </div>
+
+		
+		
+		</section><!-- /.bottom-search -->
+
+     
+     
+     <!--<form id="topsearch" autocomplete="off">
 
          <fieldset>
             <input id="trend" name="trend" placeholder="Search a trend" required=
@@ -105,13 +132,11 @@ echo "</pre>";
          </fieldset>
 
          
-      </form>
+      </form>-->
       
 
     <div id="content">
-      <div id="notif">Le trend a bien été enregistré ! <a href='dashboard.php'>Voir</a></div>
-
-
+      
       <!-- TWEETS -->
       <?php if( (isset($_GET["trend"]) && !empty($_GET["trend"])) || isset($tweets) ) : ?>
       <div class="top-content row">
@@ -131,9 +156,9 @@ echo "</pre>";
                              "css/asset/twitter-ico-b.png"></div>
                              <h2>Twitter</h2>
                              <div class="save">
-                                <span><a target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
-                                <span><a href="#" alt="save">SHARE</a></span>
-                                <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
+                                <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
+                                <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                                <a rel="popover" data-content="Le tweet a été sauvegardé sur votre dashboard!"  data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
                              </div>
                           </div>
                         </div>
@@ -185,9 +210,9 @@ echo "</pre>";
                      "css/asset/articles-icon-black.png"></div>
                      
                      <div class="save">
-                        <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
+                        <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
+                        <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                        <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
                      </div>
                   </div>
                </div>
@@ -220,9 +245,9 @@ echo "</pre>";
                      <h2>Bing</h2>
                      
                      <div class="save">
-                        <span><a target="_blank" href="<?php echo $inst[$i]->src ?>" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>">LOGO</a>
+                        <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $inst[$i]->src ?>" alt="save">GO</a></span>
+                        <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                        <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>">LOGO</a>
                      </div>
                   </div>
             
@@ -260,9 +285,9 @@ echo "</pre>";
                          "css/asset/articles-icon.png"></div>
                          
                          <div class="save">
-                            <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
-                            <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
+                            <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
+                            <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
                          </div>
                       </div>
                    </div>
@@ -296,9 +321,9 @@ echo "</pre>";
                          <div class="icon"><img alt="twitter" src=
                            "css/asset/twitter-ico.png"></div>
                          <div class="save">
-                            <span><a target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
-                            <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
+                            <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
+                            <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
                          </div>
                       </div>
                    </div>
@@ -338,9 +363,9 @@ echo "</pre>";
                      <h2>Youtube</h2>
                      
                      <div class="save">
-                     	<span><a target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
-                     	<span><a href="#">SHARE</a></span>
-                     	<a href="#" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>">LOGO</a>
+                     	<span><a data-toggle="tooltip" title="Voir le contenu" target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
+                     	<span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux"href="javascript:void(0);">SHARE</a></span>
+                     	<a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>">LOGO</a>
                      </div>
                   </div>
                </div>
@@ -362,23 +387,25 @@ echo "</pre>";
    </div>
 
   
-         
 
-      
-      
 
       
       
   </section>
   <script src="js/jquery.js"></script>
- <script src="js/main.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/local_storage.js"></script>
   <script src="js/my_local_storage.js"></script>
 
   <script type="text/javascript">
         // on initialise ajaxready à true au premier chargement de la fonction
         $(window).data('ajaxready', true);
-
+      
+        $('.top-content a').tooltip({placement:'bottom'});
+        $('a').tooltip({placement:'top'});
+        
+     
         
         var trend = <?php echo "\"".$query."\"";?>;
         var nbactus = <?php echo $cptactus;?>;

@@ -120,10 +120,8 @@
                       
                     }
                 }
-
-                //arcDisappear();
-
             })
+
             .on("click",function(d,i,j){
                  var key = function(d,i) {
                     var map = d3.map(trends);
@@ -135,5 +133,5 @@
                 document.location.href="result.php?trend="+searchname; // Le contenu de la variable trend-> le trend est transmis dans l'url
             });
 
-       
+
         load.style.display = "none" ;
