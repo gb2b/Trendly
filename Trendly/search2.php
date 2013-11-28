@@ -177,6 +177,6 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
 
     <script type="text/javascript" src="js/main-search.js"></script>
-    <script type="text/javascript" src="js/modul-trends.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/my-modul-trends.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/modul-trends2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/my_module_trends2.js" type="text/javascript"></script>
 </html>
