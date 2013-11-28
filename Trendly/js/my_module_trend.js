@@ -16,7 +16,7 @@
 
         function stopAnimation(element)
         {
-/*          $(element).css("-webkit-animation-play-state", "paused");
+/*            $(element).css("-webkit-animation-play-state", "paused");
             $(element).css("-moz-animation-play-state", "paused");
             $(element).css("-ms-animation-play-state", "paused");
             $(element).css("animation-play-state", "paused");*/
