@@ -14,6 +14,7 @@ var scroll = {
       $('#content').append('<div id="nocontent"><img src="css/asset/nocontent-logo.png" alt="No Content"/><p>Il n\'y a plus de contenu à afficher !</p></div>');
     }
   },
+  
   init : function(options){
     this.params=$.extend(this.defaults,options);
     this.params.initializer();
@@ -22,6 +23,7 @@ var scroll = {
     $('a').tooltip({placement:'top'});
     return this;
   },
+
   loadData : function(){
     var deviceAgent = navigator.userAgent.toLowerCase();
     var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
