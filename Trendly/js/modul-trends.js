@@ -1,4 +1,5 @@
 var module = {
+    //Initialisation du module
     defaults : {
         formu          : document.forms['search'],
         element        : document.querySelector("#trend"),
@@ -19,12 +20,15 @@ var module = {
         
         }
     },
+    //envoie paramètres au d3js
     init : function(options){
         this.params=$.extend(this.defaults,options);
     },
+    //Fonction pour l'aléatoire du début de l'arc
     startfunction : function(nombre, positiondepart){
         return positiondepart[nombre];
     },
+    //Fonction pour l'aléatoire de la fin de l'arc
     endfunction : function(nombre, positionfin){
         return positionfin[nombre];
     }

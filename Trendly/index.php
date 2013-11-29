@@ -57,9 +57,8 @@ setcookie("visited", true, time()+360*24*3600);
 	   			<div class="ico-stage-one"></div>
 	   			
 	   			<p>
-	   				Le module de Trendly est une représentation 
-		   			DataViZ des 10 mots les plus Trends à 
-		   			l’heure actuelle en France.
+	   				Visualisez le top 10 des trends en France grâce au module TRENDLY,
+	   				mis à jour en temps réel et personnalisable !
 		   		</p>
 	   		
 	   		</article>
@@ -69,10 +68,8 @@ setcookie("visited", true, time()+360*24*3600);
 	   			<div class="ico-stage-two"></div>
 	   			
 	   			<p>
-	   				Sélectionnez ou recherchez le trend qui vous 
-	   				intéresse pour avoir accès aux différents 
-	   				contenus liés a celui-ci.
-	   				(Articles, images, videos, tweets).
+	   				Sélectionnez ou recherchez le mot qui vous intéresse pour avoir accès aux
+	   				différents contenus liés à ce trend ! (Articles,images,vidéos,tweets...)
 		   		</p>
 	   		
 	   		</article>
@@ -82,10 +79,9 @@ setcookie("visited", true, time()+360*24*3600);
 	   			<div class="ico-stage-three"></div>
 	   			
 	   			<p>
-					Visualisez en un clin d’oeil les actualités en 
-					rapport avec ce trend, et libre à vous de le 
-					partager ou de sauvegarder les contenus
-					intéressant sur votre dashoard.
+					Visualisez, partagez, sauvegardez ! TRENDLY vous permet d'avoir une totale
+					autonomie sur le contenu visualisé, tout en gardant une trace grâce à votre
+					dashboard !
 		   		</p>
 	   		
 	   		</article>
@@ -114,7 +110,7 @@ setcookie("visited", true, time()+360*24*3600);
 					        	<source src="css/video/trendly_module.mp4" type="video/mp4"/>
 					        	<source src="css/video/trendly_module.webm" type="video/webm"/>
 					        	<source src="css/video/trendly_module.ogg" type="video/ogg"/>
-					        Ici la description alternative
+					        Vidéo d'introduction sur le concept de TRENDLY
 					        </video>
 				      </div>
 				 
@@ -133,7 +129,7 @@ setcookie("visited", true, time()+360*24*3600);
       	<div class="article-container row">
 	   		<article class="col-md-12">
 	   			
-	   			<h1><a href="search.php">Essayez-le dès maintenant !</a></h1>
+	   			<h1><a href="search.php">Essayez-le dès maintenant ! <i class="glyphicon glyphicon-chevron-down"></i></a></h1>
 	   				   	
 	   		
 	   		</article>

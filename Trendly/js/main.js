@@ -51,7 +51,7 @@ $('.navPrev').on('click',function(){
 
   //Notification pour un contenu sauvegardé
    $("body").on('click', '.localstorage', function(event) {
-    $("#listnotif").append("<li class=\"notif\"><p>Le contenu a bien été ajouté <a href='dashboard.php' style=\'color:#2980b9\'>votre dashboard</a> !  <i class=\"glyphicon glyphicon-remove-circle close\"></i></p></li>");
+    $("#listnotif").append("<li class=\"notif\"><p>Le contenu a bien été ajouté à <a href='dashboard.php' style=\'color:#2980b9\'>votre dashboard</a> !  <span class=\"close\">Close</span></p></li>");
     $(".notif").fadeIn(500);
     $(".notif:first").delay(3000).fadeOut(500,function(){
       $(this).remove();
