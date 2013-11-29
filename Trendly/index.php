@@ -110,7 +110,10 @@ setcookie("visited", true, time()+360*24*3600);
 	   			 <!-- VIDEO --> 
 				
 				      <div id="player">
-					        <video id="video" controls src="css/video/trendly_module.mp4">
+					        <video id="video" controls>
+					        	<source src="css/video/trendly_module.mp4" type="video/mp4"/>
+					        	<source src="css/video/trendly_module.webm" type="video/webm"/>
+					        	<source src="css/video/trendly_module.ogg" type="video/ogg"/>
 					        Ici la description alternative
 					        </video>
 				      </div>
