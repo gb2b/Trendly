@@ -122,7 +122,27 @@ setcookie("visited", true, time()+360*24*3600);
 	   		
 
    	   
+<<<<<<< HEAD
    </section><!--./stage-three-->
+=======
+   </section><!--./stage-four-->
+   
+   
+   <section class="stage-four">
+   	
+      	<div class="article-container row">
+	   		<article class="col-md-12">
+	   			
+	   			<h1><a href="search.php">Essayez-le dès maintenant !</a></h1>
+	   				   	
+	   		
+	   		</article>
+	   		
+
+   	   
+   </section><!--./stage-four-->
+
+>>>>>>> 811b894bc20d753db869b16fcefa954f2b9d0485
 
 
   
