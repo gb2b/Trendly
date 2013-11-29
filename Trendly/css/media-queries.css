@@ -1,6 +1,78 @@
 @media (max-width: 767px) {
 	
-	/*SEARCH PAGE*/
+	form#search{
+		width: 100%;
+		margin-bottom: 0px;
+	}
+	form#search input[type=text]{
+		font-size: 25px;
+	}
+	form#search input[type=submit]{
+		display: none;
+	}
+
+}
+
+
+
+@media (max-width: 600px) {
+
+/*********************  START OF THE INDEX.PHP *********************/
+
+
+.stage-one h1{
+font-size: 30px;
+width: 80%;
+padding: 5% 0 0 0;
+
+	
+}
+
+.stage-three{
+	
+	background-color: #ecf0f1;;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0;
+	
+}
+
+.stage-three .article-container h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 30px;
+	width: 80%;
+	color: #2980b9;
+	text-align: center;
+	margin: 0 auto;
+	padding: 2% 0 2% 0;
+	
+}
+
+
+.stage-two .bg{
+	display: none;
+	
+}
+
+
+#player{
+margin: 10px auto;
+width: 100%;
+height: auto;
+
+}
+#video{
+  width:100%;
+  height: 270px;
+}
+
+
+
+/*********************  END INDEX.PHP *********************/
+
+
+	
+/*********************  START SEARCH.PHP *********************/
 	#module{
 		display: none;
 	}
@@ -11,11 +83,26 @@
 		margin-bottom: 0px;
 	}
 	form#search input[type=text]{
-		font-size: 25px;
+		font-size: 20px;
+		text-align: center;
+		width: 100%;
+		margin: 0 auto;
 	}
 	form#search input[type=submit]{
 		width: 25px;
 		height: 25px;
+	}
+	
+	.bottom-search {
+		margin: 10px 0 0px 0;
+		position: relative;
+		top:0;
+	
+	}
+	
+	.bottom-search fieldset{
+		font-size: 20px;
+	
 	}
 	
 	.basic-list{
@@ -27,8 +114,7 @@
 		color: black;
 	}
 	.basic-list li{
-		
-		border-top: 1px solid black;
+		margin: 1px 0 0 0;
 		padding: 5% 3% 5% 3%;
 		text-transform: uppercase;
 		color: #FFF;
@@ -40,5 +126,466 @@
 	.basic-list li:nth-child(n+2) {background-color: rgba(41,128,185,0.8); }
 	.basic-list li:nth-child(n+4) {background-color: rgba(41,128,185,0.6);}
 	.basic-list li:nth-child(n+7) {background-color: rgba(41,128,185,0.4);  }
-	.basic-list li:last-child{border-bottom: 1px solid black;}
+	
+
+
+#loading .content{
+	position: absolute;
+	top: 0%;
+	left: 15%;
+}
+
+.nav-position {
+	position: relative;
+
+}
+
+.elements {
+	
+	background-color: #2980b9;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+/*********************  END SEARCH.PHP *********************/
+
+
+
+/*********************  START RESULT.PHP *********************/
+
+
+/***********************************************************
+                     PAGE RESULT.PHP
+***********************************************************/
+
+/* TOP FORM*/
+#topsearch fieldset{
+ 			width:100%;
+ 			position:relative;
+ 			height: 100px;
+ 			font-size: 30px;
+ 			
+ 			}
+#topsearch input{
+ 		width:100%;
+ 		text-align: center;
+ 		padding-left: 20px;
+ 		font-size: 30px;
+
+ 		
+ 		}
+ 		
+ 
+
+#topsearch input[type=submit]{
+		background-image: url("asset/search-icon.png");
+		background-color: none;
+		width: 80px;
+		height: 80px;
+		position: absolute;
+		right: 10px;
+		top:3px;
+	
+}
+/* TOP FORM*/
+
+
+/* TOP CONTENT */
+.top-content{
+	height:auto;
+}
+
+
+.top-content article {
+
+	margin: 0 0 10px 0;
+	padding-bottom: 10px;
+	background-color: #fff;
+	border-bottom: 5px solid #3498db;
+	
+	
+}
+
+.top-content .text {
+	margin: 0 auto;
+	width: 60%;
+	color: #191919;
+
+}
+
+.top-content article .text h1 {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #bfbfbf;
+	font-size: 22px;
+
+}
+
+.top-content article .text p {
+	text-align: center;
+	font-size: 17px;
+
+}
+
+.highlight-caption-top{
+	cursor: pointer;
+	position: relative;
+	width: 98%;
+	height: 0;
+	opacity: 0;
+	top: 0;
+	text-align: center;
+	display: none;
+}
+
+/*CSS FOR HIGHLIGHT CONTENT
+
+
+.top-content article .highlight h2 {
+	font-size: 14px;
+	width: 10%;
+	text-transform: uppercase;
+	font-family: "latobold";
+	font-weight: bold;
+	color: #191919;
+	float: left;
+	padding: 0px 0px 25px 0;
+	vertical-align: top;
+	text-align: left;
+	
+
+
+}
+
+.top-content article .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "latobold";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+	
+	
+
+}
+
+.top-content article .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #3498db;
+	 text-decoration: none;
+	 color: white; 
+	 
+	 
+}*/
+
+
+/*CSS FOR HIGHLIGHT CONTENT*/
+
+/* END TOP CONTENT */
+
+
+/* SECOND-STAGE CONTENT */
+
+
+.second-stage-content article {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #fff;
+	margin: 0px 1.2% 10px 0px;
+	height: auto;
+}
+
+.second-stage-content article:last-child {
+	margin: 0px 0px 10px 0px;
+	
+}
+
+.second-stage-content .text h1 {
+	font-size: 20px;
+
+
+}
+
+.second-stage-content article .text p {
+	font-size: 17px;
+}
+
+
+.second-stage-content article .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "latobold";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+	
+
+}
+
+.second-stage-content article .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #9b59b6;
+	 text-decoration: none;
+	 color: white; 
+	 
+}
+
+
+.second-stage-content article .highlight .icon {
+	float: left;
+	margin: 0 20px 0 5px;
+	padding: 16px 0 16px 0;
+
+}
+
+
+
+/* SECOND-STAGE CONTENT */
+
+
+
+/* IMAGE-STAGE CONTENT */
+.image-stage-content{
+	height:auto;
+	
+
+}
+
+.image-stage-content figure {
+	background-color:  #ecf0f1;
+	margin: 0px 0 10px 0px;
+	border-bottom: 5px solid #c0392b;
+	height: 300px;
+	background: black;
+	
+}
+
+
+
+.image-stage-content figure .highlight {
+	margin-top:50px; 
+
+}
+
+.image-stage-content figure .highlight h2 {
+	display: none;
+
+}
+
+
+/* IMAGE-STAGE CONTENT */
+
+
+
+/* REGULAR-STAGE CONTENT */
+.regular-stage-content{
+	height:auto;
+	/*margin-bottom: 30px;*/
+
+
+}
+
+.regular-stage-content article {
+	margin: 0px 0 10px 0px;
+	padding-top: 30px;
+	padding-bottom: 50px;
+	background-color: #9b59b6;
+	height : auto;
+}
+
+
+.regular-stage-content .text h1 {
+	font-family: "helvetica_regular";
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+
+}
+
+.regular-stage-content article .text p {
+	
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size:16px;
+	text-align: center;
+}
+
+.regular-stage-content article .text a {
+	color: #fff;
+	font-style: italic;
+	text-decoration: underline;
+	font-family: "latoitalic";
+	font-weight: 100;
+	
+
+}
+
+
+
+/* REGULAR-STAGE CONTENT */
+
+
+
+/*** AU SCROLL ***/
+#loadergif{
+  display:none;
+  width: 218px;
+  margin: 0 auto;
+}
+
+#nocontent{
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+  color: #7A878B;
+}
+#nocontent p{
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+/*** Notification ***/
+#listnotif{
+    position : fixed;
+    top: 12%;
+    left: 40%;
+    z-index: 9999;
+}
+.notif{
+	display : none;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+  margin-bottom: 10px;
+}
+.notif p{
+    padding: 10px 20px 10px;
+}
+.notif .close{
+  margin-left: 10px;
+}
+
+
+
+
+
+/*VIDEO*/
+.video-stage-content article{
+  backface-visibility: visible;
+}
+.content article{
+  backface-visibility: visible;
+}
+
+.videocontainer{
+
+			height: 0;
+			padding-bottom: 60%;
+			overflow: hidden;
+			margin-right: 1.2%;
+			margin-bottom: 15px;
+	   
+   		}
+
+   		
+.videocontainer iframe{
+	
+	width: 100%!important;
+	height:100%!important;
+	position: absolute;
+	top:0;
+	left:0;
+	
+		
+		}
+		
+.videocontainer .highlight {
+	margin-top:50px; 
+
+}
+
+.videocontainer .highlight h2 {
+	font-size: 14px;
+	width: 50%;
+	text-transform: uppercase;
+	font-family: "latobold";
+	font-weight: bold;
+	color: #fff;
+	float: left;
+	padding: 0px 0px 25px 0;
+	vertical-align: top;
+	text-align: left;
+
+}
+
+.videocontainer .highlight .save {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "latobold";
+	font-weight: bold;
+	color: #191919;
+	float: right;
+	vertical-align: top;
+	margin-top:20px; 
+	padding: 0px 10px 20px 0;
+  z-index: 9999;
+	
+
+}
+
+.videocontainer .highlight a {
+	 padding:15px 10px 15px 10px;
+	 background-color: #c0392b;
+	 text-decoration: none;
+	 color: white; 
+	 
+}
+
+
+.videocontainer .highlight .icon {
+	float: left;
+	margin: 0 20px 0 5px;
+	padding: 16px 0 16px 0;
+
+}
+
+
+/*VIDEO*/
+
+
+
+
+/*** CONTENT ***/
+
+.content-presentation, .content-presentation-3 {
+	background-color: #2980b9;
+	height: 300px;
+	margin: 0 auto;
+	
+}
+
+.content-presentation-2{
+	background-color: #ecf0f1;
+	height: 300px;
+	margin: 0 auto;
+	
+}
+
+.content-presentation-4{
+	background-color: #2c3e50;
+	height: 300px;
+	margin: 0 auto;
+	
+}
+
+/*** CONTENT ***/
+
+
+/*********************  START RESULT.PHP *********************/
+
 }

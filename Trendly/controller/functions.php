@@ -22,7 +22,7 @@ $cache = array(
 	"bing_cache"  => "bing.json",
 	"trend_cache" => "trends.json",
 	"time"        => 5, 
-	"path_cache"  => "../tmp"
+	"path_cache"  => "tmp"
 	);
 
 /*echo "<pre>";
@@ -243,18 +243,7 @@ function getTrendsPonderation($auth, $cache, $minimal)
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
 
-		for($j=0;$j<10;$j++){
-			if($j%2==0){
-				if(isset($twitter[$j]))
-					$result[$j] = $twitter[$j];
-				else $result[$j] = $twitter[$j+1];
-			}else{
-				if(isset($gnews[$j]))
-					$result[$j] = $gnews[$j]->keyword;
-				else $result[$j] = $gnews[$j+1]->keyword;
-			}
-		}
-		/*$result[0] = $twitter[0];
+		$result[0] = $twitter[0];
 		$result[1] = $gnews[0]->keyword;
 		$result[2] = $twitter[1];
 		$result[3] = $gnews[1]->keyword;
@@ -263,7 +252,7 @@ function getTrendsPonderation($auth, $cache, $minimal)
 		$result[6] = $twitter[3];
 		$result[7] = $gnews[4]->keyword;
 		$result[8] = $twitter[4];
-		$result[9] = $gnews[5]->keyword;*/
+		$result[9] = $gnews[5]->keyword;
 		$content = "{";
 		for ($i=0; $i < count($result); $i++) { 
 			if (isset($result[$i]) && !empty($result[$i])) {

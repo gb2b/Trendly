@@ -21,9 +21,9 @@
 
    $tweets = getSearchTweets($auth, $query, $cache);
    $actus = getTrendGnews($cache, $query);
-/*   $bing = getPicturesBing($cache,$auth,$query);*/
+  /* $bing = getPicturesBing($cache,$auth,$query);*/
    $inst = getPopularInstgImage($auth,$cache,$query);
-    $videos = getVideoYoutube($auth, $cache,$query);
+   $videos = getVideoYoutube($auth, $cache,$query);
 
 
    $actusColor = ["#d35400","#f39c12","#1abc9c","#34495e"];
@@ -56,10 +56,12 @@
                      "css/asset/articles-icon-black.png"></div>
                      
                      <div class="save">
-                        <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
-                        <span><a href="#" alt="save">SHARE</a></span>
-                        <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
-                     </div>
+                       <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
+                      <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                      <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">
+                          <i class="glyphicon glyphicon-bookmark"></i>
+                      </a>
+                    </div>
                   </div>
                </div>
             </div>
@@ -91,10 +93,10 @@
                      <h2>Bing</h2>
                      
                      <div class="save">
-                        <span><a target="_blank" href="<?php echo $inst[$i]->src ?>" alt="save">GO</a></span>
-                        <span><a href="javascript:void(0);" alt="save">SHARE</a></span>
-                        <a href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>">LOGO</a>
-                     </div>
+                            <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $inst[$i]->src ?>" alt="save">GO</a></span>
+                            <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
+                      </div>
                   </div>
             
          </figure>
@@ -145,10 +147,10 @@
                          "css/asset/articles-icon.png"></div>
                          
                          <div class="save">
-                            <span><a target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
-                            <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
-                         </div>
+                                <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
+                                <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                                <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
+                          </div>
                       </div>
                    </div>
                    <?php endif;?>
@@ -183,10 +185,10 @@
                          <div class="icon"><img alt="twitter" src=
                            "css/asset/twitter-ico.png"></div>
                          <div class="save">
-                            <span><a target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
-                            <span><a href="#" alt="save">SHARE</a></span>
-                            <a href="#" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">>LOGO</a>
-                         </div>
+                                <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
+                                <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
+                                <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
+                             </div>
                       </div>
                    </div>
                 </div>
@@ -224,10 +226,10 @@
                      <h2>Youtube</h2>
                      
                      <div class="save">
-                      <span><a target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
-                      <span><a href="#">SHARE</a></span>
-                      <a href="#" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>">LOGO</a>
-                     </div>
+                          <span><a data-toggle="tooltip" title="Voir le contenu" target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
+                          <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux"href="javascript:void(0);">SHARE</a></span>
+                          <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
+                      </div>
                   </div>
                </div>
         </div>

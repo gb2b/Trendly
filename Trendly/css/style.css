@@ -1,3 +1,28 @@
+/********************* CSS SUMMARY *********************
+
+- 1. Reset.css
+
+- 2. Font initializer
+
+- 3. Index.html page
+
+- 5. Search.html page
+
+- 6. Result.html page
+
+- 7. Dashboard.html page
+
+- 8. Generic CSS
+
+********************* CSS SUMMARY *********************/
+
+
+
+
+
+
+
+
 /********************* RESET CSS *********************/
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -49,13 +74,20 @@ table {
 	border-spacing: 0;
 }
 
-body {background-color: #8e44ad;}
 
 section{
 	color: #fff;
 	margin: 20px;
 }
 /********************* END OF THE RESET CSS *********************/
+
+
+
+
+
+
+
+
 
 
 
@@ -120,201 +152,28 @@ section{
 
 }
 
-/*********************  END START OF THE FONT INITIALIZER *********************/
-
-
-/*********************  GENERIC CSS *********************/
-
-*{
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-
-
-article{
-  
-    position: relative;
-    overflow: hidden;  
-    width: 100%; 
-    animation: anima 2s;
-    -webkit-animation: anima 2s;
-   backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-}
-
-.highlight-caption{
-    /*cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 35%;
-    border: 1px solid black;
-    opacity:0;
-    padding: 10px;
-    text-align:center;*/
-    
-    cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 0;
-    opacity:0;
-    text-align:center;
-}
-
-
-.highlight-caption-top{
-    /*cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 35%;
-    border: 1px solid black;
-    opacity:0;
-    padding: 10px;
-    text-align:center;*/
-    
-    cursor: pointer;
-    position: relative;
-    width: 95%;
-    height: 0;
-    opacity:0;
-    text-align:center;
-}
-
-.text-block{
-     -webkit-transform: scale(1);
-             transform: scale(1);
-}
-.block:hover .text-block{
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-}
-/*All classes with same attribute*/
-a ,a:hover,
-.block .text-block,
-.highlight-caption,.highlight-caption-top,
-.block:hover .highlight-caption,
-.block:hover img{
-     transition: all 0.5s ease;
-    -webkit-transition: all 0.5 ease;  
-}
-
-/*Effects in Caption*/
-.block:hover .bottom-to-top,
-.block:hover .top-to-bottom,
-.block:hover .left-to-right,
-.block:hover .right-to-left{
-    opacity: 1;
-}
-/*Bottom to Top*/
-.bottom-to-top{
-    top:50%;    
-    left:2.5%;
-}
-.block:hover .bottom-to-top{
-    top:6%
-}
-/*Top to Bottom*/
-.top-to-bottom{
-    bottom:50%;    
-    left:2.5%;
-}
-.block:hover .top-to-bottom{
-    bottom:36.5%;
-}
-/*Left to Right*/
-.left-to-right{
-    top:2.5%;
-    right:50%;
-}
-.block:hover .left-to-right{
-    right: 2.5%;
-}
-/*Right to Left*/
-.right-to-left{
-    top:2.5%;
-    left:50%;
-}
-.block:hover .right-to-left{
-    left: 2.5%;
-}
-
-/*Animation Effect*/
-@keyframes anima{
-    from{
-        margin-top: -50px;
-        opacity: 0;
-        -webkit-opacity: 0;
-    }
-    to{
-        margin: auto;
-        opacity: 1;
-        -webkit-opacity: 1;
-    }
-}
-@-webkit-keyframes anima{
-    from{
-        margin-left: -30px;
-        opacity: 0;
-        -webkit-opacity: 0;
-    }
-    to{
-        margin-left: 0px;
-        opacity: 1;
-        -webkit-opacity: 1;
-    }
-}
+/*********************  END OF THE FONT INITIALIZER *********************/
 
 
 
-.container {
- margin:60px 0 0 0;
-}
-.carousel {
-  width: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.carousel ul{
-  list-style-type:none;
-  width:924%;
-  margin-left:0;
-  left:0;
-  padding-left:1px;
-}
-.carousel li{
-  display:inline;
-
-  
-}
-.carousel ul li{
-  width: 11%;
-  float:left;
-}
-.navPrev{
-	background-image: url("asset/arrow-left-icon.png");
-	background-color: none;
-	padding: 11px;
-	margin:0 10px 0 10px;
-  float:left;
-  color: #000;
-}
-.navNext{
-	background-image: url("asset/arrow-right-icon.png");
-	background-color: none;
-	padding: 11px;
-	margin:0 10px 0 10px;
-  float:right;
-   color: #000;
-}
-
-/*********************  END GENERIC CSS *********************/
 
 
 
-/*********************  START OF THE INDEX.HTML *********************/
+/***********************************************************
+                     START OF INDEX.PHP
+***********************************************************/
 
-header > article {
-	margin-top: 100px;
+html{width:100%;height:100%;}
+
+
+header{
+	
+	width:100%;
+	padding: 4% 0 14% 0;
+	
+}
+
+header article {
 	color: #000;
 	text-align: center;
 	font-family: "helvetica_neue_lt_std35_thin";
@@ -322,22 +181,23 @@ header > article {
 	
 }
 
-header > article h1{
+header article h1{
 	font-family: "helvetica_neue_lt_std35_thin";
 	font-size: 70px;
 	color: #2980b9;
 }
 
-header > article a{
+header  article a{
 	font-size: 30px;
 	color: #2980b9;
 	padding: 10px 0 5px 0;
 }
 
-header > article a:hover{
+header article a:hover{
 	text-decoration: none;
 }
 
+/*SVG Button & animation*/
 header article a svg {
 display: block;
 margin: 15px auto 0 auto;
@@ -352,16 +212,170 @@ header article a:hover svg {
 margin-top: 20px;
 }
 
-/*********************  END INDEX.PHP *********************/
+/*Start of the section stage-one*/
+.stage-one{
+	
+	background-color: #2980b9;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0;
+}
+
+.stage-one h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 70px;
+	color: #fff;
+	margin: 0 auto;
+	width: 46%;
+	padding: 5% 0 0 0;
+	text-align: center;
+	
+}
+
+.stage-one .ico-stage-one {
+	
+	background-image: url("img/ico-stage-one.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 50px 0 50px 0;
+	
+	
+}
+
+.stage-one .ico-stage-two {
+	
+	background-image: url("img/ico-stage-two.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 50px 0 50px 0;
+	
+}
+
+
+.stage-one .ico-stage-three {
+	
+	background-image: url("img/ico-stage-three.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 50px 0 50px 0;
+	
+}
+
+.stage-one .article-container {
+	padding: 5% 5% 5% 5%;
+	
+}
+
+.stage-one .article-container article{
+	margin: 7% 0 7% 0;
+	
+}
+
+.stage-one article p{
+	font-family: "helvetica_neue_lt_std35_thin";
+	color: #fff;
+	font-size: 15px;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 3% 0 0 0;
+	
+}
+/*End of the section stage-one*/
+
+
+/*Start of the section stage-two*/
+.stage-two .bg{
+	
+	background-image: url("img/stage-two-bg.png");
+	background-repeat:no-repeat;
+	background-color: #ecf0f1;
+	background-size: 100%;
+	height: auto;
+	width: 100%;
+	padding: 50% 0 20% 0;
+	margin: 0;
+	
+}
+/*End of the section stage-two*/
+
+
+/*Start of the section stage-three*/
+.stage-three{
+	
+	background-color: #2980b9;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0;
+	
+}
+
+.stage-three .article-container h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 70px;
+	color: #fff;
+	margin: 80px auto;
+	width: 46%;
+	
+}
+/*End of the section stage-three*/
+
+
+/*Start of the section stage-four*/
+.stage-four{
+	
+	background-color: #ecf0f1;
+	padding: 3% 0 3% 0;
+	
+}
+
+.stage-four h1{
+	margin-top: 0;
+	text-align:center;
+	
+}
+
+
+.stage-four a{
+	
+	font-family: "helvetica_neue_lt_std35_thin";
+	color: #7f8c8d;
+	font-size: 40px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.stage-four a:hover{
+	
+	color: #3498db;
+	
+}
+
+
+
+/*End of the section stage-four*/
+
+
+/***********************************************************
+                     END OF INDEX.PHP
+***********************************************************/
+
+
+
+
+
+
+
+
+
+
 
 /***********************************************************
                      PAGE SEARCH.PHP
 ***********************************************************/
 
 
-/*************
-     LOGO 
-*************/
+
+/**START LOGO**/
 
 .logo img{
 	width: 25%;
@@ -378,14 +392,13 @@ margin-top: 20px;
 	position: absolute;
 	
 }
-
 /**END LOGO**/
 
 
 
 
 
-.info-icon{
+/*.info-icon{
   font-size: 2.0em;
   color: #fff;
   top:-5px;
@@ -393,47 +406,19 @@ margin-top: 20px;
 .info-icon:hover{
   cursor: pointer;
   color: #1E5C86;
-}
+}*/
 
 
 
-html{width:100%;height:100%;}
-#modal{
-	display:none;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	background: rgba(0,0,0,0.8);
-  z-index: 9999;
-}
-#player{
-margin: 80px auto;
-width: 80%;
-height: 440px;
-background: #000;
-border: 1px solid grey;
-border-radius: 10px;
-
-}
-#video{
-  width:100%;
-  height: 100%;
-}
-/***************
-  BOTTOM SEARCH
-***************/
-
-.bottom-search{
+/*Start of the Search bar */
+.container .bottom-search{
 	 margin: 0;
-	 top:-15px;
 	 position: relative;
 	 padding: 20px 0 20px 0;
 	 vertical-align: bottom;
 	 }
 
-.bottom-search fieldset{		
+.container .bottom-search fieldset{		
 	position:relative;
 	background-color: none;
 	border: none;
@@ -442,7 +427,7 @@ border-radius: 10px;
 	bottom: 0px;
 }
 
-.bottom-search input{
+.container .bottom-search input{
 	position: relative;
 	color: #2980b9;
 	background: none;
@@ -456,7 +441,7 @@ border-radius: 10px;
  		
 }
 
-.bottom-search input[type=submit]{
+.container .bottom-search input[type=submit]{
 		background-image: url("asset/search-icon.png");
 		background-color: none;
 		text-transform: uppercase;
@@ -465,30 +450,12 @@ border-radius: 10px;
 		margin-top: 0px;
 }
 
-
-
-/*
-
-#search input[type=text]{
-    width: 80%;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-left: 90px;
-    top:-17px;
-
-}
- 		
-
-*/
-
-/**END BOTTOM FORM**/
+/*End of the Search bar */
 
 
 
 
-/****************
-  MODULE TRENDS
-****************/
+/**START OF MODULE TRENDS**/
 #module{
 	width: 550px;
 	margin: -50px auto 10px;
@@ -523,22 +490,21 @@ border-radius: 10px;
 .arc:hover{
 	transition : opacity 1s linear;
 }
+/**END OF MODULE TRENDS**/
 
-/**END MODULE TRENDS**/
 
 
-/**BASIC LIST**/
+/**Start of the BASIC LIST**/
 
 .basic-list{
 		display: none;	
 }
 
 
-/**BASIC lIST**/
+/**End of the BASIC lIST**/
 
-/*************
-    LOADER 
-*************/
+
+/** Start of the LOADER **/
 
 #loading{
 	width: 520px;
@@ -599,10 +565,8 @@ border-radius: 10px;
 
 
 
-
-
 /*************
-  ANIMATION 
+  ANIMATION MODULE
 *************/
 
 /* Rotation module */
@@ -750,214 +714,21 @@ border-radius: 10px;
     opacity: 1;
   }
 }
-/** End animation **/
+
+/*************
+  END ANIMATION MODULE
+*************/
+
 
 /********************* END SEARCH.PHP  *********************/
-                 
-/***********************************************************
-                     PAGE MYDASH.PHP
-***********************************************************/
 
-section .content article {
-	margin-top: 0;
-	color: #000;
-	text-align: center;
-	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 20px;
-	padding: 5% 0 5% 0;
-	/*height: 240px;*/
-	margin: 10px;
-	border-radius: 10px;
-	background-color: #fff;
-	
-}
-
-
-section .content article label {
-	position: relative;
-	width: 100%;
-	
-	
-}
-
-section .content article label div {
-	background-image: url("asset/arrow-down-icon.png");
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 8% 0 8% 0;
-	position: relative;
-	top:70px;
-	border-radius: 0 0 10px 10px;
-	
-	
-}
-
-
-
-
-.flat-blue{
-	background-color: #3498db; 
-
-}
-
-.flat-yellow{
-	background-color: #f1c40f; 
-
-}
-
-.flat-red{
-	background-color: #e74c3c; 
-
-}
-
-.flat-green{
-	background-color: #1abc9c; 
-
-}
-
-
-section .content > article h1{
-	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 20px;
-	width: 100%;
-	text-transform: uppercase;
-}
-
-section .content > article p{
-	font-size: 18px;
-	margin: 0 auto;
-	width: 70%;
-}
-
-section .content > article a{
-	font-size: 13px;
-	color: #7f8c8d;
-}
-
-section .content > article .delete-btn{
-	background-image:url("asset/quit-icon.png");
-	background-repeat: no-repeat;
-	padding: 25px;
-	position: absolute;
-	top: 10px;
-	left:10px;
-	
-}
-
-section .content > article a:hover{
-	text-decoration: underline;
-	color: #000;
-}
-
-
-
-section .content > article .fav-trends{
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
-	text-align: left;
-	color: #000;
-	width: 100%;
-	padding: 15px;
-	
-	/*display: none;*/
-}
-
-section .content > article .fav-trends .inner-content {
-	border-top:1px solid #7f8c8d;
-
-}
-
-section .content > article .fav-trends figure img {
-	max-width: 100%;
-    max-height: 300px;
-	height: auto; 
-
-}
-
-
-section .content > article .fav-trends h3{
-	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 18px;
-	text-align: left;
-	margin: 15px 10px 10px;
-	/*display: none;*/
-}
-
-section .content > article .fav-trends p{
-	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 15px;
-	text-align: left;
-	margin: 10px;
-	/*display: none;*/
-}
-
-section .content > article .fav-trends .action-buttons{
-	margin:10px 0 15px 10px; 
-}
-
-section .content > article .fav-trends .action-buttons a{
-	font-size: 12px;
-	color: #7f8c8d;
-}
-
-section .content > article .fav-trends .action-buttons a:hover{
-	text-decoration: underline;
-	color: #000;
-}
-
-section .content > article .fav-trends .action-buttons span{
-	margin-right: 10px;
-}
-
-section .content > article .fav-trends .accordeon label {
-	font-family: "helvetica_neue_lt_std35_thin";
-	font-size: 20px;
-	text-align: left;
-	text-transform: uppercase;
-	/*display: none;*/
-}
-
-.accordeon .inner {
-    height: 0;
-    display: none;
-    opacity: 0;
-    color: #f0f0f0;
-    
-}
-
-
-
-
-.accordeon input[type="checkbox"] {
-    display: none;
-    
-}
-/* Show .inner for corresponding to checked radio or checkbox */
- .accordeon input[type="checkbox"]:checked + .inner {
-    height: auto;
-    display: block;
-    opacity: 1;
-    margin-top: 66px;
-    
-    
-}
-
-
-
-
-
-
-
-
-
-/*********************  END OF THE MYDASH.PHP *********************/
 
 
 /***********************************************************
                      PAGE RESULT.PHP
 ***********************************************************/
 
-/* TOP FORM*/
+/* TOP SEARCH BAR*/
 #topsearch fieldset{
  			width:100%;
  			position:relative;
@@ -992,34 +763,11 @@ section .content > article .fav-trends .accordeon label {
 		top:3px;
 	
 }
-/* TOP FORM*/
+/* TOP SEARCH BAR*/
 
 
 
-/*IMG BOX*/
-
-.img-box {
-	background-image: url("img/img3.jpg");
-	background-size: cover;
-	background-position: center;
-	height: 156px;
-	width: 100%;
-	margin: 0 auto;
-		}
-
-.img-box-regular-stage {
-	background-image: url("img/img3.jpg");
-	background-size: cover;
-	background-position: center;
-	height: 225px;
-	width: 100%;
-	margin: 0 auto;
-		}
-
-/*IMG BOX*/
-
-
-/* TOP CONTENT */
+/* Start of the TOP CONTENT */
 .top-content{
 	height:auto;
 }
@@ -1028,7 +776,6 @@ section .content > article .fav-trends .accordeon label {
 .top-content article {
 
 	margin: 0 0 10px 0;
-	padding-top: 70px;
 	padding-bottom: 30px;
 	background-color: #fff;
 	border-bottom: 5px solid #3498db;
@@ -1070,9 +817,7 @@ section .content > article .fav-trends .accordeon label {
 
 }
 
-
-
-/*CSS FOR HIGHLIGHT CONTENT*/
+/*Start of the Top-content HIGHLIGHT*/
 
 
 .top-content article .highlight h2 {
@@ -1125,14 +870,12 @@ section .content > article .fav-trends .accordeon label {
 	
 }
 
-/*CSS FOR HIGHLIGHT CONTENT*/
+/*Start of the Top-content HIGHLIGHT*/
 
-/* END TOP CONTENT */
+/* End of the TOP CONTENT */
 
 
-.cible:hover{
-	cursor : pointer;
-}
+
 
 /* SECOND-STAGE CONTENT */
 .second-stage-content{
@@ -1184,6 +927,8 @@ section .content > article .fav-trends .accordeon label {
 
 }
 
+/*Start of the Second-stage-content HIGHLIGHT*/
+
 .second-stage-content article .highlight {
 	margin-top:50px; 
 
@@ -1232,13 +977,16 @@ section .content > article .fav-trends .accordeon label {
 	padding: 16px 0 16px 0;
 
 }
+/*End of the Second-stage-content HIGHLIGHT*/
+
+
+/* END OF SECOND-STAGE CONTENT */
 
 
 
-/* SECOND-STAGE CONTENT */
 
 
-/* REGULAR-STAGE CONTENT */
+/* START OF THE REGULAR-STAGE CONTENT */
 .regular-stage-content{
 	height:auto;
 	/*margin-bottom: 30px;*/
@@ -1293,7 +1041,14 @@ section .content > article .fav-trends .accordeon label {
 }
 
 
-.regular-stage-content article .highlight{margin-top: 50px;}
+/*Start of the Regular-stage-content HIGHLIGHT*/
+.regular-stage-content article .highlight{
+	
+	margin-top: 50px;
+	
+	}
+	
+	
 .regular-stage-content article .highlight h2 {
 	font-size: 14px;
 	width: 50%;
@@ -1336,10 +1091,13 @@ section .content > article .fav-trends .accordeon label {
 	padding: 16px 0 16px 0;
 
 }
-/* REGULAR-STAGE CONTENT */
+/*End of the Second-stage-content HIGHLIGHT*/
+/* END OF THE REGULAR-STAGE CONTENT */
 
 
-/* IMAGE-STAGE CONTENT */
+
+
+/* START OF THE IMAGE-STAGE CONTENT */
 .image-stage-content{
 	height:auto;
 	
@@ -1466,6 +1224,8 @@ a ,a:hover,
 
 }
 
+
+/*Start of the Image-stage-content HIGHLIGHT*/
 .image-stage-content figure .highlight {
 	margin-top:50px; 
 
@@ -1514,57 +1274,15 @@ a ,a:hover,
 	padding: 16px 0 16px 0;
 
 }
+/*End of the Image-stage-content HIGHLIGHT*/
 
 
 
-/* IMAGE-STAGE CONTENT */
-
-/*** AU SCROLL ***/
-#loadergif{
-  display:none;
-  width: 218px;
-  margin: 0 auto;
-}
-
-#nocontent{
-  margin-top: 20px;
-  display: none;
-  text-align: center;
-  color: #7A878B;
-}
-#nocontent p{
-  font-size: 1.5em;
-  margin-top: 10px;
-}
-
-/*** Notification ***/
-#listnotif{
-    position : fixed;
-    top: 12%;
-    left: 40%;
-    z-index: 9999;
-}
-.notif{
-	display : none;
-	background: rgba(0,0,0,0.5);
-	color: white;
-	font-size: 1.2em;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
-  margin-bottom: 10px;
-}
-.notif p{
-    padding: 10px 20px 10px;
-}
-.notif .close{
-  margin-left: 10px;
-}
+/* END OF THE IMAGE-STAGE CONTENT */
 
 
 
-
-
-/*VIDEO*/
+/* START OF THE VIDEO-STAGE CONTENT */
 .video-stage-content article{
   backface-visibility: visible;
 }
@@ -1599,7 +1317,9 @@ a ,a:hover,
 	
 		
 		}
-		
+
+
+/*Start of the Videocontainer HIGHLIGHT*/		
 .videocontainer .highlight {
 	margin-top:50px; 
 
@@ -1649,11 +1369,456 @@ a ,a:hover,
 	padding: 16px 0 16px 0;
 
 }
+/*End of the Videocontainer HIGHLIGHT*/	
 
 
-/*VIDEO*/
+/* END OF THE VIDEO-STAGE CONTENT */
 
 
+
+
+
+
+                 
+/***********************************************************
+                     PAGE MYDASH.PHP
+***********************************************************/
+
+section .content article {
+	margin-top: 0;
+	color: #000;
+	text-align: center;
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	padding: 30px 0 30px 0;
+	/*height: 240px;*/
+	margin: 10px;
+	border-radius: 10px;
+	background-color: #fff;
+	
+}
+
+
+section .content article label {
+	position: relative;
+	width: 100%;
+	
+	
+}
+
+section .content article label div {
+	background-image: url("asset/arrow-down-icon.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 25px 0 25px 0;
+	position: relative;
+	top: 43px;
+	border-radius: 0 0 10px 10px;
+}
+
+
+
+.flat-blue{
+	background-color: #3498db; 
+
+}
+
+.flat-yellow{
+	background-color: #f1c40f; 
+
+}
+
+.flat-red{
+	background-color: #e74c3c; 
+
+}
+
+.flat-green{
+	background-color: #1abc9c; 
+
+}
+
+
+section .content > article h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	width: 100%;
+	text-transform: uppercase;
+}
+
+section .content > article p{
+	font-size: 18px;
+	margin: 0 auto;
+	width: 70%;
+}
+
+section .content > article a{
+	font-size: 13px;
+	color: #7f8c8d;
+}
+
+
+section .content > article a:hover{
+	text-decoration: underline;
+	color: #000;
+}
+
+
+
+section .content > article .fav-trends{
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	text-align: left;
+	color: #000;
+	width: 100%;
+	padding: 15px;
+	
+	/*display: none;*/
+}
+
+section .content > article .fav-trends .inner-content {
+	border-top:1px solid #7f8c8d;
+
+}
+
+section .content > article .fav-trends figure img {
+	max-width: 100%;
+    max-height: 300px;
+	height: auto; 
+
+}
+
+
+section .content > article .fav-trends h3{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 18px;
+	text-align: left;
+	margin: 15px 10px 10px;
+	/*display: none;*/
+}
+
+section .content > article .fav-trends p{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 15px;
+	text-align: left;
+	margin: 10px;
+	/*display: none;*/
+}
+
+section .content > article .fav-trends .action-buttons{
+	margin:10px 0 15px 10px; 
+}
+
+section .content > article .fav-trends .action-buttons a{
+	font-size: 12px;
+	color: #7f8c8d;
+}
+
+section .content > article .fav-trends .action-buttons a:hover{
+	text-decoration: underline;
+	color: #000;
+}
+
+section .content > article .fav-trends .action-buttons span{
+	margin-right: 10px;
+}
+
+section .content > article .fav-trends .accordeon label {
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 20px;
+	text-align: left;
+	text-transform: uppercase;
+	/*display: none;*/
+}
+
+.accordeon .inner {
+    height: 0;
+    display: none;
+    opacity: 0;
+    color: #f0f0f0;
+    
+}
+
+
+
+
+.accordeon input[type="checkbox"] {
+    display: none;
+    
+}
+ .accordeon input[type="checkbox"]:checked + .inner {
+    height: auto;
+    display: block;
+    opacity: 1;
+    margin-top: 66px;
+    
+    
+}
+
+/*********************  END OF THE MYDASH.PHP *********************/
+
+
+
+
+/*********************  START OF THE GENERIC CSS *********************/
+
+/*** WHEN SCROLLING INFINITY ***/
+#loadergif{
+  display:none;
+  width: 218px;
+  margin: 0 auto;
+}
+
+#nocontent{
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+  color: #7A878B;
+}
+#nocontent p{
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+/*** Notification ***/
+#listnotif{
+    position : fixed;
+    top: 12%;
+    left: 40%;
+    z-index: 9999;
+}
+.notif{
+	display : none;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+  margin-bottom: 10px;
+}
+.notif p{
+    padding: 10px 20px 10px;
+}
+.notif .close{
+  margin-left: 10px;
+}
+
+
+
+/*********************  GENERIC CSS *********************/
+
+*{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+article{
+  
+    position: relative;
+    overflow: hidden;  
+    width: 100%; 
+    animation: anima 2s;
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+.highlight-caption{
+    /*cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    border: 1px solid black;
+    opacity:0;
+    padding: 10px;
+    text-align:center;*/
+    
+    cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 0;
+    opacity:0;
+    text-align:center;
+}
+
+
+.highlight-caption-top{
+    /*cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    border: 1px solid black;
+    opacity:0;
+    padding: 10px;
+    text-align:center;*/
+    
+    cursor: pointer;
+    position: relative;
+    width: 90%;
+    height: 0;
+    opacity:0;
+    text-align:center;
+}
+
+.text-block{
+     -webkit-transform: scale(1);
+             transform: scale(1);
+}
+.block:hover .text-block{
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+/*All classes with same attribute*/
+a ,a:hover,
+.block .text-block,
+.highlight-caption,.highlight-caption-top,
+.block:hover .highlight-caption,
+.block:hover img{
+     transition: all 0.5s ease;
+    -webkit-transition: all 0.5 ease;  
+}
+
+/*Effects in Caption*/
+.block:hover .bottom-to-top,
+.block:hover .top-to-bottom,
+.block:hover .left-to-right,
+.block:hover .right-to-left{
+    opacity: 1;
+}
+/*Bottom to Top*/
+.bottom-to-top{
+    top:50%;    
+    left:2.5%;
+}
+.block:hover .bottom-to-top{
+    top:6%
+}
+/*Top to Bottom*/
+.top-to-bottom{
+    bottom:50%;    
+    left:2.5%;
+}
+.block:hover .top-to-bottom{
+    bottom:36.5%;
+}
+/*Left to Right*/
+.left-to-right{
+    top:2.5%;
+    right:50%;
+}
+.block:hover .left-to-right{
+    right: 2.5%;
+}
+/*Right to Left*/
+.right-to-left{
+    top:2.5%;
+    left:50%;
+}
+.block:hover .right-to-left{
+    left: 2.5%;
+}
+
+/*Animation Effect*/
+@keyframes anima{
+    from{
+        margin-top: -50px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin: auto;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+@-webkit-keyframes anima{
+    from{
+        margin-left: -30px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin-left: 0px;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+
+
+
+.container {
+ margin:60px 0 0 0;
+}
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.carousel ul{
+  list-style-type:none;
+  width:924%;
+  margin-left:0;
+  left:0;
+  padding-left:1px;
+}
+.carousel li{
+  display:inline;
+
+  
+}
+.carousel ul li{
+  width: 11%;
+  float:left;
+}
+.navPrev{
+	background-image: url("asset/arrow-left-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:left;
+  color: #000;
+}
+.navNext{
+	background-image: url("asset/arrow-right-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:right;
+   color: #000;
+}
+
+.header-top{
+	padding: 0;
+}
+
+
+
+#modal{
+	display:none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: rgba(0,0,0,0.8);
+  z-index: 9999;
+}
+#player{
+margin: 80px auto;
+width: 62%;
+height: 440px;
+
+}
+#video{
+  width:100%;
+  height: 100%;
+}
+
+.cible:hover{
+	cursor : pointer;
+}
 
 
 /*** CONTENT ***/
@@ -1680,3 +1845,9 @@ a ,a:hover,
 }
 
 /*** CONTENT ***/
+
+
+
+
+
+/*********************  END GENERIC CSS *********************/
