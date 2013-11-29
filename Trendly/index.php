@@ -11,12 +11,14 @@ setcookie("visited", true, time()+360*24*3600);
    <meta charset="utf-8">
    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
-   <title>Trendly : les Tendances du net</title>
-   <meta content="" name="description">
+   <title>Trendly : Soyez au courant des dernières tendances</title>
+   <meta content="Trendly vous permet de visualiser les tendances actuelles sur internet" name="description">
    <meta name="viewport" content="width=device-width,initial-scale=1">
+
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
    <link rel="stylesheet" href="css/media-queries.css">
+
    <link href="css/asset/favicon.png" rel="icon" type="image/png">
 </head>
 

@@ -58,7 +58,7 @@
 				  <!-- LOGO -->
 				  <div class="navbar-brand logo">
 			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span>Trendly</span></a>
+			    	<span>trendly</span></a>
 			    </div>
 			    <!-- END LOGO -->
 		    </div><!-- /.navbar-header -->

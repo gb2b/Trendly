@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
         <title>Trendly - Search a Trend</title>
-        <meta name="description" content="">
+        <meta name="description" content="Recherchez un mot ou sélectionnez un trend pour visualiser du contenu en rapport !">
 
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
@@ -27,7 +27,6 @@
         <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
         
          <link rel="stylesheet" href="css/media-queries.css">
-        <!-- <link rel="stylesheet" href="css/trendly.css">-->
         
 
 </head>
@@ -50,7 +49,7 @@
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
 			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span>Trendly</span></a>
+			    	<span>trendly</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    
@@ -160,6 +159,7 @@
     
 </body>
     <script type="text/javascript"> 
+    // Récupère les trends du moment depuis le fichier functions.php
       var trends = <?php echo $trends ?>;
     </script>
 

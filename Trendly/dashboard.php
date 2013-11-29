@@ -6,7 +6,7 @@
    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
    <title>Trendly - Dashboard</title>
-   <meta content="" name="description">
+   <meta content="Dashboard Trendly, retrouvez les contenus que vous avez sauvegardé" name="description">
    <meta content="width=device-width,initial-scale=1" name="viewport">
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
@@ -58,7 +58,7 @@
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
 			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span>Trendly</span></a>
+			    	<span>trendly</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    
