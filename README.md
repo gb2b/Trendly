@@ -1,6 +1,7 @@
 Trendly
 ====================
 ##Soyez au courant des dernières tendances
+[Trendly.eu](http://trendly.eu "Trendly.eu")
 
 
 Trendly regroupe les Trends (Tendances) du moment sur internet, et vous permet de visualiser en un instant
