@@ -71,17 +71,7 @@
 			    
 		    
 		    <!-- INFO BUTTON -->
-		    <ul class="nav navbar-nav navbar-right">
-		      <li class="active"><a href="result.php">Page Trend</a></li>
-		      <li><a href="search.php">Retour au module</a></li>
-		      <li><a href="dashboard.phh">Voir Dashboard</a></li>
-		      
-		      <li>
-		      	<a class="info-icon" href="#">
-		      		<i class="glyphicon glyphicon-info-sign" style="color: #fff;"></i>
-		      	</a>
-		      </li>
-		    </ul>
+		    <?php include("header.php"); ?>
 		  </div><!-- /.navbar-collapse -->
 		</nav><!-- /.navbar -->
 		
