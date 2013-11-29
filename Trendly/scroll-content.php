@@ -23,7 +23,7 @@
    $actus = getTrendGnews($cache, $query);
   /* $bing = getPicturesBing($cache,$auth,$query);*/
    $inst = getPopularInstgImage($auth,$cache,$query);
-   $videos = getVideoYoutube($auth, $cache,$query);
+   /*$videos = getVideoYoutube($auth, $cache,$query);*/
 
 
    $actusColor = ["#d35400","#f39c12","#1abc9c","#34495e"];
@@ -204,7 +204,7 @@
       </div>
       <?php endif; ?>
        
-
+<!-- 
       <?php if( (isset($query))  || isset($videos)) : ?>
        <div class="video-stage-content row">
          <?php 
@@ -244,7 +244,7 @@
           ?>
          
        </div>
-       <?php endif; ?>
+       <?php endif; ?> -->
 
 
 

@@ -20,10 +20,11 @@ setcookie("visited", true, time()+360*24*3600);
    <link rel="stylesheet" href="css/media-queries.css">
 
    <link href="css/asset/favicon.png" rel="icon" type="image/png">
+
 </head>
 
 <body>
-
+<?php include_once("analytics.php") ?>
 	
 <!-- START OF THE HEADER -->
    <header class="container">

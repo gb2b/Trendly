@@ -10,6 +10,7 @@
    <meta content="width=device-width,initial-scale=1" name="viewport">
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+
    		<script id="trendUpTlp" type="text/template">
 	   		<article class="col-md-3-bis accordeon check">
 			   		<h1 id="trendname">{{title}}</h1>
@@ -43,6 +44,7 @@
 </head>
 
 <body>
+	<?php include_once("analytics.php") ?>
 	<!-- START OF THE HEADER -->
 	<header class="header-top">
 		<!-- START OF THE NAV BAR -->

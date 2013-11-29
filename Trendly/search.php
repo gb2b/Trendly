@@ -27,13 +27,12 @@
         <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
         
          <link rel="stylesheet" href="css/media-queries.css">
-        
 
 </head>
 
 
 <body> 
-
+<?php include_once("analytics.php") ?>
 	<!-- START OF THE HEADER -->
 	<header class="header-top">
 		<!-- START OF THE NAV BAR -->

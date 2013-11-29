@@ -9,7 +9,7 @@
   // Appel des fonctions pour chaque API : Tweet / Youtube / Instragram et Google News
   $tweets = getSearchTweets($auth, $query, $cache);
   $actus = getTrendGnews($cache, $query);
-  $videos = getVideoYoutube($auth, $cache,$query);
+  /*$videos = getVideoYoutube($auth, $cache,$query);*/
   $inst = getPopularInstgImage($auth,$cache,$query);
 
   // Initialisation de variables pour compter les contenus courants
@@ -43,7 +43,7 @@
 </head>
 
 <body>
-
+<?php include_once("analytics.php") ?>
 <!-- START OF THE HEADER -->
 	<header class="header-top">
 		<!-- START OF THE NAV BAR -->
@@ -301,44 +301,44 @@
           </div>
           <?php endif; //end others actus & tweets?>
            
-        
-        <!-- VIDEOS -->
-         <?php if( (isset($_GET["trend"]) && !empty($_GET["trend"]))  || isset($videos)) : ?>
-           <div class="video-stage-content row">
-             <?php 
-                  $vidtmp = 0;
-                  for($i=$cptvid;$i<($cptvid+2);$i++) : ?>
-             <?php if(isset($videos[$i])):?>     
-    		    <article class="videocontainer col-md-6">
-    		    <div class="block">
-    			    <iframe width="100%" height="315" src="//www.youtube.com/embed/<?php echo $videos[$i]->id; ?>" frameborder="0" allowfullscreen></iframe>
-    			  <div class="highlight-caption left-to-right">
-                      <div class="highlight">
-                         <div class="icon"><img alt="articles" src=
-                         "css/asset/articles-icon.png"></div>
+<!--         
+VIDEOS
+ <?php if( (isset($_GET["trend"]) && !empty($_GET["trend"]))  || isset($videos)) : ?>
+   <div class="video-stage-content row">
+     <?php 
+          $vidtmp = 0;
+          for($i=$cptvid;$i<($cptvid+2);$i++) : ?>
+     <?php if(isset($videos[$i])):?>     
+            <article class="videocontainer col-md-6">
+            <div class="block">
+              <iframe width="100%" height="315" src="//www.youtube.com/embed/<?php echo $videos[$i]->id; ?>" frameborder="0" allowfullscreen></iframe>
+            <div class="highlight-caption left-to-right">
+              <div class="highlight">
+                 <div class="icon"><img alt="articles" src=
+                 "css/asset/articles-icon.png"></div>
 
-                         <h2>Youtube</h2>
-                         
-                         <div class="save">
-                         	<span><a data-toggle="tooltip" title="Voir le contenu" target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
-                         	<span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux"href="javascript:void(0);">SHARE</a></span>
-                         	<a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
-                         </div>
-                      </div>
-                   </div>
-    		    </div>
-            </article>      
-             <?php 
-                  $vidtmp++;
-                  endif; 
-              ?>
-             <?php 
-                  endfor;
-                  $cptvid += $vidtmp; 
-              ?>
+                 <h2>Youtube</h2>
+                 
+                 <div class="save">
+                   <span><a data-toggle="tooltip" title="Voir le contenu" target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
+                   <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux"href="javascript:void(0);">SHARE</a></span>
+                   <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
+                 </div>
+              </div>
            </div>
-           <?php endif; ?>
-           <!-- END videos -->
+            </div>
+    </article>      
+     <?php 
+          $vidtmp++;
+          endif; 
+      ?>
+     <?php 
+          endfor;
+          $cptvid += $vidtmp; 
+      ?>
+   </div>
+   <?php endif; ?>
+   END videos -->
 
 
        </div>
