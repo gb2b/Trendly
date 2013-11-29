@@ -373,87 +373,28 @@
       totaltweets : <?php echo count($tweets) ?>,
       totalactus  : <?php echo count($actus) ?>,
       totalpics   : <?php echo count($inst) ?>,
-      totalvids   : <?php echo count($videos) ?>
+      totalvids   : <?php echo count($videos) ?>,
+      initializer : function(){
+          $("#content").append('<div id="loadergif"><img src="css/img/ajax-loader.gif" alt="loader ajax"></div>');
+          $('#content').append('<div id="nocontent"><img src="css/asset/nocontent-logo.png" alt="No Content"/><p>Il n\'y a plus de contenu à afficher !</p></div>');
+      },
+      loading : function(){
+          $('#loadergif').fadeIn(400);
+      },
+      endOfLoad : function(data){
+          $('#loadergif').before(data);
+          $('.hidden').fadeIn(400);
+          $('#loadergif').fadeOut(400);
+      },
+      noContent : function(){
+          $('#nocontent').fadeIn(400);
+      }
     });
     $(window).scroll(function()
     {
       scroll.loadData();
     });
 
-  </script>
-  <script type="text/javascript">
-        // on initialise ajaxready à true au premier chargement de la fonction
-        /*$(window).data('ajaxready', true);
-      
-        $('.top-content a').tooltip({placement:'bottom'});
-        $('a').tooltip({placement:'top'});
-        
-     
-        
-        var trend = <?php echo "\"".$query."\"";?>;
-        var nbactus = <?php echo $cptactus;?>;
-        var nbtweets = <?php echo $cpttweets;?>;
-        var nbpics = <?php echo $cptpics;?>;
-        var nbvids = <?php echo $cptvid;?>;
-
-        $("#content").append('<div id="loadergif"><img src="css/img/ajax-loader.gif" alt="loader ajax"></div>');
-        $('#content').append('<div id="nocontent"><img src="css/asset/nocontent-logo.png" alt="No Content"/><p>Il n\'y a plus de contenu à afficher !</p></div>');
-        var deviceAgent = navigator.userAgent.toLowerCase();
-        var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
-
-        var totaltweets = <?php echo count($tweets) ?>;
-        var totalactus = <?php echo count($actus) ?>;
-        var totalpics = <?php echo count($inst) ?>;
-        var totalvids = <?php echo count($videos) ?>;
-
-
-        $(window).scroll(function()
-        {
-          // On teste si ajaxready vaut false, auquel cas on stoppe la fonction
-          if ($(window).data('ajaxready') == false) return;
-          
-          if
-          (
-            ($(window).scrollTop() + window.innerHeight + 150 > $(document).height())
-             || 
-             (agentID && ($(window).scrollTop() + $(window).height()) + 150 > $(document).height())
-             
-          )
-          {
-            if((nbtweets < totaltweets && nbtweets != 0) || (nbactus < totalactus && nbactus != 0) || (nbpics < totalpics && nbpics != 0) || (nbvids < totalvids && nbvids != 0) ){
-                  // lorsqu'on commence un traitement, on met ajaxready à false
-              $(window).data('ajaxready', false);
-         
-              $('#loadergif').fadeIn(400);
-     
-              $.post(
-                  "scroll-content.php",
-                  "&trend="+trend+"&nbactus="+nbactus+"&nbtweets="+nbtweets+"&nbpics="+nbpics+"&nbvids="+nbvids,
-                  function(data, textStatus) {
-                      if(textStatus == "success"){
-                        $('#loadergif').before(data);
-                        $('.hidden').fadeIn(400);
-                        $('#loadergif').fadeOut(400);
-                        $(window).data('ajaxready', true);
-                        /*oncible();
-                        onLocalStorage();
-                      }
-
-                  }
-
-              );
-              nbactus += <?php echo $cptactus;?>;
-              nbpics += 4;
-              nbvids += 2;
-              if(nbactus > totalactus || nbactus ==0) nbtweets += 3;
-             
-            } else {
-              $('#nocontent').fadeIn(400);
-            }
-          }
-        });
-
-*/
   </script>
    
 
