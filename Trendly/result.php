@@ -66,7 +66,16 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     			<ul class="nav navbar-nav"></ul>
     		    <!-- INFO BUTTON -->
-    		    <?php include("header.php") ?>
+    		    <ul class="nav navbar-nav navbar-right">
+    		      <li class="active"><a href="result.php">Page Trend</a></li>
+    		      <li><a href="search.php">Retour au module</a></li>
+    		      <li><a href="dashboard.phh">Voir Dashboard</a></li>
+    		      <li>
+    		      	<a class="info-icon" href="#">
+    		      		<i class="glyphicon glyphicon-info-sign" style="color: #fff;"></i>
+    		      	</a>
+    		      </li>
+    		    </ul>
 	        </div><!-- /.navbar-collapse -->
 		</nav><!-- /.navbar -->
 		<!-- END OF THE NAV BAR -->
@@ -137,7 +146,7 @@
 
                       </ul>  
                     </div>
-                    </div><!-- Fin du carousel-->
+                    </div><!-- end carousel-->
                     <!-- Navigation dans le carousel -->
                     <div class="navPrev"></div>
                     <div class="navNext"></div>
@@ -181,7 +190,7 @@
               <?php endfor;
               $cptactus+=$actmp; ?>
           </div>
-          <?php endif; ?>
+          <?php endif; //end articles?>
 
           
           <!-- PICTURES -->
@@ -205,8 +214,7 @@
                             <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
                             <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
                          </div>
-                      </div>
-                
+                      </div> 
              </figure>
              <?php 
                   $pictmp++;
@@ -215,11 +223,13 @@
              <?php 
                   endfor;
                   $cptpics += $pictmp; 
-              ?>
-             
+              ?>    
            </div>
            <?php endif; ?>
+           <!-- End Pictures -->
            
+
+           <!-- OTHERS ACTUS AND TWEETS -->
            <?php if( (isset($_GET["trend"]) && !empty($_GET["trend"])) || isset($actus) || isset($tweets)) : ?>
            <div class="regular-stage-content row">
               <?php 
@@ -227,6 +237,7 @@
               if($cptactus != 0){
                 $j=0;
                 for($i=$cptactus;$i<($cptactus+4);$i++) :?>
+                <!-- OTHERS ARTICLES -->
                  <article class="col-md-3 col-md-offset-0 cible" style="background-color:<?php echo $actusColor[$j];?>" data-url="<?php echo $actus[$i]->url; ?>">
                     <div class="block">
                        <div class="text text-block">
@@ -250,20 +261,23 @@
                     </div>
 
                  </article>
+                 <!-- end articles -->
             <?php 
                 $actmp++;
                 $j++;
                 endfor;
                 $cptactus += 4;
-              }
+              }//end boucle for articles
+
+                //start boucle for tweets
               if($cpttweets != 0 && $cptactus ==0){
                 $j=0;
                 for($i=$cpttweets;$i<($cpttweets+4);$i++) :?>
+                <!-- OTHERS TWEETS -->
                  <article class="col-md-3 col-md-offset-0 cible" style="background-color:<?php echo $actusColor[$j];?>" data-url="<?php echo $tweets[$i]->urlTweet; ?>">
                     <div class="block">
                        <div class="text text-block">
                           <h1><?php echo "<a href='http://twitter.com/".$tweets[$i]->user."'>@".$tweets[$i]->user."</a>";?></h1>
-
                           <p style="font-size: 20px">
                                <?php 
                                   $twText = preg_replace("/(.*)((http|https):\/\/[A-Za-z0-9.\/]+)/", "$1<a href=\"$2\">$2</a>", $tweets[$i]->text);
@@ -271,7 +285,6 @@
                                ?>
                           </p>
                        </div>
-
                        <div class="highlight-caption top-to-bottom">
                           <div class="highlight">
                              <div class="icon"><img alt="twitter" src=
@@ -284,33 +297,30 @@
                           </div>
                        </div>
                     </div>
-
                  </article>
+                 <!-- End other tweets-->
                 <?php 
                   $twtmp++;
                   $j++;
                 endfor;
                 $cpttweets += 4;
+                //end boucle tweets
               }
             ?>
           </div>
-          <?php endif; ?>
+          <?php endif; //end others actus & tweets?>
            
         
-        
+        <!-- VIDEOS -->
          <?php if( (isset($_GET["trend"]) && !empty($_GET["trend"]))  || isset($videos)) : ?>
            <div class="video-stage-content row">
              <?php 
                   $vidtmp = 0;
                   for($i=$cptvid;$i<($cptvid+2);$i++) : ?>
-             <?php if(isset($videos[$i])):?>
-                
-                   
+             <?php if(isset($videos[$i])):?>     
     		    <article class="videocontainer col-md-6">
-    		    
     		    <div class="block">
     			    <iframe width="100%" height="315" src="//www.youtube.com/embed/<?php echo $videos[$i]->id; ?>" frameborder="0" allowfullscreen></iframe>
-    			 
     			  <div class="highlight-caption left-to-right">
                       <div class="highlight">
                          <div class="icon"><img alt="articles" src=
@@ -335,12 +345,13 @@
                   endfor;
                   $cptvid += $vidtmp; 
               ?>
-             
            </div>
            <?php endif; ?>
+           <!-- END videos -->
 
 
        </div>
+       <!-- end content -->
 
   
 
@@ -348,12 +359,12 @@
       
       
   </section>
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/local_storage.js"></script>
-  <script src="js/my_local_storage.js"></script>
-  <script src="js/infiniteScroll.js"></script>
+  <script src="js/jquery.js"></script> <!-- initialisation jQuery -->
+  <script src="js/bootstrap.js"></script> <!-- initialisation bootstrap.js -->
+  <script src="js/main.js"></script> <!-- initialisation main.js (carousel and notif) -->
+  <script src="js/local_storage.js"></script> <!-- initialisation localstorage.js (save content)-->
+  <script src="js/my_local_storage.js"></script> <!-- initialisation my_local_storage.js -->
+  <script src="js/infiniteScroll.js"></script> <!--infiniteScroll.js (scroll infini for add content) -->
   <script>
     scroll.init({
       trend       : <?php echo "\"".$query."\"";?>,
@@ -364,29 +375,14 @@
       totaltweets : <?php echo count($tweets) ?>,
       totalactus  : <?php echo count($actus) ?>,
       totalpics   : <?php echo count($inst) ?>,
-      totalvids   : <?php echo count($videos) ?>,
-      initializer : function(){
-          $("#content").append('<div id="loadergif"><img src="css/img/ajax-loader.gif" alt="loader ajax"></div>');
-          $('#content').append('<div id="nocontent"><img src="css/asset/nocontent-logo.png" alt="No Content"/><p>Il n\'y a plus de contenu à afficher !</p></div>');
-      },
-      loading : function(){
-          $('#loadergif').fadeIn(400);
-      },
-      endOfLoad : function(data){
-          $('#loadergif').before(data);
-          $('.hidden').fadeIn(400);
-          $('#loadergif').fadeOut(400);
-      },
-      noContent : function(){
-          $('#nocontent').fadeIn(400);
-      }
+      totalvids   : <?php echo count($videos) ?>
     });
     $(window).scroll(function()
     {
       scroll.loadData();
     });
-
   </script>
+  
    
 
 </body>
