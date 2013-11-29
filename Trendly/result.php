@@ -66,16 +66,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     			<ul class="nav navbar-nav"></ul>
     		    <!-- INFO BUTTON -->
-    		    <ul class="nav navbar-nav navbar-right">
-    		      <li class="active"><a href="result.php">Page Trend</a></li>
-    		      <li><a href="search.php">Retour au module</a></li>
-    		      <li><a href="dashboard.phh">Voir Dashboard</a></li>
-    		      <li>
-    		      	<a class="info-icon" href="#">
-    		      		<i class="glyphicon glyphicon-info-sign" style="color: #fff;"></i>
-    		      	</a>
-    		      </li>
-    		    </ul>
+          <?php include("header.php") ?>
 	        </div><!-- /.navbar-collapse -->
 		</nav><!-- /.navbar -->
 		<!-- END OF THE NAV BAR -->
@@ -375,12 +366,28 @@
       totaltweets : <?php echo count($tweets) ?>,
       totalactus  : <?php echo count($actus) ?>,
       totalpics   : <?php echo count($inst) ?>,
-      totalvids   : <?php echo count($videos) ?>
+      totalvids   : <?php echo count($videos) ?>,
+      initializer : function(){
+          $("#content").append('<div id="loadergif"><img src="css/img/ajax-loader.gif" alt="loader ajax"></div>');
+          $('#content').append('<div id="nocontent"><img src="css/asset/nocontent-logo.png" alt="No Content"/><p>Il n\'y a plus de contenu à afficher !</p></div>');
+      },
+      loading : function(){
+          $('#loadergif').fadeIn(400);
+      },
+      endOfLoad : function(data){
+          $('#loadergif').before(data);
+          $('.hidden').fadeIn(400);
+          $('#loadergif').fadeOut(400);
+      },
+      noContent : function(){
+          $('#nocontent').fadeIn(400);
+      }
     });
     $(window).scroll(function()
     {
       scroll.loadData();
     });
+
   </script>
   
    
