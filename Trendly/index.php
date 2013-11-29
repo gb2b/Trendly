@@ -122,9 +122,6 @@ setcookie("visited", true, time()+360*24*3600);
 	   		
 
    	   
-<<<<<<< HEAD
-   </section><!--./stage-three-->
-=======
    </section><!--./stage-four-->
    
    
@@ -142,7 +139,6 @@ setcookie("visited", true, time()+360*24*3600);
    	   
    </section><!--./stage-four-->
 
->>>>>>> 811b894bc20d753db869b16fcefa954f2b9d0485
 
 
   
