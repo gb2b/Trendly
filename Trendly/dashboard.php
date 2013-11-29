@@ -10,6 +10,8 @@
    <meta content="width=device-width,initial-scale=1" name="viewport">
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/media-queries.css">
+   <link href="css/asset/favicon.png" rel="icon" type="image/png">
 
    		<script id="trendUpTlp" type="text/template">
 	   		<article class="col-md-3-bis accordeon check">

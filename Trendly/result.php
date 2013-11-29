@@ -37,6 +37,7 @@
 
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/media-queries.css">
 
    <link rel="icon" type="image/png" href="css/asset/favicon.png" />
 

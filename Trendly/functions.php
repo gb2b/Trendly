@@ -247,11 +247,11 @@ function getTrendsPonderation($auth, $cache, $minimal)
 			if($j%2==0){
 				if(isset($twitter[$j]))
 					$result[$j] = $twitter[$j];
-				else $result[$j] = $twitter[$j+1];
+				else $result[$j] = "Actu";
 			}else{
 				if(isset($gnews[$j]))
 					$result[$j] = $gnews[$j]->keyword;
-				else $result[$j] = $gnews[$j+1]->keyword;
+				else $result[$j] = "Actu";
 			}
 		}
 		/*$result[0] = $twitter[0];
