@@ -1,3 +1,28 @@
+/********************* CSS SUMMARY *********************
+
+- 1. Reset.css
+
+- 2. Font initializer
+
+- 3. Index.html page
+
+- 5. Search.html page
+
+- 6. Result.html page
+
+- 7. Dashboard.html page
+
+- 8. Generic CSS
+
+********************* CSS SUMMARY *********************/
+
+
+
+
+
+
+
+
 /********************* RESET CSS *********************/
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -56,6 +81,14 @@ section{
 	margin: 20px;
 }
 /********************* END OF THE RESET CSS *********************/
+
+
+
+
+
+
+
+
 
 
 
@@ -120,201 +153,25 @@ section{
 
 }
 
-/*********************  END START OF THE FONT INITIALIZER *********************/
-
-
-/*********************  GENERIC CSS *********************/
-
-*{
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-
-
-article{
-  
-    position: relative;
-    overflow: hidden;  
-    width: 100%; 
-    animation: anima 2s;
-    -webkit-animation: anima 2s;
-   backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-}
-
-.highlight-caption{
-    /*cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 35%;
-    border: 1px solid black;
-    opacity:0;
-    padding: 10px;
-    text-align:center;*/
-    
-    cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 0;
-    opacity:0;
-    text-align:center;
-}
-
-
-.highlight-caption-top{
-    /*cursor: pointer;
-    position: absolute;
-    width: 95%;
-    height: 35%;
-    border: 1px solid black;
-    opacity:0;
-    padding: 10px;
-    text-align:center;*/
-    
-    cursor: pointer;
-    position: relative;
-    width: 95%;
-    height: 0;
-    opacity:0;
-    text-align:center;
-}
-
-.text-block{
-     -webkit-transform: scale(1);
-             transform: scale(1);
-}
-.block:hover .text-block{
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-}
-/*All classes with same attribute*/
-a ,a:hover,
-.block .text-block,
-.highlight-caption,.highlight-caption-top,
-.block:hover .highlight-caption,
-.block:hover img{
-     transition: all 0.5s ease;
-    -webkit-transition: all 0.5 ease;  
-}
-
-/*Effects in Caption*/
-.block:hover .bottom-to-top,
-.block:hover .top-to-bottom,
-.block:hover .left-to-right,
-.block:hover .right-to-left{
-    opacity: 1;
-}
-/*Bottom to Top*/
-.bottom-to-top{
-    top:50%;    
-    left:2.5%;
-}
-.block:hover .bottom-to-top{
-    top:6%
-}
-/*Top to Bottom*/
-.top-to-bottom{
-    bottom:50%;    
-    left:2.5%;
-}
-.block:hover .top-to-bottom{
-    bottom:36.5%;
-}
-/*Left to Right*/
-.left-to-right{
-    top:2.5%;
-    right:50%;
-}
-.block:hover .left-to-right{
-    right: 2.5%;
-}
-/*Right to Left*/
-.right-to-left{
-    top:2.5%;
-    left:50%;
-}
-.block:hover .right-to-left{
-    left: 2.5%;
-}
-
-/*Animation Effect*/
-@keyframes anima{
-    from{
-        margin-top: -50px;
-        opacity: 0;
-        -webkit-opacity: 0;
-    }
-    to{
-        margin: auto;
-        opacity: 1;
-        -webkit-opacity: 1;
-    }
-}
-@-webkit-keyframes anima{
-    from{
-        margin-left: -30px;
-        opacity: 0;
-        -webkit-opacity: 0;
-    }
-    to{
-        margin-left: 0px;
-        opacity: 1;
-        -webkit-opacity: 1;
-    }
-}
+/*********************  END OF THE FONT INITIALIZER *********************/
 
 
 
-.container {
- margin:60px 0 0 0;
-}
-.carousel {
-  width: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.carousel ul{
-  list-style-type:none;
-  width:924%;
-  margin-left:0;
-  left:0;
-  padding-left:1px;
-}
-.carousel li{
-  display:inline;
-
-  
-}
-.carousel ul li{
-  width: 11%;
-  float:left;
-}
-.navPrev{
-	background-image: url("asset/arrow-left-icon.png");
-	background-color: none;
-	padding: 11px;
-	margin:0 10px 0 10px;
-  float:left;
-  color: #000;
-}
-.navNext{
-	background-image: url("asset/arrow-right-icon.png");
-	background-color: none;
-	padding: 11px;
-	margin:0 10px 0 10px;
-  float:right;
-   color: #000;
-}
-
-/*********************  END GENERIC CSS *********************/
 
 
 
-/*********************  START OF THE INDEX.HTML *********************/
+/***********************************************************
+                     START OF INDEX.PHP
+***********************************************************/
 
-header > article {
-	margin-top: 100px;
+header{
+	
+	width:100%;
+	padding: 4% 0 14% 0;
+	
+}
+
+header article {
 	color: #000;
 	text-align: center;
 	font-family: "helvetica_neue_lt_std35_thin";
@@ -322,22 +179,23 @@ header > article {
 	
 }
 
-header > article h1{
+header article h1{
 	font-family: "helvetica_neue_lt_std35_thin";
 	font-size: 70px;
 	color: #2980b9;
 }
 
-header > article a{
+header  article a{
 	font-size: 30px;
 	color: #2980b9;
 	padding: 10px 0 5px 0;
 }
 
-header > article a:hover{
+header article a:hover{
 	text-decoration: none;
 }
 
+/*SVG Button & animation*/
 header article a svg {
 display: block;
 margin: 15px auto 0 auto;
@@ -352,17 +210,135 @@ header article a:hover svg {
 margin-top: 20px;
 }
 
-/*********************  END INDEX.PHP *********************/
+/*Start of the section stage-one*/
+.stage-one{
+	
+	background-color: #2980b9;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0;
+}
+
+.stage-one h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 70px;
+	color: #fff;
+	margin: 0 auto;
+	width: 46%;
+	padding: 5% 0 0 0;
+	text-align: center;
+	
+}
+
+.stage-one .ico-stage-one {
+	
+	background-image: url("img/ico-stage-one.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 50px 0 50px 0;
+	
+	
+}
+
+.stage-one .ico-stage-two {
+	
+	background-image: url("img/ico-stage-two.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 50px 0 50px 0;
+	
+}
+
+
+.stage-one .ico-stage-three {
+	
+	background-image: url("img/ico-stage-three.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 50px 0 50px 0;
+	
+}
+
+.stage-one .article-container {
+	padding: 5% 5% 5% 5%;
+	
+}
+
+.stage-one .article-container article{
+	margin: 7% 0 7% 0;
+	
+}
+
+.stage-one article p{
+	font-family: "helvetica_neue_lt_std35_thin";
+	color: #fff;
+	font-size: 15px;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 3% 0 0 0;
+	
+}
+/*End of the section stage-one*/
+
+
+/*Start of the section stage-two*/
+.stage-two .bg{
+	
+	background-image: url("img/stage-two-bg.png");
+	background-repeat:no-repeat;
+	background-color: #ecf0f1;
+	background-size: 100%;
+	height: auto;
+	width: 100%;
+	padding: 50% 0 20% 0;
+	margin: 0;
+	
+}
+/*End of the section stage-two*/
+
+
+/*Start of the section stage-three*/
+.stage-three{
+	
+	background-color: #2980b9;
+	height: auto;
+	padding: 0 0 0 0;
+	margin: 0;
+	
+}
+
+.stage-three .article-container h1{
+	font-family: "helvetica_neue_lt_std35_thin";
+	font-size: 70px;
+	color: #fff;
+	margin: 80px auto;
+	width: 46%;
+	
+}
+/*End of the section stage-three*/
+
+
+/***********************************************************
+                     END OF INDEX.PHP
+***********************************************************/
+
+
+
+
+
+
+
+
+
+
 
 /***********************************************************
                      PAGE SEARCH.PHP
 ***********************************************************/
 
 
-/*************
-     LOGO 
-*************/
 
+/**START LOGO**/
 .logo img{
 	width: 25%;
 	height: 25%;
@@ -378,7 +354,6 @@ margin-top: 20px;
 	position: absolute;
 	
 }
-
 /**END LOGO**/
 
 
@@ -410,11 +385,8 @@ html{width:100%;height:100%;}
 }
 #player{
 margin: 80px auto;
-width: 80%;
+width: 62%;
 height: 440px;
-background: #000;
-border: 1px solid grey;
-border-radius: 10px;
 
 }
 #video{
@@ -427,7 +399,6 @@ border-radius: 10px;
 
 .bottom-search{
 	 margin: 0;
-	 top:-15px;
 	 position: relative;
 	 padding: 20px 0 20px 0;
 	 vertical-align: bottom;
@@ -764,7 +735,7 @@ section .content article {
 	text-align: center;
 	font-family: "helvetica_neue_lt_std35_thin";
 	font-size: 20px;
-	padding: 5% 0 5% 0;
+	padding: 30px 0 30px 0;
 	/*height: 240px;*/
 	margin: 10px;
 	border-radius: 10px;
@@ -784,14 +755,11 @@ section .content article label div {
 	background-image: url("asset/arrow-down-icon.png");
 	background-repeat: no-repeat;
 	background-position: center;
-	padding: 8% 0 8% 0;
+	padding: 25px 0 25px 0;
 	position: relative;
-	top:70px;
+	top: 43px;
 	border-radius: 0 0 10px 10px;
-	
-	
 }
-
 
 
 
@@ -834,15 +802,6 @@ section .content > article a{
 	color: #7f8c8d;
 }
 
-section .content > article .delete-btn{
-	background-image:url("asset/quit-icon.png");
-	background-repeat: no-repeat;
-	padding: 25px;
-	position: absolute;
-	top: 10px;
-	left:10px;
-	
-}
 
 section .content > article a:hover{
 	text-decoration: underline;
@@ -1028,7 +987,6 @@ section .content > article .fav-trends .accordeon label {
 .top-content article {
 
 	margin: 0 0 10px 0;
-	padding-top: 70px;
 	padding-bottom: 30px;
 	background-color: #fff;
 	border-bottom: 5px solid #3498db;
@@ -1680,3 +1638,200 @@ a ,a:hover,
 }
 
 /*** CONTENT ***/
+
+
+
+
+
+
+
+
+/*********************  GENERIC CSS *********************/
+
+*{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+article{
+  
+    position: relative;
+    overflow: hidden;  
+    width: 100%; 
+    animation: anima 2s;
+    -webkit-animation: anima 2s;
+   backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+.highlight-caption{
+    /*cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    border: 1px solid black;
+    opacity:0;
+    padding: 10px;
+    text-align:center;*/
+    
+    cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 0;
+    opacity:0;
+    text-align:center;
+}
+
+
+.highlight-caption-top{
+    /*cursor: pointer;
+    position: absolute;
+    width: 95%;
+    height: 35%;
+    border: 1px solid black;
+    opacity:0;
+    padding: 10px;
+    text-align:center;*/
+    
+    cursor: pointer;
+    position: relative;
+    width: 90%;
+    height: 0;
+    opacity:0;
+    text-align:center;
+}
+
+.text-block{
+     -webkit-transform: scale(1);
+             transform: scale(1);
+}
+.block:hover .text-block{
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+/*All classes with same attribute*/
+a ,a:hover,
+.block .text-block,
+.highlight-caption,.highlight-caption-top,
+.block:hover .highlight-caption,
+.block:hover img{
+     transition: all 0.5s ease;
+    -webkit-transition: all 0.5 ease;  
+}
+
+/*Effects in Caption*/
+.block:hover .bottom-to-top,
+.block:hover .top-to-bottom,
+.block:hover .left-to-right,
+.block:hover .right-to-left{
+    opacity: 1;
+}
+/*Bottom to Top*/
+.bottom-to-top{
+    top:50%;    
+    left:2.5%;
+}
+.block:hover .bottom-to-top{
+    top:6%
+}
+/*Top to Bottom*/
+.top-to-bottom{
+    bottom:50%;    
+    left:2.5%;
+}
+.block:hover .top-to-bottom{
+    bottom:36.5%;
+}
+/*Left to Right*/
+.left-to-right{
+    top:2.5%;
+    right:50%;
+}
+.block:hover .left-to-right{
+    right: 2.5%;
+}
+/*Right to Left*/
+.right-to-left{
+    top:2.5%;
+    left:50%;
+}
+.block:hover .right-to-left{
+    left: 2.5%;
+}
+
+/*Animation Effect*/
+@keyframes anima{
+    from{
+        margin-top: -50px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin: auto;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+@-webkit-keyframes anima{
+    from{
+        margin-left: -30px;
+        opacity: 0;
+        -webkit-opacity: 0;
+    }
+    to{
+        margin-left: 0px;
+        opacity: 1;
+        -webkit-opacity: 1;
+    }
+}
+
+
+
+.container {
+ margin:60px 0 0 0;
+}
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.carousel ul{
+  list-style-type:none;
+  width:924%;
+  margin-left:0;
+  left:0;
+  padding-left:1px;
+}
+.carousel li{
+  display:inline;
+
+  
+}
+.carousel ul li{
+  width: 11%;
+  float:left;
+}
+.navPrev{
+	background-image: url("asset/arrow-left-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:left;
+  color: #000;
+}
+.navNext{
+	background-image: url("asset/arrow-right-icon.png");
+	background-color: none;
+	padding: 11px;
+	margin:0 10px 0 10px;
+  float:right;
+   color: #000;
+}
+
+.header-top{
+	padding: 0;
+}
+
+/*********************  END GENERIC CSS *********************/

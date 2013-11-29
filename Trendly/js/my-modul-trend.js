@@ -1,16 +1,16 @@
        module.init({
-            stopAnimation :  function() {
+            stopAnimation :  function(element) {
                 //CSS property who doesn't work in stylesheet
-                $(this.element).css("-webkit-animation-play-state", "paused");
-                $(this.element).css("-moz-animation-play-state", "paused");
-                $(this.element).css("-ms-animation-play-state", "paused");
-                $(this.element).css("animation-play-state", "paused");
+                $(element).css("-webkit-animation-play-state", "paused");
+                $(element).css("-moz-animation-play-state", "paused");
+                $(element).css("-ms-animation-play-state", "paused");
+                $(element).css("animation-play-state", "paused");
             },
-            playAnimation : function() {
-                $(this.element).css("-webkit-animation-play-state", "running");
-                $(this.element).css("-moz-animation-play-state", "running");
-                $(this.element).css("-ms-animation-play-state", "running");
-                $(this.element).css("animation-play-state", "running");
+            playAnimation : function(element) {
+                $(element).css("-webkit-animation-play-state", "running");
+                $(element).css("-moz-animation-play-state", "running");
+                $(element).css("-ms-animation-play-state", "running");
+                $(element).css("animation-play-state", "running");
             }
        });
 
@@ -73,6 +73,7 @@
                         };
                         var name = key(d,i,j);
                         module.params.element.value = name;
+
                         module.params.stopAnimation($(this).parent());
                 }   
                 //trend.innerHTML = name;

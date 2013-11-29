@@ -32,6 +32,7 @@
 
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/media-queries.css">
 
 
    <link rel="icon" type="image/png" href="css/asset/favicon.png" />
@@ -43,7 +44,7 @@
 <body>
 
 <!-- START OF THE HEADER -->
-	<header>
+	<header class="header-top">
 		<!-- START OF THE NAV BAR -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="navbar-header">
@@ -57,7 +58,7 @@
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
 			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span>Trendly - Les Trends en un clic</span></a>
+			    	<span>Trendly</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    
@@ -71,15 +72,10 @@
 		    
 		    <!-- INFO BUTTON -->
 		    <ul class="nav navbar-nav navbar-right">
-		      <li class="active"><a href="result.php">Page Trend</a></li>
-		      <li><a href="search.php">Retour au module</a></li>
-		      <li><a href="dashboard.phh">Voir Dashboard</a></li>
-		      
-		      <li>
-		      	<a class="info-icon" href="#">
-		      		<i class="glyphicon glyphicon-info-sign" style="color: #fff;"></i>
-		      	</a>
-		      </li>
+		      <li class="elements"><a href="result.php">Page Trend</a></li>
+		      <li class="elements"><a href="search.php">Retour au module</a></li>
+		      <li class="elements"><a href="dashboard.php">Voir Dashboard</a></li>
+		      <li class="elements"><a href="index.php">Présentation</a></li>
 		    </ul>
 		  </div><!-- /.navbar-collapse -->
 		</nav><!-- /.navbar -->
@@ -158,7 +154,9 @@
                              <div class="save">
                                 <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
                                 <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
-                                <a rel="popover" data-content="Le tweet a été sauvegardé sur votre dashboard!"  data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
+                                <a rel="popover" data-content="Le tweet a été sauvegardé sur votre dashboard!"  data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">
+                                  <i class="glyphicon glyphicon-bookmark"></i>
+                                </a>
                              </div>
                           </div>
                         </div>
@@ -212,7 +210,9 @@
                      <div class="save">
                         <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                         <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
-                        <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
+                        <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">
+                          <i class="glyphicon glyphicon-bookmark"></i>
+                        </a>
                      </div>
                   </div>
                </div>
@@ -242,12 +242,12 @@
                      <div class="icon"><img alt="articles" src=
                      "css/asset/articles-icon.png"></div>
 
-                     <h2>Bing</h2>
+                     <h2>Instagram</h2>
                      
                      <div class="save">
                         <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $inst[$i]->src ?>" alt="save">GO</a></span>
                         <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
-                        <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>">LOGO</a>
+                        <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-mediasrc="<?php echo $inst[$i]->src ?>" data-text="<?php echo $inst[$i]->title ?>" data-url="<?php echo $inst[$i]->src ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
                      </div>
                   </div>
             
@@ -287,7 +287,7 @@
                          <div class="save">
                             <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $actus[$i]->url; ?>" alt="save">GO</a></span>
                             <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
-                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>">LOGO</a>
+                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $actus[$i]->author ?>" data-text="<?php echo $actus[$i]->mainTitle ?>" data-url="<?php echo $actus[$i]->url ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
                          </div>
                       </div>
                    </div>
@@ -323,7 +323,7 @@
                          <div class="save">
                             <span><a data-toggle="tooltip" title="Voir le contenu" target="_blank" href="<?php echo $tweets[$i]->urlTweet; ?>" alt="save">GO</a></span>
                             <span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux" href="javascript:void(0);" alt="save">SHARE</a></span>
-                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>">LOGO</a>
+                            <a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" alt="save" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $tweets[$i]->user ?>" data-text="<?php echo $tweets[$i]->text ?>" data-url="<?php echo $tweets[$i]->urlTweet ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
                          </div>
                       </div>
                    </div>
@@ -365,7 +365,7 @@
                      <div class="save">
                      	<span><a data-toggle="tooltip" title="Voir le contenu" target"_blank" href="<?php echo $videos[$i]->url; ?>">GO</a></span>
                      	<span><a data-toggle="tooltip" title="Partager sur les réseaux sociaux"href="javascript:void(0);">SHARE</a></span>
-                     	<a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>">LOGO</a>
+                     	<a data-toggle="tooltip" title="Sauvegarder sur votre dashboard" href="javascript:void(0);" class="localstorage" data-trend="<?php echo $query ?>" data-source="<?php echo $videos[$i]->title ?>" data-videoid="<?php echo $videos[$i]->id ?>" data-url="<?php echo $videos[$i]->url ?>"><i class="glyphicon glyphicon-bookmark"></i></a>
                      </div>
                   </div>
                </div>

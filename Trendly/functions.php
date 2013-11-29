@@ -5,7 +5,7 @@ $auth =  array(
 	"tw_consumer_secret"    => "vfoA4Ew0f0iv4jioGy96q9RzJknisr3Yy8LMHQEw",
 	"tw_oauth_token"        => "123935211-meMJIWjVL4iaD6mNchXOhbTEYPv5ag4jcfs9wocK",
 	"tw_oauth_token_secret" => "rHm8e8ZRZ6iTl7u0JnPzmTDXDq4N69yTeZoHsQ1wpM",
-	"tw_path_file_oauth"    => "auth/twitteroauth/twitteroauth.php",
+	"tw_path_file_oauth"    => "controller/twitteroauth/twitteroauth.php",
 	"instg_client_id"       => "9110e8c268384cb79901a96e3a16f588",
 	"bing_client_id"        => "gwqxJUSegbzJC1MyPhs4IV1A5u9yRvGjl2QYjEwzZEs",
 	"imgur_client_id"       => "7bf23d0ba414535",
@@ -22,7 +22,7 @@ $cache = array(
 	"bing_cache"  => "bing.json",
 	"trend_cache" => "trends.json",
 	"time"        => 5, 
-	"path_cache"  => "tmp"
+	"path_cache"  => "../tmp"
 	);
 
 /*echo "<pre>";
@@ -243,7 +243,18 @@ function getTrendsPonderation($auth, $cache, $minimal)
 		$twitter   = getPopularTwTrends($auth, $cache);
 		$gnews     = getTrendGnews($cache);
 
-		$result[0] = $twitter[0];
+		for($j=0;$j<10;$j++){
+			if($j%2==0){
+				if(isset($twitter[$j]))
+					$result[$j] = $twitter[$j];
+				else $result[$j] = $twitter[$j+1];
+			}else{
+				if(isset($gnews[$j]))
+					$result[$j] = $gnews[$j]->keyword;
+				else $result[$j] = $gnews[$j+1]->keyword;
+			}
+		}
+		/*$result[0] = $twitter[0];
 		$result[1] = $gnews[0]->keyword;
 		$result[2] = $twitter[1];
 		$result[3] = $gnews[1]->keyword;
@@ -252,7 +263,7 @@ function getTrendsPonderation($auth, $cache, $minimal)
 		$result[6] = $twitter[3];
 		$result[7] = $gnews[4]->keyword;
 		$result[8] = $twitter[4];
-		$result[9] = $gnews[5]->keyword;
+		$result[9] = $gnews[5]->keyword;*/
 		$content = "{";
 		for ($i=0; $i < count($result); $i++) { 
 			if (isset($result[$i]) && !empty($result[$i])) {

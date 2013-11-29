@@ -11,13 +11,13 @@
    <link href="css/style.css" rel="stylesheet">
    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
    		<script id="trendUpTlp" type="text/template">
-	   		<article class="col-md-3 accordeon check">
-			   		<h1 class="trendname">{{title}}</h1>
+	   		<article class="col-md-3-bis accordeon check">
+			   		<h1 id="trendname">{{title}}</h1>
 						<p>
 						{{date}}
 						<a title="Facebook" href="https://www.facebook.com/sharer.php?u=http://preprod.apps-mog.com/TestTrends/result.php?trend={{title}}&t={{source}}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">Partager</a>
 						</p>
-					<a class="delete-btn" data-trend="{{title}}" href="#"></a> 
+					<a class="delete-btn" data-trend="{{title}}" href="#"><i class="glyphicon glyphicon-trash"></i></a> 
 		   		 <input id="inner1" type="checkbox" />
 		   		<div class="fav-trends inner">
 		   		</div>
@@ -44,7 +44,7 @@
 
 <body>
 	<!-- START OF THE HEADER -->
-	<header>
+	<header class="header-top">
 		<!-- START OF THE NAV BAR -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="navbar-header">
@@ -58,7 +58,7 @@
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
 			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span>Trendly - Les Trends en un clic</span></a>
+			    	<span>Trendly</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    
@@ -99,7 +99,7 @@
 	</section>
 </body>
 <script src="js/jquery.js"></script>
-<script src="js/notifications"></script>
+<script src="js/notifications.js"></script>
 <script src="js/mustache.js"></script>
 
 <script src="js/local_storage.js"></script>

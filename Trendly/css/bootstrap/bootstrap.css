@@ -811,8 +811,7 @@ pre code {
 }
 
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin:0;
 }
 
 .row:before,
@@ -846,6 +845,7 @@ pre code {
 .col-xs-3,
 .col-sm-3,
 .col-md-3,
+.col-md-3-bis,
 .col-lg-3,
 .col-xs-4,
 .col-sm-4,
@@ -1286,6 +1286,7 @@ pre code {
   .col-md-1,
   .col-md-2,
   .col-md-3,
+  .col-md-3-bis,
   .col-md-4,
   .col-md-5,
   .col-md-6,
@@ -1325,6 +1326,9 @@ pre code {
   }
   .col-md-3 {
     width: 24.1%;
+  }
+  .col-md-3-bis {
+    width: 23.1%;
   }
   .col-md-2 {
     width: 16.666666666666664%;

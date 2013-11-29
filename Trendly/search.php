@@ -36,7 +36,7 @@
 <body> 
 
 	<!-- START OF THE HEADER -->
-	<header>
+	<header class="header-top">
 		<!-- START OF THE NAV BAR -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="navbar-header">
@@ -50,7 +50,7 @@
 				<!-- LOGO -->
 				<div class="navbar-brand logo">
 			    	<a href="search.php"><img src="css/asset/logo-b.png" alt="Logo - Trendly">
-			    	<span>Trendly - Les Trends en un clic</span></a>
+			    	<span>Trendly</span></a>
 			    </div>
 			    <!-- END LOGO -->
 			    
@@ -63,15 +63,7 @@
 			    
 		    
 		    <!-- INFO BUTTON -->
-		    <ul class="nav navbar-nav navbar-right">
-		      <li>
-		      	<a class="info-icon" href="#">
-		      		<div class="help">
-		      			<i class="glyphicon glyphicon-info-sign help" style="color: #fff;"></i>
-		      		</div>
-		      	</a>
-		      </li>
-		    </ul>
+			<?php include("header.php") ?>
 		  </div><!-- /.navbar-collapse -->
 		</nav><!-- /.navbar -->
 		
@@ -133,7 +125,6 @@
 			
 			<!-- START OF THE BASIC LIST-->
 			<div class="basic-list row">
-				<h2>Top Trends</h2>
 				<ul>
 					<?php foreach($trendsMob as $t): ?>
 					<li class="col-md-6"><a href="result?trend=<?php echo $t?>"><?php echo $t ?></a></li>
