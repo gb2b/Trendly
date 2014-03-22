@@ -11,10 +11,10 @@ Partager ou sauvegarder sur votre dashboard les contenus que vous trouvez intér
 
 
 ### Auteurs :
-- Guillaume de Beauchesne [@will_finoak](https://twitter.com/Will_Finoak "@will_finoak")
-- Adrian Vaucoret [@adrian3ds](https://twitter.com/Adrian3ds "@adrian3ds")
-- Franck Osei Mensah [@osei95](https://twitter.com/osei95 "@osei95")
-- Philippe Zhao [@P3Z3D](https://twitter.com/p3z3d "@P3Z3D")
-- Antoine Vidal [@antoinevdlb](https://twitter.com/antoinevdlb "@antoinevdlb")
+- Guillaume de Beauchesne (Développeur front-end) [@will_finoak](https://twitter.com/Will_Finoak "@will_finoak")
+- Adrian Vaucoret (Développeur back-end) [@adrian3ds](https://twitter.com/Adrian3ds "@adrian3ds")
+- Franck Osei Mensah (Chef de projet) [@osei95](https://twitter.com/osei95 "@osei95")
+- Philippe Zhao (Designer) [@P3Z3D](https://twitter.com/p3z3d "@P3Z3D")
+- Antoine Vidal (Designer) [@antoinevdlb](https://twitter.com/antoinevdlb "@antoinevdlb")
 
 
